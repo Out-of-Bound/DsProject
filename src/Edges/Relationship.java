@@ -12,4 +12,11 @@ public class Relationship extends DirectedGraph.Edge {
         this.date = date;
     }
 
+    public String getRelation() {
+        return relation;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }
