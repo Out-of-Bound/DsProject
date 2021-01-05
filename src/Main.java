@@ -7,11 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try {
-            ReadFiles.readAccountFile();
-            ReadFiles.readCarFile();
-            ReadFiles.readHomeFile();
-            ReadFiles.readPersonFile();
-            ReadFiles.readPhoneFile();
+            ReadFiles.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

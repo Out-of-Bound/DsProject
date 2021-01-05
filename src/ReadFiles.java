@@ -1,18 +1,30 @@
 
 
-import Vertices.Car;
-import Vertices.Home;
-import Vertices.Person;
-import Vertices.Phone;
+import Vertices.*;
 
 import javax.swing.*;
 import java.io.*;
 
 
 public class ReadFiles {
-    public static void readAccFile() throws IOException {
-        File chosenFile = getFileFromSystem();
-        BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
+    private static final String ACC_FILE_NAME = "\\accounts.csv";
+    private static final String CAR_FILE_NAME = "\\cars.csv";
+    private static final String HOME_FILE_NAME = "\\homes.csv";
+    private static final String PERSON_FILE_NAME = "\\people.csv";
+    private static final String PHONE_FILE_NAME = "\\phones.csv";
+
+
+    public static void start() throws IOException {
+        String folderPath = getDataFolderFromSystem().getPath();
+        readAccFile(folderPath);
+        readCarFile(folderPath);
+        readHomeFile(folderPath);
+        readPersonFile(folderPath);
+        readPhoneFile(folderPath);
+    }
+    private static void readAccFile(String filePath) throws IOException {
+        filePath += ACC_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
@@ -22,10 +34,9 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    public static void readCarFile() throws IOException {
-        System.out.println("Choose Car File: ");
-        File chosenFile = getFileFromSystem();
-        BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
+    private static void readCarFile(String filePath) throws IOException {
+        filePath += CAR_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
@@ -35,10 +46,9 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    public static void readHomeFile() throws IOException {
-        System.out.println("Choose Home File: ");
-        File chosenFile = getFileFromSystem();
-        BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
+    private static void readHomeFile(String filePath) throws IOException {
+        filePath += HOME_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
@@ -48,10 +58,9 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    public static void readPersonFile() throws IOException {
-        System.out.println("Choose Person File: ");
-        File chosenFile = getFileFromSystem();
-        BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
+    private static void readPersonFile(String filePath) throws IOException {
+        filePath += PERSON_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
@@ -61,10 +70,9 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    public static void readPhoneFile() throws IOException {
-        System.out.println("Choose Phone File: ");
-        File chosenFile = getFileFromSystem();
-        BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
+    private static void readPhoneFile(String filePath) throws IOException {
+        filePath += PHONE_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
@@ -75,9 +83,7 @@ public class ReadFiles {
     }
 
 
-
-
-    private static File getFileFromSystem(){
+    private static File getDataFolderFromSystem(){
         JFileChooser chooser = new JFileChooser();
         chooser.setDragEnabled(true);
         chooser.setDialogTitle("پوشه حاوی دیتا ها را انتخاب کنید");
