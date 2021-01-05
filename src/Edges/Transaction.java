@@ -11,4 +11,12 @@ public class Transaction extends DirectedGraph.Edge {
         this.date = date;
         this.amount = amount;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
 }

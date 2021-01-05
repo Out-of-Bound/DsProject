@@ -1,12 +1,8 @@
 package Graph;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
-/*The nodes are also referred as vertex and arcs as Directed edges*/
-
 public class DirectedGraph {
-    // node class consists of node name a.k.a id of node ,set of directed edges a.k.a arcs
 
     // contains set of nodes
     private HashSet<Vertex> nodes = new HashSet<>();
@@ -17,7 +13,6 @@ public class DirectedGraph {
     // maps a nodeId -> node
     private HashMap<String, Vertex> nodeMap = new HashMap<>();
 
-
     public static class Vertex {
         private String id;
         private HashSet<Edge> inEdges;
@@ -26,6 +21,7 @@ public class DirectedGraph {
         public Vertex(String id) {
             this.id = id;
             inEdges = new HashSet<>();
+            outEdges = new HashSet<>();
         }
 
         public Vertex(Vertex anotherNode) {
@@ -47,7 +43,6 @@ public class DirectedGraph {
         }
     }
 
-    // definition of arc a.k.a edge
     public static class Edge {
         private String id;
         private Vertex startingVertex;
@@ -87,13 +82,13 @@ public class DirectedGraph {
     public void addEdges(String id, Vertex startingNode, Vertex finishingNode) {
         if (!nodes.contains(startingNode))
             addVertex(startingNode);
-
         if (!nodes.contains(finishingNode))
             addVertex(finishingNode);
 
         Edge edge = new Edge(id , startingNode, finishingNode);
         edges.add(edge);
-        startingNode.inEdges.add(edge);
+        startingNode.outEdges.add(edge);
+        finishingNode.inEdges.add(edge);
     }
 
     public HashMap<String, Vertex> getNodeMap() {

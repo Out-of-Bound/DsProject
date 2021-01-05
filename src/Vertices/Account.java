@@ -1,6 +1,6 @@
 package Vertices;
-
 import Graph.DirectedGraph;
+
 public class Account extends DirectedGraph.Vertex {
     private String ownerSsn, bank_name ,account_id ; // id = iBan;
 

@@ -11,4 +11,12 @@ public class Call extends DirectedGraph.Edge {
         this.date = date;
         this.duration = duration;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
 }
