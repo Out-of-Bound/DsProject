@@ -10,6 +10,8 @@ public class Main {
             ReadFiles.readAccountFile();
             ReadFiles.readCarFile();
             ReadFiles.readHomeFile();
+            ReadFiles.readPersonFile();
+            ReadFiles.readPhoneFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
