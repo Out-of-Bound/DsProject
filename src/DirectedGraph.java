@@ -1,4 +1,4 @@
-import org.jgrapht.Graph;
+
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,84 +9,105 @@ public class DirectedGraph {
     // node class consists of node name a.k.a id of node ,set of directed edges a.k.a arcs
 
     // contains set of nodes
-    private HashSet<NodeClass> nodes = new HashSet<>();
+    private HashSet<Vertex> nodes = new HashSet<>();
 
     // set of directed edges
-    private HashSet<edgeContents> edges = new HashSet<>();
+    private HashSet<Edge> edges = new HashSet<>();
 
     // maps a nodeId -> node
-    private HashMap<Integer, NodeClass> nodeMap = new HashMap<>();
+    private HashMap<String, Vertex> nodeMap = new HashMap<>();
 
-    public static class NodeClass {
-        int id;
-        HashSet<edgeContents> edges;
+    public static class Vertex {
+        private String id;
+        private HashSet<Edge> edges;
 
-        public NodeClass(int name) {
-            id = name;
+        public Vertex(String id) {
+            this.id = id;
             edges = new HashSet<>();
         }
 
-        // copy constructor
-        public NodeClass(NodeClass anotherNode) {
+        public Vertex(Vertex anotherNode) {
             this.id = anotherNode.id;
             this.edges = anotherNode.edges;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public HashSet<Edge> getEdges() {
+            return edges;
         }
     }
 
     // definition of arc a.k.a edge
-    public static class edgeContents {
-        NodeClass startingNode;
-        NodeClass finishingNode;
+    public static class Edge {
+        private String id;
+        private Vertex startingVertex;
+        private Vertex finishingVertex;
 
-        public edgeContents(NodeClass startingNode, NodeClass finishingNode) {
-            this.startingNode = startingNode;
-            this.finishingNode = finishingNode;
+        public Edge(String id , Vertex startingVertex, Vertex finishingVertex) {
+            this.id = id;
+            this.startingVertex = startingVertex;
+            this.finishingVertex = finishingVertex;
         }
 
         @Override
         public boolean equals(Object obj) {
-            edgeContents e = (edgeContents) obj;
-            return e.finishingNode == finishingNode && e.startingNode == startingNode;
+            Edge e = (Edge) obj;
+            return e.finishingVertex == finishingVertex && e.startingVertex == startingVertex;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public Vertex getStartingVertex() {
+            return startingVertex;
+        }
+
+        public Vertex getFinishingVertex() {
+            return finishingVertex;
         }
     }
 
-    public static void addNode(DirectedGraph g, int nodeId) {
-        NodeClass nodeToAdd = new NodeClass(nodeId);
-        g.nodes.add(nodeToAdd);
-        g.nodeMap.put(nodeId, nodeToAdd);
+    public void addVertex(Vertex nodeToAdd) {
+        nodes.add(nodeToAdd);
+        nodeMap.put(nodeToAdd.id, nodeToAdd);
     }
 
-    public void addNode(DirectedGraph g, NodeClass nodeToAdd) {
-        g.nodes.add(nodeToAdd);
-        g.nodeMap.put(nodeToAdd.id, nodeToAdd);
-    }
+    public void addEdges(String id, Vertex startingNode, Vertex finishingNode) {
+        if (!nodes.contains(startingNode))
+            addVertex(startingNode);
 
-    public void addEdges(DirectedGraph g, NodeClass startingNode, NodeClass finishingNode) {
-        edgeContents edge = new edgeContents(startingNode, finishingNode);
-        g.edges.add(edge);
+        if (!nodes.contains(finishingNode))
+            addVertex(finishingNode);
+
+        Edge edge = new Edge(id , startingNode, finishingNode);
+        edges.add(edge);
         startingNode.edges.add(edge);
-        nodes.add(startingNode);
     }
 
-    public HashMap<Integer, NodeClass> getNodeMap() {
+    public HashMap<String, Vertex> getNodeMap() {
         return nodeMap;
     }
 
-    public void setNodeMap(HashMap<Integer, NodeClass> nodeMap) {
+    public void setNodeMap(HashMap<String, Vertex> nodeMap) {
         this.nodeMap = nodeMap;
     }
 
-    public NodeClass getParticularNode(int id) {
+    public Vertex getParticularNode(int id) {
         if (nodeMap.containsKey(id))
             return nodeMap.get(id);
         return null;
     }
 
-    public HashSet<NodeClass> getAllNodes() {
+    public HashSet<Vertex> getAllNodes() {
         return nodes;
     }
 
-    public HashSet<edgeContents> getEdges() {
+    public HashSet<Edge> getEdges() {
         return edges;
     }
+
 }
