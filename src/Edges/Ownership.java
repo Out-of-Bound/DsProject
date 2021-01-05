@@ -1,5 +1,6 @@
 package Edges;
 
+import Graph.DirectedGraph;
 public class Ownership extends DirectedGraph.Edge {
     private String date,amount; //id = ownershipID
 

@@ -1,5 +1,7 @@
 package Edges;
 
+import Graph.DirectedGraph;
+
 public class Call extends DirectedGraph.Edge {
     private String date , duration; // id = callId
 

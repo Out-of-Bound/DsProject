@@ -1,5 +1,6 @@
 package Vertices;
 
+import Graph.DirectedGraph;
 public class Car extends DirectedGraph.Vertex {
     private String ownerSsn,model,color; //id = plate
 

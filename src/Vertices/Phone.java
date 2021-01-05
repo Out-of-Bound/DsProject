@@ -1,5 +1,5 @@
 package Vertices;
-
+import Graph.DirectedGraph;
 public class Phone extends DirectedGraph.Vertex {
     private String ownerSsn, operatorName; //id = number
 

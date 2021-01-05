@@ -1,5 +1,7 @@
 package Edges;
 
+import Graph.DirectedGraph;
+
 public class Transaction extends DirectedGraph.Edge {
     private String date,amount; //id = transactionId
 

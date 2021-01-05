@@ -1,5 +1,5 @@
 package Vertices;
-
+import Graph.DirectedGraph;
 public class Home extends DirectedGraph.Vertex {
     private String ownerSsn, price ,size , address; //id = postalCode
 

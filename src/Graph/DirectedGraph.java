@@ -1,4 +1,4 @@
-
+package Graph;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,26 +17,33 @@ public class DirectedGraph {
     // maps a nodeId -> node
     private HashMap<String, Vertex> nodeMap = new HashMap<>();
 
+
     public static class Vertex {
         private String id;
-        private HashSet<Edge> edges;
+        private HashSet<Edge> inEdges;
+        private HashSet<Edge> outEdges;
 
         public Vertex(String id) {
             this.id = id;
-            edges = new HashSet<>();
+            inEdges = new HashSet<>();
         }
 
         public Vertex(Vertex anotherNode) {
             this.id = anotherNode.id;
-            this.edges = anotherNode.edges;
+            this.inEdges = anotherNode.inEdges;
+            this.outEdges = anotherNode.outEdges;
         }
 
         public String getId() {
             return id;
         }
 
-        public HashSet<Edge> getEdges() {
-            return edges;
+        public HashSet<Edge> getInEdges() {
+            return inEdges;
+        }
+
+        public HashSet<Edge> getOutEdges() {
+            return outEdges;
         }
     }
 
@@ -85,7 +92,7 @@ public class DirectedGraph {
 
         Edge edge = new Edge(id , startingNode, finishingNode);
         edges.add(edge);
-        startingNode.edges.add(edge);
+        startingNode.inEdges.add(edge);
     }
 
     public HashMap<String, Vertex> getNodeMap() {

@@ -1,5 +1,5 @@
 package Vertices;
-
+import Graph.DirectedGraph;
 public class Person extends DirectedGraph.Vertex {
     private String firstName, lastName, birthDay, birthPlace , workPlace; //id = ssn
 

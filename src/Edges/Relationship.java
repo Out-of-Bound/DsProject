@@ -1,6 +1,6 @@
 package Edges;
 
-
+import Graph.DirectedGraph;
 
 public class Relationship extends DirectedGraph.Edge {
     private String relation, date; //id = from + to
