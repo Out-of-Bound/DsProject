@@ -18,11 +18,11 @@ public class ReadFiles {
 
     public static void start() throws IOException {
                 //getDataFolderFromSystem().getPath();
-        String folderPath = "C:\\Users\\novin\\Desktop\\data";
+        String folderPath = "C:\\Users\\ebtekar\\Downloads\\Documents\\ساختمان داده\\data";
         readAccountFile(folderPath);
         readCarFile(folderPath);
         readHomeFile(folderPath);
-        readPersonFile(folderPath);
+        readPeopleFile(folderPath);
         readPhoneFile(folderPath);
         readCallFile(folderPath);
     }
@@ -75,7 +75,7 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    private static void readPersonFile(String filePath) throws IOException {
+    private static void readPeopleFile(String filePath) throws IOException {
         filePath += PERSON_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
