@@ -1,15 +1,35 @@
 package Vertices;
 import Graph.DirectedGraph;
-public class Person extends DirectedGraph.Vertex {
-    private String firstName, lastName, birthDay, birthPlace , workPlace; //id = ssn
 
-    public Person(String ssn, String firstName, String lastName, String birthDay, String birthPlace, String workPlace) {
+public class Person extends DirectedGraph.Vertex {
+    private String firstName, lastName, birthDay, city, work; //id = ssn
+
+    public Person(String firstName, String lastName, String ssn, String birthDay, String city, String work) {
         super(ssn);
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDay = birthDay;
-        this.birthPlace = birthPlace;
-        this.workPlace = workPlace;
+        this.city = city;
+        this.work = work;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getWork() {
+        return work;
+    }
 }
