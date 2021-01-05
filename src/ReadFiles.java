@@ -1,5 +1,7 @@
 
 
+import Edges.Call;
+import Graph.DirectedGraph;
 import Vertices.*;
 
 import javax.swing.*;
@@ -13,6 +15,10 @@ public class ReadFiles {
     private static final String PERSON_FILE_NAME = "\\people.csv";
     private static final String PHONE_FILE_NAME = "\\phones.csv";
 
+    private static final String CALL_FILE_NAME = "\\calls.csv";
+    /*private static final String _FILE_NAME = "\\homes.csv";
+    private static final String PERSON_FILE_NAME = "\\people.csv";
+    private static final String PHONE_FILE_NAME = "\\phones.csv";*/
 
     public static void start() throws IOException {
         String folderPath = getDataFolderFromSystem().getPath();
@@ -22,6 +28,19 @@ public class ReadFiles {
         readPersonFile(folderPath);
         readPhoneFile(folderPath);
     }
+
+    private static File getDataFolderFromSystem(){
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDragEnabled(true);
+        chooser.setDialogTitle("پوشه حاوی دیتا ها را انتخاب کنید");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int choice = chooser.showOpenDialog(null);
+        if (choice != JFileChooser.APPROVE_OPTION) {
+            System.out.println("File not selected");
+        }
+        return chooser.getSelectedFile();
+    }
+
     private static void readAccFile(String filePath) throws IOException {
         filePath += ACC_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
@@ -82,16 +101,20 @@ public class ReadFiles {
         csvReader.close();
     }
 
-
-    private static File getDataFolderFromSystem(){
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDragEnabled(true);
-        chooser.setDialogTitle("پوشه حاوی دیتا ها را انتخاب کنید");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int choice = chooser.showOpenDialog(null);
-        if (choice != JFileChooser.APPROVE_OPTION) {
-            System.out.println("File not selected");
+    private static void readCallFile(String filePath) throws IOException {
+        filePath += CALL_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
+        String row;
+        csvReader.readLine(); //first line
+        while ((row = csvReader.readLine()) != null) {
+            String[] data = row.split(",");
+            String from = data[0];
+            String to = data[1];
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            Main.directedGraph.addEdges(new Call(start , finish , data[2] , data[3] , data[4]));
         }
-        return chooser.getSelectedFile();
+        csvReader.close();
     }
+
 }
