@@ -1,21 +1,29 @@
+import org.jgrapht.Graph;
+
 import java.util.HashMap;
 import java.util.HashSet;
 
 /*The nodes are also referred as vertex and arcs as Directed edges*/
 
 public class DirectedGraph {
-
     // node class consists of node name a.k.a id of node ,set of directed edges a.k.a arcs
 
-    public static class NodeClass {
+    // contains set of nodes
+    private HashSet<NodeClass> nodes = new HashSet<>();
 
+    // set of directed edges
+    private HashSet<edgeContents> edges = new HashSet<>();
+
+    // maps a nodeId -> node
+    private HashMap<Integer, NodeClass> nodeMap = new HashMap<>();
+
+    public static class NodeClass {
         int id;
         HashSet<edgeContents> edges;
 
-
         public NodeClass(int name) {
             id = name;
-            edges = new HashSet<edgeContents>();
+            edges = new HashSet<>();
         }
 
         // copy constructor
@@ -27,6 +35,8 @@ public class DirectedGraph {
 
     // definition of arc a.k.a edge
     public static class edgeContents {
+        NodeClass startingNode;
+        NodeClass finishingNode;
 
         public edgeContents(NodeClass startingNode, NodeClass finishingNode) {
             this.startingNode = startingNode;
@@ -38,9 +48,6 @@ public class DirectedGraph {
             edgeContents e = (edgeContents) obj;
             return e.finishingNode == finishingNode && e.startingNode == startingNode;
         }
-
-        NodeClass startingNode;
-        NodeClass finishingNode;
     }
 
     public static void addNode(DirectedGraph g, int nodeId) {
@@ -49,15 +56,9 @@ public class DirectedGraph {
         g.nodeMap.put(nodeId, nodeToAdd);
     }
 
-    /**
-     * @param nodeToAdd Adds a node to the graph. Node is added to the HashMap nodeMap of the graph,node is added to HashSet nodes in graph
-     */
-
     public void addNode(DirectedGraph g, NodeClass nodeToAdd) {
-
         g.nodes.add(nodeToAdd);
         g.nodeMap.put(nodeToAdd.id, nodeToAdd);
-
     }
 
     public void addEdges(DirectedGraph g, NodeClass startingNode, NodeClass finishingNode) {
@@ -72,15 +73,12 @@ public class DirectedGraph {
     }
 
     public void setNodeMap(HashMap<Integer, NodeClass> nodeMap) {
-
         this.nodeMap = nodeMap;
-
     }
 
     public NodeClass getParticularNode(int id) {
         if (nodeMap.containsKey(id))
             return nodeMap.get(id);
-
         return null;
     }
 
@@ -91,13 +89,4 @@ public class DirectedGraph {
     public HashSet<edgeContents> getEdges() {
         return edges;
     }
-
-    // contains set of nodes
-    private HashSet<NodeClass> nodes = new HashSet<NodeClass>();
-
-    // set of directed edges
-    private HashSet<edgeContents> edges = new HashSet<edgeContents>();
-
-    // maps a nodeId -> node
-    private HashMap<Integer, NodeClass> nodeMap = new HashMap<Integer, NodeClass>();
 }
