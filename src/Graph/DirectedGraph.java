@@ -13,10 +13,6 @@ public class DirectedGraph {
     // maps a nodeId -> node
     private HashMap<String, Vertex> nodeMap = new HashMap<>();
 
-    public Vertex getVertexByID(String id){
-        return nodeMap.get(id);
-    }
-
     public static class Vertex {
         private String id;
         private HashSet<Edge> inEdges;
@@ -88,15 +84,13 @@ public class DirectedGraph {
         edgeToAdd.finishingVertex.inEdges.add(edgeToAdd);
     }
 
+   // public void setNodeMap(HashMap<String, Vertex> nodeMap) {this.nodeMap = nodeMap;}
+
     public HashMap<String, Vertex> getNodeMap() {
         return nodeMap;
     }
 
-    public void setNodeMap(HashMap<String, Vertex> nodeMap) {
-        this.nodeMap = nodeMap;
-    }
-
-    public Vertex getParticularNode(int id) {
+    public Vertex getVertexByID(String id){
         if (nodeMap.containsKey(id))
             return nodeMap.get(id);
         return null;

@@ -1,31 +1,25 @@
-
-
 import Edges.Call;
 import Graph.DirectedGraph;
 import Vertices.*;
-
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 
 public class ReadFiles {
-    private static final String ACC_FILE_NAME = "\\accounts.csv";
+    private static final String ACCOUNT_FILE_NAME = "\\accounts.csv";
     private static final String CAR_FILE_NAME = "\\cars.csv";
     private static final String HOME_FILE_NAME = "\\homes.csv";
     private static final String PERSON_FILE_NAME = "\\people.csv";
     private static final String PHONE_FILE_NAME = "\\phones.csv";
 
     private static final String CALL_FILE_NAME = "\\calls.csv";
-    /*private static final String _FILE_NAME = "\\homes.csv";
-    private static final String PERSON_FILE_NAME = "\\people.csv";
-    private static final String PHONE_FILE_NAME = "\\phones.csv";*/
+    private static final String OWNERSHIP_FILE_NAME = "\\ownerships.csv";
+    private static final String RELATIONSHIP_FILE_NAME = "\\relationships.csv";
+    private static final String TRANSACTION_FILE_NAME = "\\transactions.csv";
 
     public static void start() throws IOException {
                 //getDataFolderFromSystem().getPath();
         String folderPath = "C:\\Users\\novin\\Desktop\\data";
-        readAccFile(folderPath);
+        readAccountFile(folderPath);
         readCarFile(folderPath);
         readHomeFile(folderPath);
         readPersonFile(folderPath);
@@ -45,8 +39,8 @@ public class ReadFiles {
         return chooser.getSelectedFile();
     }
 
-    private static void readAccFile(String filePath) throws IOException {
-        filePath += ACC_FILE_NAME;
+    private static void readAccountFile(String filePath) throws IOException {
+        filePath += ACCOUNT_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
@@ -88,7 +82,7 @@ public class ReadFiles {
         csvReader.readLine(); //first line
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
-            Main.directedGraph.addVertex(new Person(data[0], data[1], data[2], data[3], data[4], data[5]));
+            Main.directedGraph.addVertex(new People(data[0], data[1], data[2], data[3], data[4], data[5]));
         }
         csvReader.close();
     }
@@ -110,7 +104,6 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
-        int c = 0;
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
             String from = data[0];
@@ -118,17 +111,33 @@ public class ReadFiles {
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
             Main.directedGraph.addEdges(new Call(start , finish , data[2] , data[3] , data[4]));
-            c++;
         }
         csvReader.close();
     }
 
-    public static void printAllEdges(){
+    private static void readOwnershipFile(String filePath) throws IOException {
+        filePath += OWNERSHIP_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
+        String row;
+        csvReader.readLine(); //first line
+        while ((row = csvReader.readLine()) != null) {
+            String[] data = row.split(",");
+            String from = data[0];
+            String to = data[1];
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            Main.directedGraph.addEdges(new Call(start , finish , data[2] , data[3] , data[4]));
+        }
+        csvReader.close();
+    }
+
+
+    /*public static void printAllEdges(){
         long t = System.currentTimeMillis();
         for (Call call : Call.getAllCalls()) {
             System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
                     + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
         }
         System.out.println(System.currentTimeMillis() - t);
-    }
+    }*/
 }

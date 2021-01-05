@@ -1,7 +1,9 @@
 package Vertices;
 import Graph.DirectedGraph;
+import java.util.HashSet;
 
 public class Account extends DirectedGraph.Vertex {
+    private static HashSet<Account> allAccounts = new HashSet<>();
     private String ownerSsn, bank_name ,account_id ; // id = iBan;
 
     public Account(String ownerSsn, String bank_name, String iBan, String account_id) {
@@ -21,5 +23,9 @@ public class Account extends DirectedGraph.Vertex {
 
     public String getAccount_id() {
         return account_id;
+    }
+
+    public static HashSet<Account> getAllAccounts() {
+        return allAccounts;
     }
 }

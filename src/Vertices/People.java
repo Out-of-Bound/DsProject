@@ -1,10 +1,12 @@
 package Vertices;
 import Graph.DirectedGraph;
+import java.util.HashSet;
 
-public class Person extends DirectedGraph.Vertex {
+public class People extends DirectedGraph.Vertex {
+    private static HashSet<People> allPeoples = new HashSet<>();
     private String firstName, lastName, birthDay, city, work; //id = ssn
 
-    public Person(String firstName, String lastName, String ssn, String birthDay, String city, String work) {
+    public People(String firstName, String lastName, String ssn, String birthDay, String city, String work) {
         super(ssn);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,5 +33,9 @@ public class Person extends DirectedGraph.Vertex {
 
     public String getWork() {
         return work;
+    }
+
+    public static HashSet<People> getAllPeoples() {
+        return allPeoples;
     }
 }

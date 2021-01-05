@@ -1,8 +1,9 @@
 package Edges;
-
 import Graph.DirectedGraph;
+import java.util.HashSet;
 
 public class Transaction extends DirectedGraph.Edge {
+    private static HashSet<Transaction> allTransactions = new HashSet<>();
     private String date,amount; //id = transactionId
 
     public Transaction(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode,
@@ -18,5 +19,9 @@ public class Transaction extends DirectedGraph.Edge {
 
     public String getAmount() {
         return amount;
+    }
+
+    public static HashSet<Transaction> getAllTransactions() {
+        return allTransactions;
     }
 }
