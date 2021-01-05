@@ -6,6 +6,8 @@ import Vertices.*;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class ReadFiles {
@@ -21,12 +23,14 @@ public class ReadFiles {
     private static final String PHONE_FILE_NAME = "\\phones.csv";*/
 
     public static void start() throws IOException {
-        String folderPath = getDataFolderFromSystem().getPath();
+                //getDataFolderFromSystem().getPath();
+        String folderPath = "C:\\Users\\novin\\Desktop\\data";
         readAccFile(folderPath);
         readCarFile(folderPath);
         readHomeFile(folderPath);
         readPersonFile(folderPath);
         readPhoneFile(folderPath);
+        readCallFile(folderPath);
     }
 
     private static File getDataFolderFromSystem(){
@@ -106,6 +110,7 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         String row;
         csvReader.readLine(); //first line
+        int c = 0;
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
             String from = data[0];
@@ -113,8 +118,17 @@ public class ReadFiles {
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
             Main.directedGraph.addEdges(new Call(start , finish , data[2] , data[3] , data[4]));
+            c++;
         }
         csvReader.close();
     }
 
+    public static void printAllEdges(){
+        long t = System.currentTimeMillis();
+        for (Call call : Call.getAllCalls()) {
+            System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
+                    + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
+        }
+        System.out.println(System.currentTimeMillis() - t);
+    }
 }
