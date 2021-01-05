@@ -80,6 +80,7 @@ public class DirectedGraph {
 
     public void addVertex(Vertex nodeToAdd) {
         nodes.add(nodeToAdd);
+        nodeMap.get("4440133762");
         nodeMap.put(nodeToAdd.id, nodeToAdd);
     }
 

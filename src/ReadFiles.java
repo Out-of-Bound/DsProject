@@ -6,7 +6,6 @@ import java.io.*;
 
 public class ReadFiles {
     public static void readAccFile() throws IOException {
-        System.out.println("Choose Accounts File: ");
         File chosenFile = getFileFromSystem();
         BufferedReader csvReader = new BufferedReader(new FileReader(chosenFile.getPath()));
         String row;
@@ -20,6 +19,9 @@ public class ReadFiles {
 
     private static File getFileFromSystem(){
         JFileChooser chooser = new JFileChooser();
+        chooser.setDragEnabled(true);
+        chooser.setDialogTitle("پوشه حاوی دیتا ها را انتخاب کنید");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int choice = chooser.showOpenDialog(null);
         if (choice != JFileChooser.APPROVE_OPTION) {
             System.out.println("File not selected");
