@@ -1,4 +1,5 @@
 package Vertices;
+import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
 
@@ -40,29 +41,18 @@ public class Account extends DirectedGraph.Vertex {
 
     public static void print() {
         String[] tableColumn = {"ردیف", "کد ملی صاحب حساب", "نام و نام خانوادگی صاحب حساب" , "نام بانک", "شماره شبا", "شماره حساب"};
-        JFrame accountsJFrame = new JFrame("Accounts");
-        accountsJFrame.setLocationRelativeTo(null);
-        String[][] row = new String[allAccounts.size()][tableColumn.length];
-        System.out.println(allAccounts.size());
+        String[][] data = new String[allAccounts.size()][tableColumn.length];
         int i =0;
         for (Account account : allAccounts) {
             People owner = (People) Main.directedGraph.getVertexByID(account.getOwnerSsn());
-            row[i][0] = (i+1) + "";
-            row[i][1] = account.getOwnerSsn();
-            row[i][2] = owner.getFirstName() + " "+ owner.getLastName();
-            row[i][3] = account.getBankName();
-            row[i][4] = account.getId();
-            row[i][5] = account.getAccountId();
+            data[i][0] = (i+1) + "";
+            data[i][1] = account.getOwnerSsn();
+            data[i][2] = owner.getFirstName() + " "+ owner.getLastName();
+            data[i][3] = account.getBankName();
+            data[i][4] = account.getId();
+            data[i][5] = account.getAccountId();
             i++;
         }
-        JTable jt = new JTable(row, tableColumn);
-        jt.setFont(new Font("Vazir", Font.PLAIN, 14));
-        jt.setBounds(30, 40, 400, 300);
-        jt.setRowHeight(25);
-        JScrollPane sp = new JScrollPane(jt);
-        jt.setEnabled(false);
-        accountsJFrame.add(sp);
-        accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        accountsJFrame.setVisible(true);
+        GUI.showJTable(tableColumn , data);
     }
 }

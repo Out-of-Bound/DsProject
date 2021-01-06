@@ -12,24 +12,27 @@ import java.util.Scanner;
 public class Main {
     public static DirectedGraph directedGraph = new DirectedGraph();
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         try {
             ReadFiles.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("1:Faze1 \n" + "2:Faze2 \n" + "3:Faze3 \n" + "4:Faze4 \n");
+        System.out.print("1:Phase1 \n" + "2:Phase2 \n" + "3:Phase3 \n" + "4:Phase4 \nand Enter another fot exit: ");
 
-        if (s.nextInt() == 1) {
+        int code = scanner.nextInt();
+        if (code == 1) {
             System.out.println("1:people \n" + "2:phones \n" + "3:homes \n" +
                     "4:cars \n" + "5:accounts \n" + "6:calls \n" +
                     "7:relationships \n" + "8:transactions \n" + "9:ownerships \n" );
-            FazeOne(s.nextInt());
+            FazeOne(scanner.nextInt());
         }
-        if (s.nextInt() == 2){}
-        if (s.nextInt() == 3){}
-        if (s.nextInt() == 4){}
+        else if (code == 2){}
+        else if (code == 3){}
+        else if (code == 4){}
+        else
+            System.exit(0);
 
     }
 
@@ -94,6 +97,7 @@ public class Main {
                 break;
             }
         }
+        main(null);
     }
 
 }
