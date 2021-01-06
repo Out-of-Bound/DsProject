@@ -13,6 +13,7 @@ public class People extends DirectedGraph.Vertex {
         this.birthDay = birthDay;
         this.city = city;
         this.work = work;
+        allPeoples.add(this);
     }
 
     public String getFirstName() {
@@ -38,4 +39,6 @@ public class People extends DirectedGraph.Vertex {
     public static HashSet<People> getAllPeoples() {
         return allPeoples;
     }
+
+
 }

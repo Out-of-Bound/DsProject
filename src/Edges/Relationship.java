@@ -10,6 +10,7 @@ public class Relationship extends DirectedGraph.Edge {
         super(fromTo, startingNode, finishingNode);
         this.relation = relation;
         this.date = date;
+        allRelationships.add(this);
     }
 
     public String getRelation() {

@@ -11,6 +11,7 @@ public class Car extends DirectedGraph.Vertex {
         this.ownerSsn = ownerSsn;
         this.model = model;
         this.color = color;
+        allCars.add(this);
     }
 
     public String getOwnerSsn() {
@@ -28,4 +29,5 @@ public class Car extends DirectedGraph.Vertex {
     public static HashSet<Car> getAllCars() {
         return allCars;
     }
+
 }

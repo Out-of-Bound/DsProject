@@ -12,6 +12,7 @@ public class Home extends DirectedGraph.Vertex {
         this.price = price;
         this.size = size;
         this.address = address;
+        allHomes.add(this);
     }
 
     public String getOwnerSsn() {
@@ -33,4 +34,5 @@ public class Home extends DirectedGraph.Vertex {
     public static HashSet<Home> getAllHomes() {
         return allHomes;
     }
+
 }

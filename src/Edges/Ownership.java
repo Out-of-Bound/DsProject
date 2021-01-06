@@ -10,6 +10,7 @@ public class Ownership extends DirectedGraph.Edge {
         super(ownershipId, startingNode, finishingNode);
         this.date = date;
         this.amount = amount;
+        allOwnerships.add(this);
     }
 
     public String getDate() {

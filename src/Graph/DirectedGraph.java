@@ -13,7 +13,7 @@ public class DirectedGraph {
     // maps a nodeId -> node
     private HashMap<String, Vertex> nodeMap = new HashMap<>();
 
-    public static class Vertex {
+    public abstract static class Vertex {
         private String id;
         private HashSet<Edge> inEdges;
         private HashSet<Edge> outEdges;
@@ -41,6 +41,7 @@ public class DirectedGraph {
         public HashSet<Edge> getOutEdges() {
             return outEdges;
         }
+
     }
 
     public static class Edge {

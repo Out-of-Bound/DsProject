@@ -10,6 +10,7 @@ public class Phone extends DirectedGraph.Vertex {
         super(number);
         this.ownerSsn = ownerSsn;
         this.operatorName = operatorName;
+        allPhones.add(this);
     }
 
     public String getOwnerSsn() {
@@ -23,4 +24,6 @@ public class Phone extends DirectedGraph.Vertex {
     public static HashSet<Phone> getAllPhones() {
         return allPhones;
     }
+
+
 }

@@ -60,10 +60,7 @@ public class Main {
                 break;
             }
             case 5:{
-                for (Account account : Account.getAllAccounts()) {
-                    System.out.println(account.getOwnerSsn() + " " + account.getBank_name() + " " +
-                            account.getId() + " " + account.getAccount_id());
-                }
+                Account.print();
                 break;
             }
             case 6:{
