@@ -1,4 +1,5 @@
 import Edges.Call;
+import Edges.Ownership;
 import Graph.DirectedGraph;
 import Vertices.*;
 import javax.swing.*;
@@ -126,7 +127,7 @@ public class ReadFiles {
             String to = data[1];
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
-            Main.directedGraph.addEdges(new Call(start , finish , data[2] , data[3] , data[4]));
+            Main.directedGraph.addEdges(new Ownership(start , finish , data[2] , data[3] , data[4]));
         }
         csvReader.close();
     }
