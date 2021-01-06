@@ -60,6 +60,7 @@ public class Main {
                 break;
             case 5:
                 Account.print();
+                System.out.println("Accounts showed");
                 break;
             case 6: {
                 for (Call call : Call.getAllCalls()) {
