@@ -26,7 +26,7 @@ public class Main {
             System.out.println("1:people \n" + "2:phones \n" + "3:homes \n" +
                     "4:cars \n" + "5:accounts \n" + "6:calls \n" +
                     "7:relationships \n" + "8:transactions \n" + "9:ownerships \n" );
-            FazeOne(scanner.nextInt());
+            PhaseOne(scanner.nextInt());
         }
         else if (code == 2){}
         else if (code == 3){}
@@ -36,7 +36,7 @@ public class Main {
 
     }
 
-    public static void FazeOne(int n){
+    public static void PhaseOne(int n){
         switch (n){
             case 1:{
                 People.print();

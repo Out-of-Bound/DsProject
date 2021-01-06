@@ -186,12 +186,4 @@ public class ReadFiles {
 
     }
 
-    /*public static void printAllEdges(){
-        long t = System.currentTimeMillis();
-        for (Call call : Call.getAllCalls()) {
-            System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
-                    + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
-        }
-        System.out.println(System.currentTimeMillis() - t);
-    }*/
 }
