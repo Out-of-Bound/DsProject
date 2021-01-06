@@ -2,17 +2,11 @@ package Vertices;
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashSet;
 
 public class Account extends DirectedGraph.Vertex {
     private static HashSet<Account> allAccounts = new HashSet<>();
     private String ownerSsn, bankName, accountId; // id = iBan;
-
 
     public Account(String ownerSsn, String bankName, String iBan, String accountId) {
         super(iBan);
@@ -37,7 +31,6 @@ public class Account extends DirectedGraph.Vertex {
     public static HashSet<Account> getAllAccounts() {
         return allAccounts;
     }
-
 
     public static void print() {
         String[] tableColumn = {"ردیف", "کد ملی صاحب حساب", "نام و نام خانوادگی صاحب حساب" , "نام بانک", "شماره شبا", "شماره حساب"};
