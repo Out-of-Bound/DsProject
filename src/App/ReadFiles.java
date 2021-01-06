@@ -1,8 +1,9 @@
+package App;
+
 import Edges.Call;
 import Edges.Ownership;
 import Graph.DirectedGraph;
 import Vertices.*;
-import javafx.application.Application;
 
 import javax.swing.*;
 import java.io.*;
