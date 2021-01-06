@@ -2,6 +2,8 @@ package App;
 
 import Edges.Call;
 import Edges.Ownership;
+import Edges.Relationship;
+import Edges.Transaction;
 import Graph.DirectedGraph;
 import Vertices.*;
 
@@ -35,6 +37,8 @@ public class ReadFiles {
         readPhoneFile(folderPath);
         readCallFile(folderPath);
         readOwnershipFile(folderPath);
+        readRelationshipFile(folderPath);
+        readTransactionFile(folderPath);
     }
 
 
@@ -149,6 +153,35 @@ public class ReadFiles {
         csvReader.close();
     }
 
+    private static void readRelationshipFile(String filePath) throws IOException {
+        filePath += RELATIONSHIP_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
+        ArrayList<String[]> data = readDataFromFile(csvReader);
+
+        for (String[] datum : data) {
+            String from = datum[0];
+            String to = datum[1];
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            Main.directedGraph.addEdges(new Relationship(start , finish , datum[0] + datum[1] , datum[2] , datum[3]));
+        }
+        csvReader.close();
+    }
+
+    private static void readTransactionFile(String filePath) throws IOException {
+        filePath += TRANSACTION_FILE_NAME;
+        BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
+        ArrayList<String[]> data = readDataFromFile(csvReader);
+
+        for (String[] datum : data) {
+            String from = datum[0];
+            String to = datum[1];
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            Main.directedGraph.addEdges(new Transaction(start , finish , datum[2] , datum[3] , datum[4]));
+        }
+        csvReader.close();
+    }
 
     /*public static void printAllEdges(){
         long t = System.currentTimeMillis();

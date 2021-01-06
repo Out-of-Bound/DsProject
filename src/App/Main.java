@@ -39,10 +39,7 @@ public class Main {
     public static void FazeOne(int n){
         switch (n){
             case 1:{
-                for (People people : People.getAllPeoples()) {
-                    System.out.println(people.getFirstName() + " " + people.getLastName() + " " + people.getId()
-                            + " " + people.getBirthDay() + " " + people.getCity() + " " + people.getWork());
-                }
+                People.print();
                 break;
             }
             case 2:{
