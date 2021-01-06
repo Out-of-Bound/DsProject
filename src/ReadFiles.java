@@ -19,14 +19,16 @@ public class ReadFiles {
 
     public static void start() throws IOException {
                 //getDataFolderFromSystem().getPath();
-        String folderPath = "C:\\Users\\ebtekar\\Downloads\\Documents\\ساختمان داده\\data";
+        String folderPath = ".\\data";
         readAccountFile(folderPath);
         readCarFile(folderPath);
         readHomeFile(folderPath);
         readPeopleFile(folderPath);
         readPhoneFile(folderPath);
         readCallFile(folderPath);
+        readOwnershipFile(folderPath);
     }
+
 
     private static File getDataFolderFromSystem(){
         JFileChooser chooser = new JFileChooser();
