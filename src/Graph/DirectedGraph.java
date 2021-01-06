@@ -94,6 +94,8 @@ public class DirectedGraph {
     public Vertex getVertexByID(String id){
         if (nodeMap.containsKey(id))
             return nodeMap.get(id);
+
+        System.out.println("this id notFound: " + id);
         return null;
     }
 

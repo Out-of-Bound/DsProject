@@ -176,11 +176,14 @@ public class ReadFiles {
         for (String[] datum : data) {
             String from = datum[0];
             String to = datum[1];
-            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
-            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(from).getId());
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(to).getId());
+
             Main.directedGraph.addEdges(new Transaction(start , finish , datum[2] , datum[3] , datum[4]));
         }
         csvReader.close();
+
+
     }
 
     /*public static void printAllEdges(){

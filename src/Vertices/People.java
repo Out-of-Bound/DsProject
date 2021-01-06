@@ -56,7 +56,7 @@ public class People extends DirectedGraph.Vertex {
             data[i][6] = people.work;
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("People" , tableColumn , data);
     }
 
 

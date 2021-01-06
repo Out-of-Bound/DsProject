@@ -49,16 +49,11 @@ public class Main {
                 break;
             }
             case 3:{
-                for (Home home : Home.getAllHomes()) {
-                    System.out.println(home.getOwnerSsn() + " " + home.getPrice() + " " + home.getId()
-                            + " " + home.getSize() + " " + home.getAddress());
-                }
+                Home.print();
                 break;
             }
             case 4:{
-                for (Car car : Car.getAllCars()) {
-                    System.out.println(car.getId() + " " + car.getOwnerSsn() + " " + car.getModel() + " " + car.getColor());
-                }
+                Car.print();
                 break;
             }
             case 5:{
