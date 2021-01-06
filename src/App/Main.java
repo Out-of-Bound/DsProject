@@ -66,6 +66,7 @@ public class Main {
             }
             case 5:{
                 Account.print();
+                System.out.println("Accounts showed");
                 break;
             }
             case 6:{
