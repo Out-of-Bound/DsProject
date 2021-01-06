@@ -46,6 +46,6 @@ public class Account extends DirectedGraph.Vertex {
             data[i][5] = account.getAccountId();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("Accounts" ,tableColumn , data);
     }
 }

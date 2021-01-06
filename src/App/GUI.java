@@ -2,26 +2,47 @@ package App;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 public class GUI {
-    public static void showJTable(String [] tableColumn , String[][] data){
-        JFrame accountsJFrame = new JFrame("Accounts");
+    public static void showJTable(String tableName ,String [] tableColumn , String[][] data){
+        JFrame accountsJFrame = new JFrame(tableName);
         accountsJFrame.setLocationRelativeTo(null);
-        JTable jt = new JTable(data, tableColumn);
+
+        JTable jt = new JTable(data, tableColumn) {
+            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+                Component returnComp = super.prepareRenderer(renderer, row, column);
+                Color alternateColor = new Color(217,226,243);
+                Color whiteColor = Color.WHITE;
+                if (!returnComp.getBackground().equals(getSelectionBackground())) {
+                    Color bg = (row % 2 == 0 ? alternateColor : whiteColor);
+                    returnComp.setBackground(bg);
+                    bg = null;
+                }
+                return returnComp;
+            }
+        };
+        jt.getTableHeader().setFont(new Font("Vazir", Font.BOLD , 15));
+        jt.getTableHeader().setBackground(new Color(68 , 114 , 196));
+        jt.getTableHeader().setForeground(Color.WHITE);
         jt.setFont(new Font("Vazir", Font.PLAIN, 14));
         jt.setBounds(30, 40, 400, 300);
         jt.setRowHeight(25);
         JScrollPane sp = new JScrollPane(jt);
         jt.setEnabled(false);
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         for (int i = 0; i < tableColumn.length; i++) {
             jt.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
         }
-        jt.getColumnModel().getColumn(0).setMaxWidth(30);
+        jt.getColumnModel().getColumn(0).setMaxWidth(50);
+
         accountsJFrame.add(sp);
         accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         accountsJFrame.setVisible(true);
+
+
     }
 }

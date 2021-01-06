@@ -52,7 +52,7 @@ public class Home extends DirectedGraph.Vertex {
             data[i][6] = home.getAddress();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("Homes",tableColumn , data);
     }
 
 
