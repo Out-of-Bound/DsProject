@@ -62,8 +62,7 @@ public class Account extends DirectedGraph.Vertex {
         JScrollPane sp = new JScrollPane(jt);
         jt.setEnabled(false);
         accountsJFrame.add(sp);
-        accountsJFrame.setSize(1400, 800);
-        accountsJFrame.setLocationRelativeTo(null);
+        accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         accountsJFrame.setVisible(true);
     }
 }
