@@ -42,7 +42,6 @@ public class ReadFiles {
         readTransactionFile(folderPath);
     }
 
-
     private static File getDataFolderFromSystem(){
         JFileChooser chooser = new JFileChooser();
         chooser.setSelectedFile(new File(".\\data"));
