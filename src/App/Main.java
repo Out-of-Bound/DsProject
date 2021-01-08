@@ -1,11 +1,6 @@
 package App;
 
-import Edges.Call;
-import Edges.Ownership;
-import Edges.Relationship;
-import Edges.Transaction;
 import Graph.DirectedGraph;
-import Vertices.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -19,7 +14,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.print("1:Phase1 \n" + "2:Phase2 \n" + "3:Phase3 \n" + "4:Phase4 \nand Enter another fot exit: ");
+        new Menu();
+        /*System.out.print("1:Phase1 \n" + "2:Phase2 \n" + "3:Phase3 \n" + "4:Phase4 \nand Enter another fot exit: ");
 
         int code = scanner.nextInt();
         if (code == 1) {
@@ -33,10 +29,10 @@ public class Main {
         else if (code == 4){}
         else
             System.exit(0);
-
+*/
     }
 
-    public static void PhaseOne(int n){
+    /*public static void PhaseOne(int n){
         switch (n){
             case 1:{
                 People.print();
@@ -90,6 +86,6 @@ public class Main {
             }
         }
         main(null);
-    }
+    }*/
 
 }
