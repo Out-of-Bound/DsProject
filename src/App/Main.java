@@ -1,6 +1,12 @@
 package App;
 
+import Edges.Call;
+import Edges.Ownership;
+import Edges.Relationship;
+import Edges.Transaction;
 import Graph.DirectedGraph;
+import Vertices.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -32,7 +38,7 @@ public class Main {
 */
     }
 
-    /*public static void PhaseOne(int n){
+   /* public static void PhaseOne(int n){
         switch (n){
             case 1:{
                 People.print();
@@ -57,10 +63,7 @@ public class Main {
                 break;
             }
             case 6:{
-                for (Call call : Call.getAllCalls()) {
-                    System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
-                            + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
-                }
+                Call.print();
                 break;
             }
             case 7:{

@@ -32,7 +32,7 @@ public class Call extends DirectedGraph.Edge {
     }
 
     public static void print() {
-        String[] tableColumn = {"ردیف", "از", "به" , "آیدی تماس", "تاریخ نماس", "مدت تماس"};
+        String[] tableColumn = {"ردیف", "از", "به" , "شناسه تماس", "تاریخ نماس", "مدت تماس"};
         String[][] data = new String[allCalls.size()][tableColumn.length];
         int i =0;
         for (Call call : allCalls) {
