@@ -23,7 +23,7 @@ public class Main {
 
         int code = scanner.nextInt();
         if (code == 1) {
-            System.out.println("1:people \n" + "2:phones \n" + "3:homes \n" +
+            System.out.println("\n1:people \n" + "2:phones \n" + "3:homes \n" +
                     "4:cars \n" + "5:accounts \n" + "6:calls \n" +
                     "7:relationships \n" + "8:transactions \n" + "9:ownerships \n" );
             PhaseOne(scanner.nextInt());
