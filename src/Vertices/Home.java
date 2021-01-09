@@ -1,4 +1,5 @@
 package Vertices;
+
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
@@ -45,7 +46,7 @@ public class Home extends DirectedGraph.Vertex {
             People owner = (People) Main.directedGraph.getVertexByID(home.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = home.getOwnerSsn();
-            data[i][2] = owner.getFirstName() + " "+ owner.getLastName();
+            data[i][2] = owner.getFirstName() + " " + owner.getLastName();
             data[i][3] = home.getPrice();
             data[i][4] = home.getId();
             data[i][5] = home.getSize();

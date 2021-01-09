@@ -43,6 +43,5 @@ public class GUI {
         accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         accountsJFrame.setVisible(true);
 
-
     }
 }

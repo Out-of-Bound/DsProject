@@ -1,4 +1,5 @@
 package Vertices;
+
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
@@ -40,7 +41,7 @@ public class Car extends DirectedGraph.Vertex {
             People owner = (People) Main.directedGraph.getVertexByID(car.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = car.getOwnerSsn();
-            data[i][2] = owner.getFirstName() + " "+ owner.getLastName();
+            data[i][2] = owner.getFirstName() + " " + owner.getLastName();
             data[i][3] = car.getId();
             data[i][4] = car.getModel();
             data[i][5] = car.getColor();

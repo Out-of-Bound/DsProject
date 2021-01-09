@@ -1,5 +1,7 @@
 package App;
 
+import Edges.Call;
+import Edges.Relationship;
 import Vertices.*;
 import javax.swing.*;
 
@@ -40,10 +42,10 @@ public class PhaseOne {
             Account.print();
         });
         callsButton.addActionListener(e -> {
-
+            Call.print();
         });
         relationshipsButton.addActionListener(e -> {
-
+            Relationship.print();
         });
         ownershipsButton.addActionListener(e -> {
 

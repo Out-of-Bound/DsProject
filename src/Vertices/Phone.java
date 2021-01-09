@@ -1,4 +1,5 @@
 package Vertices;
+
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
@@ -35,14 +36,13 @@ public class Phone extends DirectedGraph.Vertex {
         for (Phone phone : allPhones) {
             People owner = (People) Main.directedGraph.getVertexByID(phone.ownerSsn);
             data[i][0] = (i+1) + "";
-            data[i][1] = owner.getFirstName() + owner.getLastName();
-            data[i][2] = phone.ownerSsn;
+            data[i][1] = owner.getFirstName() + " " + owner.getLastName();
+            data[i][2] = phone.getOwnerSsn();
             data[i][3] = phone.getId();
             data[i][4] = phone.getOperatorName();
             i++;
         }
         GUI.showJTable("Phone",tableColumn , data);
     }
-
 
 }

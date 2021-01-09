@@ -41,8 +41,8 @@ public class Call extends DirectedGraph.Edge {
             People owner1 = (People) Main.directedGraph.getVertexByID(number1.getOwnerSsn());
             People owner2 = (People) Main.directedGraph.getVertexByID(number2.getOwnerSsn());
             data[i][0] = (i+1) + "";
-            data[i][1] =  owner1.getFirstName() + " "+ owner1.getLastName();
-            data[i][2] = owner2.getFirstName() + " "+ owner2.getLastName();
+            data[i][1] = owner1.getFirstName() + " " + owner1.getLastName();
+            data[i][2] = owner2.getFirstName() + " " + owner2.getLastName();
             data[i][3] = call.getId();
             data[i][4] = call.getDate();
             data[i][5] = call.getDuration();

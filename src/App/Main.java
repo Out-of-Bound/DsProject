@@ -1,12 +1,6 @@
 package App;
 
-import Edges.Call;
-import Edges.Ownership;
-import Edges.Relationship;
-import Edges.Transaction;
 import Graph.DirectedGraph;
-import Vertices.*;
-
 import java.io.IOException;
 import java.util.Scanner;
 
