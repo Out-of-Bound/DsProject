@@ -46,7 +46,7 @@ public class Car extends DirectedGraph.Vertex {
             data[i][5] = car.getColor();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("Cars" , tableColumn , data);
     }
 
 

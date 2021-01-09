@@ -6,6 +6,7 @@ import Edges.Relationship;
 import Edges.Transaction;
 import Graph.DirectedGraph;
 import Vertices.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -19,24 +20,25 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.print("1:Phase1 \n" + "2:Phase2 \n" + "3:Phase3 \n" + "4:Phase4 \nand Enter another fot exit: ");
+        new Menu();
+        /*System.out.print("1:Phase1 \n" + "2:Phase2 \n" + "3:Phase3 \n" + "4:Phase4 \nand Enter another fot exit: ");
 
         int code = scanner.nextInt();
         if (code == 1) {
-            System.out.println("1:people \n" + "2:phones \n" + "3:homes \n" +
+            System.out.println("\n1:people \n" + "2:phones \n" + "3:homes \n" +
                     "4:cars \n" + "5:accounts \n" + "6:calls \n" +
                     "7:relationships \n" + "8:transactions \n" + "9:ownerships \n" );
-            FazeOne(scanner.nextInt());
+            PhaseOne(scanner.nextInt());
         }
         else if (code == 2){}
         else if (code == 3){}
         else if (code == 4){}
         else
             System.exit(0);
-
+*/
     }
 
-    public static void FazeOne(int n){
+   /* public static void PhaseOne(int n){
         switch (n){
             case 1:{
                 People.print();
@@ -47,16 +49,11 @@ public class Main {
                 break;
             }
             case 3:{
-                for (Home home : Home.getAllHomes()) {
-                    System.out.println(home.getOwnerSsn() + " " + home.getPrice() + " " + home.getId()
-                            + " " + home.getSize() + " " + home.getAddress());
-                }
+                Home.print();
                 break;
             }
             case 4:{
-                for (Car car : Car.getAllCars()) {
-                    System.out.println(car.getId() + " " + car.getOwnerSsn() + " " + car.getModel() + " " + car.getColor());
-                }
+                Car.print();
                 break;
             }
             case 5:{
@@ -64,10 +61,7 @@ public class Main {
                 break;
             }
             case 6:{
-                for (Call call : Call.getAllCalls()) {
-                    System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
-                            + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
-                }
+                Call.print();
                 break;
             }
             case 7:{
@@ -93,6 +87,6 @@ public class Main {
             }
         }
         main(null);
-    }
+    }*/
 
 }

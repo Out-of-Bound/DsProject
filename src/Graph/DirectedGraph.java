@@ -4,14 +4,23 @@ import java.util.HashSet;
 
 public class DirectedGraph {
 
-    // contains set of nodes
-    private HashSet<Vertex> nodes = new HashSet<>();
+    // contains set of vertices
+    private HashSet<Vertex> vertices = new HashSet<>();
+    public HashSet<Vertex> getVertices() {
+        return vertices;
+    }
 
     // set of directed edges
     private HashSet<Edge> edges = new HashSet<>();
+    public HashSet<Edge> getEdges() {
+        return edges;
+    }
 
-    // maps a nodeId -> node
-    private HashMap<String, Vertex> nodeMap = new HashMap<>();
+    // maps a vertexId -> vertex
+    private HashMap<String, Vertex> verticesMap = new HashMap<>();
+    public HashMap<String, Vertex> getVerticesMap() {
+        return verticesMap;
+    }
 
     public abstract static class Vertex {
         private String id;
@@ -75,8 +84,8 @@ public class DirectedGraph {
     }
 
     public void addVertex(Vertex nodeToAdd) {
-        nodes.add(nodeToAdd);
-        nodeMap.put(nodeToAdd.id, nodeToAdd);
+        vertices.add(nodeToAdd);
+        verticesMap.put(nodeToAdd.id, nodeToAdd);
     }
 
     public void addEdges(Edge edgeToAdd) {
@@ -85,24 +94,12 @@ public class DirectedGraph {
         edgeToAdd.finishingVertex.inEdges.add(edgeToAdd);
     }
 
-   // public void setNodeMap(HashMap<String, Vertex> nodeMap) {this.nodeMap = nodeMap;}
-
-    public HashMap<String, Vertex> getNodeMap() {
-        return nodeMap;
-    }
-
     public Vertex getVertexByID(String id){
-        if (nodeMap.containsKey(id))
-            return nodeMap.get(id);
+        if (verticesMap.containsKey(id))
+            return verticesMap.get(id);
+
+        System.out.println("this id notFound: " + id);
         return null;
-    }
-
-    public HashSet<Vertex> getAllNodes() {
-        return nodes;
-    }
-
-    public HashSet<Edge> getEdges() {
-        return edges;
     }
 
 }

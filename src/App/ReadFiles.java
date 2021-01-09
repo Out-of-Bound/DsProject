@@ -10,6 +10,7 @@ import Vertices.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class ReadFiles {
@@ -41,7 +42,6 @@ public class ReadFiles {
         //readTransactionFile(folderPath);
     }
 
-
     private static File getDataFolderFromSystem(){
         JFileChooser chooser = new JFileChooser();
         chooser.setSelectedFile(new File(".\\data"));
@@ -59,10 +59,10 @@ public class ReadFiles {
         return chooser.getSelectedFile();
     }
 
-    private static ArrayList<String[]> readDataFromFile(BufferedReader csvReader) throws IOException {
+    private static HashSet<String[]> readDataFromFile(BufferedReader csvReader) throws IOException {
         csvReader.readLine(); //first line
         String row;
-        ArrayList<String[]> data = new ArrayList<>();
+        HashSet<String[]> data = new HashSet<>();
         while ((row = csvReader.readLine()) != null) {
             String[] t = row.split(",");
             for (int i =0 ; i<t.length ; i++) {
@@ -76,7 +76,7 @@ public class ReadFiles {
     private static void readAccountFile(String filePath) throws IOException {
         filePath += ACCOUNT_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
             Main.directedGraph.addVertex(new Account(datum[0], datum[1], datum[2], datum[3]));
         }
@@ -86,7 +86,7 @@ public class ReadFiles {
     private static void readCarFile(String filePath) throws IOException {
         filePath += CAR_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
             Main.directedGraph.addVertex(new Car(datum[0], datum[1], datum[2], datum[3]));
         }
@@ -96,7 +96,7 @@ public class ReadFiles {
     private static void readHomeFile(String filePath) throws IOException {
         filePath += HOME_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
             Main.directedGraph.addVertex(new Home(datum[0], datum[1], datum[2], datum[3],datum[4]));
         }
@@ -106,7 +106,7 @@ public class ReadFiles {
     private static void readPeopleFile(String filePath) throws IOException {
         filePath += PERSON_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
             Main.directedGraph.addVertex(new People(datum[0], datum[1], datum[2], datum[3],datum[4],datum[5]));
         }
@@ -116,7 +116,7 @@ public class ReadFiles {
     private static void readPhoneFile(String filePath) throws IOException {
         filePath += PHONE_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
             Main.directedGraph.addVertex(new Phone(datum[0], datum[1], datum[2]));
         }
@@ -126,7 +126,7 @@ public class ReadFiles {
     private static void readCallFile(String filePath) throws IOException {
         filePath += CALL_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
 
         for (String[] datum : data) {
             String from = datum[0];
@@ -141,7 +141,7 @@ public class ReadFiles {
     private static void readOwnershipFile(String filePath) throws IOException {
         filePath += OWNERSHIP_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
 
         for (String[] datum : data) {
             String from = datum[0];
@@ -156,7 +156,7 @@ public class ReadFiles {
     private static void readRelationshipFile(String filePath) throws IOException {
         filePath += RELATIONSHIP_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
 
         for (String[] datum : data) {
             String from = datum[0];
@@ -171,24 +171,16 @@ public class ReadFiles {
     private static void readTransactionFile(String filePath) throws IOException {
         filePath += TRANSACTION_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-        ArrayList<String[]> data = readDataFromFile(csvReader);
+        HashSet<String[]> data = readDataFromFile(csvReader);
 
         for (String[] datum : data) {
             String from = datum[0];
             String to = datum[1];
-            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
-            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
+            DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(from).getId());
+            DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(to).getId());
             Main.directedGraph.addEdges(new Transaction(start , finish , datum[2] , datum[3] , datum[4]));
         }
         csvReader.close();
     }
 
-    /*public static void printAllEdges(){
-        long t = System.currentTimeMillis();
-        for (Call call : Call.getAllCalls()) {
-            System.out.println(call.getStartingVertex().getId() + " " + call.getFinishingVertex().getId()
-                    + " " + call.getId() + " " + call.getDate() + " " + call.getDuration());
-        }
-        System.out.println(System.currentTimeMillis() - t);
-    }*/
 }

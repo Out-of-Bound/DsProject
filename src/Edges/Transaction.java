@@ -11,6 +11,7 @@ public class Transaction extends DirectedGraph.Edge {
         super(transactionId , startingNode, finishingNode);
         this.date = date;
         this.amount = amount;
+        allTransactions.add(this);
     }
 
     public String getDate() {

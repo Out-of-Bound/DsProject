@@ -2,10 +2,13 @@ package Vertices;
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Account extends DirectedGraph.Vertex {
-    private static HashSet<Account> allAccounts = new HashSet<>();
+    private static HashMap<String , Account> allAccounts = new HashMap<>();
     private String ownerSsn, bankName, accountId; // id = iBan;
 
     public Account(String ownerSsn, String bankName, String iBan, String accountId) {
@@ -13,7 +16,7 @@ public class Account extends DirectedGraph.Vertex {
         this.ownerSsn = ownerSsn;
         this.bankName = bankName;
         this.accountId = accountId;
-        allAccounts.add(this);
+        allAccounts.put(accountId , this);
     }
 
     public String getOwnerSsn() {
@@ -28,7 +31,7 @@ public class Account extends DirectedGraph.Vertex {
         return accountId;
     }
 
-    public static HashSet<Account> getAllAccounts() {
+    public static HashMap<String , Account> getAllAccounts() {
         return allAccounts;
     }
 
@@ -36,7 +39,7 @@ public class Account extends DirectedGraph.Vertex {
         String[] tableColumn = {"ردیف", "کد ملی صاحب حساب", "نام و نام خانوادگی صاحب حساب" , "نام بانک", "شماره شبا", "شماره حساب"};
         String[][] data = new String[allAccounts.size()][tableColumn.length];
         int i =0;
-        for (Account account : allAccounts) {
+        for (Account account : allAccounts.values() ) { // test here...
             People owner = (People) Main.directedGraph.getVertexByID(account.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = account.getOwnerSsn();
@@ -46,6 +49,6 @@ public class Account extends DirectedGraph.Vertex {
             data[i][5] = account.getAccountId();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("Accounts" ,tableColumn , data);
     }
 }

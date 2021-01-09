@@ -1,6 +1,5 @@
 package Vertices;
 import App.GUI;
-import App.Main;
 import Graph.DirectedGraph;
 import java.util.HashSet;
 
@@ -43,20 +42,19 @@ public class People extends DirectedGraph.Vertex {
     }
 
     public static void print() {
-        String[] tableColumn = {"ردیف", "نام", "نام خانوادگی" , "کد ملی", "تاریخ تولد", "شهر", "شغل"};
+        String[] tableColumn = {"ردیف", "نام و نام خانوادگی", "کد ملی", "تاریخ تولد", "شهر", "شغل"};
         String[][] data = new String[allPeoples.size()][tableColumn.length];
         int i =0;
         for (People people : allPeoples) {
             data[i][0] = (i+1) + "";
-            data[i][1] = people.firstName;
-            data[i][2] = people.lastName;
-            data[i][3] = people.getId();
-            data[i][4] = people.birthDay;
-            data[i][5] = people.city;
-            data[i][6] = people.work;
+            data[i][1] = people.getFirstName() + " " + people.getLastName();
+            data[i][2] = people.getId();
+            data[i][3] = people.getBirthDay();
+            data[i][4] = people.getCity();
+            data[i][5] = people.getWork();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("People" , tableColumn , data);
     }
 
 
