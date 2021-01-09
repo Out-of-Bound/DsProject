@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="App.PhaseOne">
+  <grid id="27dc6" binding="panel" default-binding="true" layout-manager="FormLayout">
+    <rowspec value="center:d:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <constraints>
+      <xy x="20" y="27" width="498" height="339"/>
+    </constraints>
+    <properties>
+      <background color="-16576988"/>
+      <foreground color="-16576988"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="6bcd3" class="javax.swing.JButton" binding="peopleButton">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="people"/>
+        </properties>
+      </component>
+      <component id="21e34" class="javax.swing.JButton" binding="phonesButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="phones"/>
+        </properties>
+      </component>
+      <component id="4c3c5" class="javax.swing.JButton" binding="homesButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="homes"/>
+        </properties>
+      </component>
+      <component id="203db" class="javax.swing.JButton" binding="carsButton" default-binding="true">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="cars"/>
+        </properties>
+      </component>
+      <component id="b6657" class="javax.swing.JButton" binding="accountsButton" default-binding="true">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="accounts"/>
+        </properties>
+      </component>
+      <component id="aa957" class="javax.swing.JButton" binding="callsButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <hideActionText value="false"/>
+          <text value="calls"/>
+        </properties>
+      </component>
+      <component id="d8406" class="javax.swing.JButton" binding="relationshipsButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="relationships"/>
+        </properties>
+      </component>
+      <component id="2550f" class="javax.swing.JButton" binding="ownershipsButton" default-binding="true">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="ownerships"/>
+        </properties>
+      </component>
+      <component id="f067" class="javax.swing.JButton" binding="transactionsButton" default-binding="true">
+        <constraints>
+          <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-12355121"/>
+          <font name="Maiandra GD" size="16"/>
+          <foreground color="-10"/>
+          <text value="transactions"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
