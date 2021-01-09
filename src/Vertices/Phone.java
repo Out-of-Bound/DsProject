@@ -41,7 +41,7 @@ public class Phone extends DirectedGraph.Vertex {
             data[i][4] = phone.getOperatorName();
             i++;
         }
-        GUI.showJTable(tableColumn , data);
+        GUI.showJTable("Phones",tableColumn , data);
     }
 
 
