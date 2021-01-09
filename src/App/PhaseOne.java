@@ -28,7 +28,7 @@ public class PhaseOne {
             People.print();
         });
         phonesButton.addActionListener(e -> {
-
+            Phone.print();
         });
         homesButton.addActionListener(e -> {
             Home.print();
