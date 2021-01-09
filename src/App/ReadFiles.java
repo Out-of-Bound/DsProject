@@ -39,7 +39,7 @@ public class ReadFiles {
         readCallFile(folderPath);
         readOwnershipFile(folderPath);
         readRelationshipFile(folderPath);
-        readTransactionFile(folderPath);
+        //readTransactionFile(folderPath);
     }
 
     private static File getDataFolderFromSystem(){

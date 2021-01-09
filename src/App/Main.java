@@ -45,9 +45,7 @@ public class Main {
                 break;
             }
             case 2:{
-                for (Phone phone: Phone.getAllPhones()) {
-                    System.out.println(phone.getOwnerSsn() + " " + phone.getId() + " " + phone.getOperatorName());
-                }
+                Phone.print();
                 break;
             }
             case 3:{
