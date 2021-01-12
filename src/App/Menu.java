@@ -24,7 +24,7 @@ public class Menu {
             MenuFrame.setEnabled(false);
         });
         phase2.addActionListener(e -> {
-
+            PhaseTow.show();
             MenuFrame.setEnabled(false);
         });
         phase3.addActionListener(e -> {

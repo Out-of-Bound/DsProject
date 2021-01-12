@@ -22,6 +22,8 @@ public class DirectedGraph {
         return verticesMap;
     }
 
+    private HashMap<String , Edge> edgeHashMap = new HashMap<>();
+
     public abstract static class Vertex {
         private String id;
         private HashSet<Edge> inEdges;
@@ -90,6 +92,7 @@ public class DirectedGraph {
 
     public void addEdges(Edge edgeToAdd) {
         edges.add(edgeToAdd);
+        edgeHashMap.put(edgeToAdd.getId() , edgeToAdd);
         edgeToAdd.startingVertex.outEdges.add(edgeToAdd);
         edgeToAdd.finishingVertex.inEdges.add(edgeToAdd);
     }
@@ -98,7 +101,15 @@ public class DirectedGraph {
         if (verticesMap.containsKey(id))
             return verticesMap.get(id);
 
-        System.out.println("this id notFound: " + id);
+        System.out.println("this Vertex id notFound: " + id);
+        return null;
+    }
+
+    public Edge getEdgeByID(String id){
+        if (edgeHashMap.containsKey(id))
+            return edgeHashMap.get(id);
+
+        System.out.println("this edge ID notFound: " + id);
         return null;
     }
 

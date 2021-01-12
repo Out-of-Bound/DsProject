@@ -18,6 +18,9 @@ public class Relationship extends DirectedGraph.Edge {
         this.relation = relation;
         this.date = date;
         allRelationships.add(this);
+
+        ((People)startingNode).addToRels(finishingNode.getId());
+        ((People)finishingNode).addToRels(startingNode.getId());
     }
 
     public String getRelation() {
