@@ -3,6 +3,7 @@ package App;
 import Edges.Call;
 import Edges.Ownership;
 import Edges.Relationship;
+import Edges.Transaction;
 import Vertices.*;
 import javax.swing.*;
 
@@ -52,7 +53,7 @@ public class PhaseOne {
             Ownership.print();
         });
         transactionsButton.addActionListener(e -> {
-
+            Transaction.print();
         });
 
         PhaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
