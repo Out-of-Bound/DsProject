@@ -19,17 +19,18 @@ public class PhaseOne {
     private JButton relationshipsButton;
     private JButton ownershipsButton;
     private JButton transactionsButton;
+    private JButton backButton;
 
     public PhaseOne(JFrame MenuFrame){
         JFrame PhaseOneFrame = new JFrame("PhaseOne");
         PhaseOneFrame.setContentPane(panel);
         PhaseOneFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        PhaseOneFrame.setSize(600,700);
+        PhaseOneFrame.setSize(600,550);
         PhaseOneFrame.setVisible(true);
         PhaseOneFrame.setLocationRelativeTo(null);
 
         peopleButton.addActionListener(e -> {
-            People.print();
+            Person.print();
         });
         phonesButton.addActionListener(e -> {
             Phone.print();
@@ -56,10 +57,15 @@ public class PhaseOne {
             Transaction.print();
         });
 
+        backButton.addActionListener(e -> {
+            PhaseOneFrame.setVisible(false);
+            MenuFrame.setEnabled(true);
+        });
+
         PhaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(PhaseOneFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(PhaseOneFrame, "Are you sure you want to back Menu?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                     PhaseOneFrame.setVisible(false);
                     MenuFrame.setEnabled(true);
                 }

@@ -43,7 +43,7 @@ public class Home extends DirectedGraph.Vertex {
         String[][] data = new String[allHomes.size()][tableColumn.length];
         int i =0;
         for (Home home : allHomes) {
-            People owner = (People) Main.directedGraph.getVertexByID(home.getOwnerSsn());
+            Person owner = (Person) Main.directedGraph.getVertexByID(home.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = home.getOwnerSsn();
             data[i][2] = owner.getFirstName() + " " + owner.getLastName();

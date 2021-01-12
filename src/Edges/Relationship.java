@@ -3,8 +3,7 @@ package Edges;
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
-import Vertices.People;
-import Vertices.Phone;
+import Vertices.Person;
 
 import java.util.HashSet;
 
@@ -19,8 +18,8 @@ public class Relationship extends DirectedGraph.Edge {
         this.date = date;
         allRelationships.add(this);
 
-        ((People)startingNode).addToRels(finishingNode.getId());
-        ((People)finishingNode).addToRels(startingNode.getId());
+        ((Person)startingNode).addToRels(finishingNode.getId());
+        ((Person)finishingNode).addToRels(startingNode.getId());
     }
 
     public String getRelation() {
@@ -36,12 +35,12 @@ public class Relationship extends DirectedGraph.Edge {
     }
 
     public static void print() {
-        String[] tableColumn = {"ردیف", "از", "به" , "نوع رابطه", "تارخ شروع"};
+        String[] tableColumn = {"ردیف", "از", "به" , "نوع رابطه", "تاریخ شروع"};
         String[][] data = new String[allRelationships.size()][tableColumn.length];
         int i =0;
         for (Relationship relationship : allRelationships) {
-            People owner1 = (People) Main.directedGraph.getVertexByID(relationship.getStartingVertex().getId());
-            People owner2 = (People) Main.directedGraph.getVertexByID(relationship.getFinishingVertex().getId());
+            Person owner1 = (Person) Main.directedGraph.getVertexByID(relationship.getStartingVertex().getId());
+            Person owner2 = (Person) Main.directedGraph.getVertexByID(relationship.getFinishingVertex().getId());
             data[i][0] = (i+1) + "";
             data[i][1] = owner1.getFirstName() + " " + owner1.getLastName();
             data[i][2] = owner2.getFirstName() + " " + owner2.getLastName();

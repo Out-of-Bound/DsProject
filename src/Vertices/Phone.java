@@ -34,7 +34,7 @@ public class Phone extends DirectedGraph.Vertex {
 
         int i =0;
         for (Phone phone : allPhones) {
-            People owner = (People) Main.directedGraph.getVertexByID(phone.ownerSsn);
+            Person owner = (Person) Main.directedGraph.getVertexByID(phone.ownerSsn);
             data[i][0] = (i+1) + "";
             data[i][1] = owner.getFirstName() + " " + owner.getLastName();
             data[i][2] = phone.getOwnerSsn();

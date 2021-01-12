@@ -38,7 +38,7 @@ public class Car extends DirectedGraph.Vertex {
         String[][] data = new String[allCars.size()][tableColumn.length];
         int i =0;
         for (Car car : allCars) {
-            People owner = (People) Main.directedGraph.getVertexByID(car.getOwnerSsn());
+            Person owner = (Person) Main.directedGraph.getVertexByID(car.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = car.getOwnerSsn();
             data[i][2] = owner.getFirstName() + " " + owner.getLastName();

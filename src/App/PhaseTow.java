@@ -1,10 +1,7 @@
 package App;
 
 import Edges.Ownership;
-import Edges.Relationship;
-import Graph.DirectedGraph;
-import Vertices.People;
-
+import Vertices.Person;
 import java.util.HashSet;
 
 public class PhaseTow {
@@ -12,13 +9,12 @@ public class PhaseTow {
     public static final String BANDER = "سازمان بنادر";
 
     public static void show(){
-        People.print(find());
+        Person.print(find());
     }
 
-    private static HashSet<People> find(){
-        HashSet<People> suspectedPeople = new HashSet<>();
-
-        for (People person : People.getAllPeoples()) {
+    private static HashSet<Person> find(){
+        HashSet<Person> suspectedPeople = new HashSet<>();
+        for (Person person : Person.getAllPerson()) {
             if (person.getWork().equals(GOMROK) || person.getWork().equals(BANDER)){
                 boolean suspected = false;
                 for (String ownID : person.getOwnersEdge()) {
@@ -34,32 +30,17 @@ public class PhaseTow {
                 if (suspected)
                     continue;
 
-
                 for (String personRelID: person.getRelations()) {
-                    People personRel = (People) Main.directedGraph.getVertexByID(personRelID);
+                    Person personRel = (Person) Main.directedGraph.getVertexByID(personRelID);
                     for (String relID : personRel.getOwnersEdge()) {
                         Ownership ownership = (Ownership) Main.directedGraph.getEdgeByID(relID);
                         String[] buyDate = ownership.getDate().split("-");
                         if(Integer.parseInt(buyDate[0])>=2018){
                             suspectedPeople.add(person);
-
                             break;
                         }
                     }
                 }
-
-
-/*
-                if (person.getInEdges().size() + person.getOutEdges().size() > Relationship.getAllRelationships().size())
-                for (DirectedGraph.Edge edge: person.getInEdges())
-                    if (edge instanceof Relationship)
-                        people.add((People)edge.getStartingVertex());
-
-                for (DirectedGraph.Edge edge: person.getOutEdges())
-                    if (edge instanceof Relationship)
-                        people.add((People)edge.getFinishingVertex());
-
- */
             }
         }
         return suspectedPeople;

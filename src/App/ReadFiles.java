@@ -6,10 +6,8 @@ import Edges.Relationship;
 import Edges.Transaction;
 import Graph.DirectedGraph;
 import Vertices.*;
-
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -29,10 +27,8 @@ public class ReadFiles {
     private static Scanner scanner;
 
     public static void start() throws IOException {
-        //getDataFolderFromSystem().getPath();
-        String folderPath = ".\\data";
         scanner = new Scanner(System.in);
-        readFiles(folderPath);
+        readFiles(getDataFolderFromSystem().getPath());
     }
 
     private static File getDataFolderFromSystem() {
@@ -101,7 +97,7 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
-            Main.directedGraph.addVertex(new People(datum[0], datum[1], datum[2], datum[3], datum[4], datum[5]));
+            Main.directedGraph.addVertex(new Person(datum[0], datum[1], datum[2], datum[3], datum[4], datum[5]));
         }
         csvReader.close();
     }

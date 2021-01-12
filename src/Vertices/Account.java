@@ -38,7 +38,7 @@ public class Account extends DirectedGraph.Vertex {
         String[][] data = new String[allAccounts.size()][tableColumn.length];
         int i =0;
         for (Account account : allAccounts.values() ) {
-            People owner = (People) Main.directedGraph.getVertexByID(account.getOwnerSsn());
+            Person owner = (Person) Main.directedGraph.getVertexByID(account.getOwnerSsn());
             data[i][0] = (i+1) + "";
             data[i][1] = account.getOwnerSsn();
             data[i][2] = owner.getFirstName() + " " + owner.getLastName();

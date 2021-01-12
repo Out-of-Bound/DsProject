@@ -3,9 +3,7 @@ package Edges;
 import App.GUI;
 import App.Main;
 import Graph.DirectedGraph;
-import Vertices.Home;
-import Vertices.People;
-import Vertices.Phone;
+import Vertices.Person;
 
 import java.util.HashSet;
 
@@ -18,7 +16,7 @@ public class Ownership extends DirectedGraph.Edge {
         this.date = date;
         this.amount = amount;
         allOwnerships.add(this);
-        ((People)startingNode).addToOwners(getId());
+        ((Person)startingNode).addToOwners(getId());
     }
 
     public String getDate() {
@@ -37,7 +35,7 @@ public class Ownership extends DirectedGraph.Edge {
         String[][] data = new String[allOwnerships.size()][tableColumn.length];
         int i =0;
         for (Ownership ownership : allOwnerships) {
-            People owner = (People) Main.directedGraph.getVertexByID(ownership.getStartingVertex().getId());
+            Person owner = (Person) Main.directedGraph.getVertexByID(ownership.getStartingVertex().getId());
             DirectedGraph.Vertex x = Main.directedGraph.getVertexByID(ownership.getFinishingVertex().getId());
             data[i][0] = (i+1) + "";
             data[i][1] = owner.getFirstName() + " " + owner.getLastName();

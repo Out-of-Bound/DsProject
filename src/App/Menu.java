@@ -21,15 +21,14 @@ public class Menu {
         JFrame menuFrame = new JFrame("Menu");
         menuFrame.setContentPane(panel);
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        menuFrame.setSize(600,500);
+        menuFrame.setSize(600,400);
         menuFrame.setVisible(true);
         menuFrame.setLocationRelativeTo(null);
         menuFrame.setDropTarget(new DropTarget(){
             public synchronized void drop(DropTargetDropEvent evt) {
                 try {
                     evt.acceptDrop(DnDConstants.ACTION_COPY);
-                    List<File> droppedFiles = (List<File>)
-                            evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+                    List<File> droppedFiles = (List<File>) evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
                     ReadFiles.startWithDragAndDrop(droppedFiles);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -44,15 +43,12 @@ public class Menu {
         });
         phase2.addActionListener(e -> {
             PhaseTow.show();
-            menuFrame.setEnabled(false);
         });
         phase3.addActionListener(e -> {
 
-            menuFrame.setEnabled(false);
         });
         phase4.addActionListener(e -> {
 
-            menuFrame.setEnabled(false);
         });
         logout.addActionListener(e -> {
             if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
