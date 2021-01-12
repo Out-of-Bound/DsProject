@@ -1,6 +1,12 @@
 package App;
 
 import javax.swing.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDropEvent;
+import java.io.File;
+import java.util.List;
 
 public class Menu {
 
@@ -12,38 +18,51 @@ public class Menu {
     private JButton logout;
 
     public Menu() {
-        JFrame MenuFrame = new JFrame("Menu");
-        MenuFrame.setContentPane(panel);
-        MenuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        MenuFrame.setSize(600,500);
-        MenuFrame.setVisible(true);
-        MenuFrame.setLocationRelativeTo(null);
+        JFrame menuFrame = new JFrame("Menu");
+        menuFrame.setContentPane(panel);
+        menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        menuFrame.setSize(600,500);
+        menuFrame.setVisible(true);
+        menuFrame.setLocationRelativeTo(null);
+        menuFrame.setDropTarget(new DropTarget(){
+            public synchronized void drop(DropTargetDropEvent evt) {
+                try {
+                    evt.acceptDrop(DnDConstants.ACTION_COPY);
+                    List<File> droppedFiles = (List<File>)
+                            evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+                    ReadFiles.startWithDragAndDrop(droppedFiles);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
 
         phase1.addActionListener(e -> {
-            new PhaseOne(MenuFrame);
-            MenuFrame.setEnabled(false);
+            new PhaseOne(menuFrame);
+            menuFrame.setEnabled(false);
         });
         phase2.addActionListener(e -> {
             PhaseTow.show();
-            MenuFrame.setEnabled(false);
+            menuFrame.setEnabled(false);
         });
         phase3.addActionListener(e -> {
 
-            MenuFrame.setEnabled(false);
+            menuFrame.setEnabled(false);
         });
         phase4.addActionListener(e -> {
 
-            MenuFrame.setEnabled(false);
+            menuFrame.setEnabled(false);
         });
         logout.addActionListener(e -> {
-            if (JOptionPane.showConfirmDialog(MenuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
+            if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                 System.exit(0);
         });
 
-        MenuFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        menuFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(MenuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
+                if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                     System.exit(0);
             }
         });

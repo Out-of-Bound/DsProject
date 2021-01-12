@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReadFiles {
@@ -28,21 +29,13 @@ public class ReadFiles {
     private static Scanner scanner;
 
     public static void start() throws IOException {
-                //getDataFolderFromSystem().getPath();
+        //getDataFolderFromSystem().getPath();
         String folderPath = ".\\data";
         scanner = new Scanner(System.in);
-        readAccountFile(folderPath);
-        readCarFile(folderPath);
-        readHomeFile(folderPath);
-        readPeopleFile(folderPath);
-        readPhoneFile(folderPath);
-        readCallFile(folderPath);
-        readOwnershipFile(folderPath);
-        readRelationshipFile(folderPath);
-        readTransactionFile(folderPath);
+        readFiles(folderPath);
     }
 
-    private static File getDataFolderFromSystem(){
+    private static File getDataFolderFromSystem() {
         JFileChooser chooser = new JFileChooser();
         chooser.setSelectedFile(new File(".\\data"));
         chooser.setDialogTitle("Choose Data folder");
@@ -51,7 +44,7 @@ public class ReadFiles {
         if (choice != JFileChooser.APPROVE_OPTION) {
             System.out.println("File not selected");
             System.out.print("Enter 1 for try again and any for exit: ");
-            if(scanner.nextInt() == 1)
+            if (scanner.nextInt() == 1)
                 getDataFolderFromSystem();
             else
                 System.exit(0);
@@ -65,8 +58,8 @@ public class ReadFiles {
         HashSet<String[]> data = new HashSet<>();
         while ((row = csvReader.readLine()) != null) {
             String[] t = row.split(",");
-            for (int i =0 ; i<t.length ; i++) {
-                t[i] = t[i].substring(1 , t[i].length() -1);
+            for (int i = 0; i < t.length; i++) {
+                t[i] = t[i].substring(1, t[i].length() - 1);
             }
             data.add(t);
         }
@@ -98,7 +91,7 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
-            Main.directedGraph.addVertex(new Home(datum[0], datum[1], datum[2], datum[3],datum[4]));
+            Main.directedGraph.addVertex(new Home(datum[0], datum[1], datum[2], datum[3], datum[4]));
         }
         csvReader.close();
     }
@@ -108,7 +101,7 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
-            Main.directedGraph.addVertex(new People(datum[0], datum[1], datum[2], datum[3],datum[4],datum[5]));
+            Main.directedGraph.addVertex(new People(datum[0], datum[1], datum[2], datum[3], datum[4], datum[5]));
         }
         csvReader.close();
     }
@@ -133,7 +126,7 @@ public class ReadFiles {
             String to = datum[1];
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
-            Main.directedGraph.addEdges(new Call(start , finish , datum[2] , datum[3] , datum[4]));
+            Main.directedGraph.addEdges(new Call(start, finish, datum[2], datum[3], datum[4]));
         }
         csvReader.close();
     }
@@ -148,7 +141,7 @@ public class ReadFiles {
             String to = datum[1];
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
-            Main.directedGraph.addEdges(new Ownership(start , finish , datum[2] , datum[3] , datum[4]));
+            Main.directedGraph.addEdges(new Ownership(start, finish, datum[2], datum[3], datum[4]));
         }
         csvReader.close();
     }
@@ -163,7 +156,7 @@ public class ReadFiles {
             String to = datum[1];
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(from);
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(to);
-            Main.directedGraph.addEdges(new Relationship(start , finish , datum[0] + datum[1] , datum[2] , datum[3]));
+            Main.directedGraph.addEdges(new Relationship(start, finish, datum[0] + datum[1], datum[2], datum[3]));
         }
         csvReader.close();
     }
@@ -172,15 +165,37 @@ public class ReadFiles {
         filePath += TRANSACTION_FILE_NAME;
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         HashSet<String[]> data = readDataFromFile(csvReader);
-
         for (String[] datum : data) {
             String from = datum[0];
             String to = datum[1];
             DirectedGraph.Vertex start = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(from).getId());
             DirectedGraph.Vertex finish = Main.directedGraph.getVertexByID(Account.getAllAccounts().get(to).getId());
-            Main.directedGraph.addEdges(new Transaction(start , finish , datum[2] , datum[3] , datum[4]));
+            Main.directedGraph.addEdges(new Transaction(start, finish, datum[2], datum[3], datum[4]));
         }
         csvReader.close();
+    }
+
+    public static void startWithDragAndDrop(List<File> files) {
+        for (File file : files) {
+            try {
+                String filePath = file.getPath();
+                readFiles(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void readFiles(String filePath) throws IOException {
+        readAccountFile(filePath);
+        readCarFile(filePath);
+        readHomeFile(filePath);
+        readPeopleFile(filePath);
+        readPhoneFile(filePath);
+        readCallFile(filePath);
+        readOwnershipFile(filePath);
+        readRelationshipFile(filePath);
+        readTransactionFile(filePath);
     }
 
 }

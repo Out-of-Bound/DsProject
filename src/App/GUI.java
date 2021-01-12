@@ -9,7 +9,6 @@ public class GUI {
     public static void showJTable(String tableName ,String [] tableColumn , String[][] data){
         JFrame accountsJFrame = new JFrame(tableName);
         accountsJFrame.setLocationRelativeTo(null);
-
         JTable jt = new JTable(data, tableColumn) {
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component returnComp = super.prepareRenderer(renderer, row, column);
@@ -18,7 +17,6 @@ public class GUI {
                 if (!returnComp.getBackground().equals(getSelectionBackground())) {
                     Color bg = (row % 2 == 0 ? alternateColor : whiteColor);
                     returnComp.setBackground(bg);
-                    bg = null;
                 }
                 return returnComp;
             }
@@ -43,6 +41,5 @@ public class GUI {
         accountsJFrame.add(sp);
         accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         accountsJFrame.setVisible(true);
-
     }
 }

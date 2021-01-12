@@ -24,7 +24,6 @@ public class PhaseTow {
                 for (String ownID : person.getOwnersEdge()) {
                     Ownership ownership = ((Ownership) Main.directedGraph.getEdgeByID(ownID));
                     String[] buyDate = ownership.getDate().split("-");
-
                     if(Integer.parseInt(buyDate[0])>=2018){
                         suspectedPeople.add(person);
                         suspected = true;
@@ -43,9 +42,7 @@ public class PhaseTow {
                         String[] buyDate = ownership.getDate().split("-");
                         if(Integer.parseInt(buyDate[0])>=2018){
                             suspectedPeople.add(person);
-                            System.out.println(person.getFirstName() + " " + person.getLastName() + " " + person.getWork());
-                            System.out.println(personRel.getFirstName() + " " + personRel.getLastName() + " " + ownership.getDate());
-                            System.out.println();
+
                             break;
                         }
                     }
