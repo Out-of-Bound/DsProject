@@ -7,13 +7,13 @@ import java.util.HashMap;
 
 public class Account extends DirectedGraph.Vertex {
     private static HashMap<String , Account> allAccounts = new HashMap<>();
-    private String ownerSsn, bankName, accountId; // id = iBan;
+    private String ownerSsn, bankName, iBan; // id = accountId
 
     public Account(String ownerSsn, String bankName, String iBan, String accountId) {
-        super(iBan);
+        super(accountId);
         this.ownerSsn = ownerSsn;
         this.bankName = bankName;
-        this.accountId = accountId;
+        this.iBan = iBan;
         allAccounts.put(accountId , this);
     }
 
@@ -25,8 +25,8 @@ public class Account extends DirectedGraph.Vertex {
         return bankName;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getiBan() {
+        return iBan;
     }
 
     public static HashMap<String , Account> getAllAccounts() {
@@ -43,10 +43,11 @@ public class Account extends DirectedGraph.Vertex {
             data[i][1] = account.getOwnerSsn();
             data[i][2] = owner.getFirstName() + " " + owner.getLastName();
             data[i][3] = account.getBankName();
-            data[i][4] = account.getId();
-            data[i][5] = account.getAccountId();
+            data[i][4] = account.getiBan();
+            data[i][5] = account.getId();
             i++;
         }
         GUI.showJTable("Accounts" ,tableColumn , data);
     }
+
 }
