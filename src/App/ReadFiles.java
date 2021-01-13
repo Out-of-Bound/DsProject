@@ -183,6 +183,7 @@ public class ReadFiles {
     }
 
     private static void readFiles(String filePath) throws IOException {
+        System.out.println("read start");
         readAccountFile(filePath);
         readCarFile(filePath);
         readHomeFile(filePath);
@@ -192,6 +193,7 @@ public class ReadFiles {
         readOwnershipFile(filePath);
         readRelationshipFile(filePath);
         readTransactionFile(filePath);
+        System.out.println("read ends");
     }
 
 }
