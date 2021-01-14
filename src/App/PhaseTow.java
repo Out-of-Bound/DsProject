@@ -6,9 +6,12 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.HashSet;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
+import static java.util.Calendar.*;
 
 public class PhaseTow {
     public static final String GOMROK = "گمرک";
@@ -70,18 +73,25 @@ public class PhaseTow {
         }
     }
 
-    private static long getTime(Ownership ownership) {
+    private static int getTime(Ownership ownership) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(ownership.getDate());
-            long millis = date.getTime();
-            long t = System.currentTimeMillis() - millis;
-            t = t / 1000 / 60 / 60 / 24 / 30 / 12;
-            return t;
+            Calendar a = getCalendar(date);
+            Calendar b = getCalendar(new Date(System.currentTimeMillis()));
+            int diff = b.get(DATE) - a.get(DATE);
+            System.out.println(date.toString() + " " + diff);
+
+            return diff;
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return 0;
+    }
+    private static Calendar getCalendar(Date date) {
+        Calendar cal = Calendar.getInstance(Locale.US);
+        cal.setTime(date);
+        return cal;
     }
 
     public static HashSet<Person> getSuspectedPeople() {

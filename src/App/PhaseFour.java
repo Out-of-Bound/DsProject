@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class PhaseFour {
 
-    public static final String GHACHAGHCHI = "قاچاقچی";
+    public static final String SMUGGLER = "قاچاقچی";
 
     public static void start(){
         HashSet<Person> suspectedPhase2 = PhaseTow.getSuspectedPeople();

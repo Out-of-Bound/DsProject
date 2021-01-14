@@ -30,10 +30,13 @@ public class PhaseOne {
 
     public PhaseOne(JFrame MenuFrame){
 
-        JFrame PhaseOneFrame = new JFrame("PhaseOne");
-        PhaseOneFrame.setContentPane(panel);
-        PhaseOneFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        PhaseOneFrame.setSize(1920,1080);
+        JFrame phaseOneFrame = new JFrame("نمایش اطلاعات");
+        phaseOneFrame.setContentPane(panel);
+        phaseOneFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        phaseOneFrame.setSize(1920,1080);
+        phaseOneFrame.setVisible(true);
+        phaseOneFrame.setLocationRelativeTo(null);
+        phaseOneFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         Image image = null;
         try {
@@ -44,9 +47,6 @@ public class PhaseOne {
         }
         imgView.setIcon( new ImageIcon(image) );
         /*backButton.setBorder(new EmptyBorder( 0, 80, 0, 0));*/
-
-        PhaseOneFrame.setVisible(true);
-        PhaseOneFrame.setLocationRelativeTo(null);
 
         ActionListener btnActionListener = e -> {
             Object source = e.getSource();
@@ -69,7 +69,7 @@ public class PhaseOne {
             } else if (relationshipsButton.equals(source)){
                 Relationship.print();
             } else if (backButton.equals(source)){
-                PhaseOneFrame.setVisible(false);
+                phaseOneFrame.setVisible(false);
                 MenuFrame.setEnabled(true);
             }
         };
@@ -84,11 +84,11 @@ public class PhaseOne {
         relationshipsButton.addActionListener(btnActionListener);
         transactionsButton.addActionListener(btnActionListener);
 /*
-        PhaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        phaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(PhaseOneFrame, "Are you sure you want to back Menu?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                    PhaseOneFrame.setVisible(false);
+                if (JOptionPane.showConfirmDialog(phaseOneFrame, "Are you sure you want to back Menu?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    phaseOneFrame.setVisible(false);
                     MenuFrame.setEnabled(true);
                 }
             }

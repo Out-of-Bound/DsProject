@@ -29,7 +29,7 @@ public class Menu {
     private JButton btnChooseFolder;
 
     public Menu() {
-        JFrame menuFrame = new JFrame("Menu");
+        JFrame menuFrame = new JFrame("صفحه‌ اصلی");
         menuFrame.setContentPane(panel);
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         menuFrame.setSize(1920,1080);
@@ -67,24 +67,21 @@ public class Menu {
             }
         });
 
-        ActionListener btnActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        ActionListener btnActionListener = e -> {
 
-                Object source = e.getSource();
-                if (phase1.equals(source)) {
-                    new PhaseOne(menuFrame);
-                } else if (phase2.equals(source)) {
-                    PhaseTow.show();
-                } else if (phase3.equals(source)) {
+            Object source = e.getSource();
+            if (phase1.equals(source)) {
+                new PhaseOne(menuFrame);
+            } else if (phase2.equals(source)) {
+                PhaseTow.show();
+            } else if (phase3.equals(source)) {
 
-                } else if (phase4.equals(source)) {
-                    PhaseFour.start();
-                } else if (btnChooseFolder.equals(source)) {
-                    ReadFiles.start();
-                    if (ReadFiles.isFilesReady())
-                        enableButtons();
-                }
+            } else if (phase4.equals(source)) {
+                PhaseFour.start();
+            } else if (btnChooseFolder.equals(source)) {
+                ReadFiles.start();
+                if (ReadFiles.isFilesReady())
+                    enableButtons();
             }
         };
 
@@ -141,7 +138,6 @@ public class Menu {
         phase3.setEnabled(true);
         phase4.setEnabled(true);
         fileRead();
-
     }
 
     public void fileRead (){
