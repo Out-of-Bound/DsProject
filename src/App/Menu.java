@@ -8,6 +8,8 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class Menu {
     private JButton phase3;
     private JButton phase4;
     private JLabel imgView;
-
+    private JLabel labelChooseFolder;
 
 
     public Menu() {
@@ -30,6 +32,7 @@ public class Menu {
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         menuFrame.setSize(1920,1080);
         menuFrame.setLocationRelativeTo(null);
+        menuFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         Image image = null;
         try {
@@ -62,6 +65,8 @@ public class Menu {
 
 
 
+
+
         phase1.addActionListener(e -> {
             new PhaseOne(menuFrame);
             menuFrame.setEnabled(false);
@@ -86,6 +91,20 @@ public class Menu {
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                     System.exit(0);
+            }
+        });
+
+        labelChooseFolder.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                labelChooseFolder.setForeground(new Color(0 , 0 , 0));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                labelChooseFolder.setForeground(new Color(95 , 95, 95));
             }
         });
     }
