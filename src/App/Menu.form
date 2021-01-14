@@ -1,92 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="App.Menu">
-  <grid id="27dc6" binding="panel" default-binding="true" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="panel" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="681" height="411"/>
     </constraints>
     <properties>
-      <background color="-16576988"/>
+      <background color="-1"/>
       <foreground color="-16576988"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="54e95" class="javax.swing.JButton" binding="phase1">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="400" height="-1"/>
-            <preferred-size width="400" height="-1"/>
-            <maximum-size width="400" height="-1"/>
-          </grid>
-        </constraints>
+      <grid id="2bf20" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="East"/>
         <properties>
-          <background color="-12355121"/>
-          <font name="Maiandra GD" size="18"/>
-          <foreground color="-10"/>
-          <hideActionText value="false"/>
-          <text value="Phase 1"/>
-          <verticalAlignment value="0"/>
-          <verticalTextPosition value="0"/>
+          <background color="-1"/>
         </properties>
-      </component>
-      <component id="aa795" class="javax.swing.JButton" binding="phase2">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="400" height="-1"/>
-            <preferred-size width="400" height="-1"/>
-            <maximum-size width="400" height="-1"/>
-          </grid>
-        </constraints>
+        <border type="none"/>
+        <children>
+          <component id="54e95" class="javax.swing.JButton" binding="phase1">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="400" height="-1"/>
+                <preferred-size width="400" height="-1"/>
+                <maximum-size width="400" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13554607"/>
+              <font name="Vazir" size="25"/>
+              <foreground color="-1"/>
+              <hideActionText value="false"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value="نمایش اطلاعات"/>
+              <verticalAlignment value="0"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+          <component id="aa795" class="javax.swing.JButton" binding="phase2">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="400" height="-1"/>
+                <preferred-size width="400" height="-1"/>
+                <maximum-size width="400" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13554607"/>
+              <font name="Vazir" size="25"/>
+              <foreground color="-1"/>
+              <text value="مظنونین  فاز 2"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+          <component id="7f9ab" class="javax.swing.JButton" binding="phase3">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="400" height="-1"/>
+                <preferred-size width="400" height="-1"/>
+                <maximum-size width="400" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13554607"/>
+              <enabled value="true"/>
+              <font name="Vazir" size="25"/>
+              <foreground color="-1"/>
+              <text value="مظنونین  فاز 3"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+          <component id="2988" class="javax.swing.JButton" binding="phase4">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="400" height="-1"/>
+                <preferred-size width="400" height="-1"/>
+                <maximum-size width="400" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-13554607"/>
+              <font name="Vazir" size="25"/>
+              <foreground color="-1"/>
+              <text value="مظنونین  فاز 4"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+          <component id="c0f0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-14538703"/>
+              <enabled value="true"/>
+              <font name="Vazir" size="40" style="1"/>
+              <foreground color="-14538703"/>
+              <text value="پروژه"/>
+            </properties>
+          </component>
+          <vspacer id="2c38e">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="babef">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+        </children>
+      </grid>
+      <component id="a339f" class="javax.swing.JLabel" binding="imgView">
+        <constraints border-constraint="Center"/>
         <properties>
-          <background color="-12355121"/>
-          <font name="Maiandra GD" size="18"/>
-          <foreground color="-1"/>
-          <text value="Phase 2"/>
-          <verticalTextPosition value="0"/>
-        </properties>
-      </component>
-      <component id="7f9ab" class="javax.swing.JButton" binding="phase3">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="400" height="-1"/>
-            <preferred-size width="400" height="-1"/>
-            <maximum-size width="400" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-12355121"/>
-          <font name="Maiandra GD" size="18"/>
-          <foreground color="-1"/>
-          <text value="Phase 3"/>
-          <verticalTextPosition value="0"/>
-        </properties>
-      </component>
-      <component id="63544" class="javax.swing.JButton" binding="logout" default-binding="true">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-65536"/>
-          <font name="Maiandra GD" size="14"/>
-          <foreground color="-10"/>
-          <horizontalTextPosition value="10"/>
-          <text value="Logout"/>
-        </properties>
-      </component>
-      <component id="2988" class="javax.swing.JButton" binding="phase4">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="400" height="-1"/>
-            <preferred-size width="400" height="-1"/>
-            <maximum-size width="400" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-12355121"/>
-          <font name="Maiandra GD" size="18"/>
-          <foreground color="-1"/>
-          <text value="Phase 4"/>
-          <verticalTextPosition value="0"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

@@ -1,11 +1,16 @@
 package App;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Menu {
@@ -15,15 +20,32 @@ public class Menu {
     private JButton phase2;
     private JButton phase3;
     private JButton phase4;
-    private JButton logout;
+    private JLabel imgView;
+
+
 
     public Menu() {
         JFrame menuFrame = new JFrame("Menu");
         menuFrame.setContentPane(panel);
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        menuFrame.setSize(600,400);
-        menuFrame.setVisible(true);
+        menuFrame.setSize(1920,1080);
         menuFrame.setLocationRelativeTo(null);
+
+        Image image = null;
+        try {
+            BufferedImage orgImg = ImageIO.read(new File(".\\img\\main.jpg"));
+            image = orgImg.getScaledInstance(850, 751,
+                    Image.SCALE_SMOOTH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgView.setIcon( new ImageIcon(image) );
+        imgView.setBorder(new EmptyBorder( 0, 80, 0, 0));
+        panel.setBorder(new EmptyBorder( 0, 0, 0, 90));
+
+        menuFrame.setVisible(true);
+
+
         menuFrame.setDropTarget(new DropTarget(){
             public synchronized void drop(DropTargetDropEvent evt) {
                 try {
@@ -37,10 +59,14 @@ public class Menu {
         });
 
 
+
+
+
         phase1.addActionListener(e -> {
             new PhaseOne(menuFrame);
             menuFrame.setEnabled(false);
         });
+
         phase2.addActionListener(e -> {
             PhaseTow.show();
         });
@@ -50,10 +76,10 @@ public class Menu {
         phase4.addActionListener(e -> {
 
         });
-        logout.addActionListener(e -> {
+        /*logout.addActionListener(e -> {
             if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                 System.exit(0);
-        });
+        });*/
 
         menuFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
