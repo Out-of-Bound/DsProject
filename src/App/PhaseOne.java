@@ -6,6 +6,8 @@ import Edges.Relationship;
 import Edges.Transaction;
 import Vertices.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PhaseOne {
 
@@ -20,8 +22,10 @@ public class PhaseOne {
     private JButton ownershipsButton;
     private JButton transactionsButton;
     private JButton backButton;
+    private JLabel imgView;
 
     public PhaseOne(JFrame MenuFrame){
+
         JFrame PhaseOneFrame = new JFrame("PhaseOne");
         PhaseOneFrame.setContentPane(panel);
         PhaseOneFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -29,38 +33,38 @@ public class PhaseOne {
         PhaseOneFrame.setVisible(true);
         PhaseOneFrame.setLocationRelativeTo(null);
 
-        peopleButton.addActionListener(e -> {
-            Person.print();
-        });
-        phonesButton.addActionListener(e -> {
-            Phone.print();
-        });
-        homesButton.addActionListener(e -> {
-            Home.print();
-        });
-        carsButton.addActionListener(e -> {
-            Car.print();
-        });
-        accountsButton.addActionListener(e -> {
-            Account.print();
-        });
-        callsButton.addActionListener(e -> {
-            Call.print();
-        });
-        relationshipsButton.addActionListener(e -> {
-            Relationship.print();
-        });
-        ownershipsButton.addActionListener(e -> {
-            Ownership.print();
-        });
-        transactionsButton.addActionListener(e -> {
-            Transaction.print();
-        });
+        ActionListener btnActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        backButton.addActionListener(e -> {
-            PhaseOneFrame.setVisible(false);
-            MenuFrame.setEnabled(true);
-        });
+                Object source = e.getSource();
+                if (peopleButton.equals(source)) {
+                    Person.print();
+                } else if (phonesButton.equals(source)) {
+                    Phone.print();
+                } else if (accountsButton.equals(source)) {
+                    Account.print();
+                } else if (homesButton.equals(source)) {
+                    Home.print();
+                } else if (carsButton.equals(source)) {
+                    Car.print();
+                } else if (callsButton.equals(source)){
+                    Call.print();
+                } else if (ownershipsButton.equals(source)){
+                    Ownership.print();
+                } else if (transactionsButton.equals(source)){
+                    Transaction.print();
+                } else if (relationshipsButton.equals(source)){
+                    Relationship.print();
+                } else if (backButton.equals(source)){
+                    PhaseOneFrame.setVisible(false);
+                    MenuFrame.setEnabled(true);
+                }
+            }
+        };
+
+
+
 /*
         PhaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override

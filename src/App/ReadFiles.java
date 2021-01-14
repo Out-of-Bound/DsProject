@@ -205,7 +205,6 @@ public class ReadFiles {
         readRelationshipFile(filePath);
         readTransactionFile(filePath);
         filesReady = true;
-        System.out.println("read ends");
     }
 
     public static boolean isFilesReady() {
