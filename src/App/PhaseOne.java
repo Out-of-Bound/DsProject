@@ -5,9 +5,16 @@ import Edges.Ownership;
 import Edges.Relationship;
 import Edges.Transaction;
 import Vertices.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class PhaseOne {
 
@@ -29,7 +36,18 @@ public class PhaseOne {
         JFrame PhaseOneFrame = new JFrame("PhaseOne");
         PhaseOneFrame.setContentPane(panel);
         PhaseOneFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        PhaseOneFrame.setSize(600,550);
+        PhaseOneFrame.setSize(1920,1080);
+        Image image = null;
+        try {
+            BufferedImage orgImg = ImageIO.read(new File(".\\img\\phase1.jpg"));
+            image = orgImg.getScaledInstance(636, 606,
+                    Image.SCALE_SMOOTH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgView.setIcon( new ImageIcon(image) );
+        /*backButton.setBorder(new EmptyBorder( 0, 80, 0, 0));*/
+
         PhaseOneFrame.setVisible(true);
         PhaseOneFrame.setLocationRelativeTo(null);
 
