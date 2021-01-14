@@ -97,6 +97,8 @@ public class Menu {
             }
         };
 
+
+
         btnChooseFolder.addActionListener(btnActionListener);
         phase1.addActionListener(btnActionListener);
         phase2.addActionListener(btnActionListener);
@@ -139,7 +141,9 @@ public class Menu {
         phase3.addMouseListener(mouseAdapter);
         phase4.addMouseListener(mouseAdapter);
 
-        btnChooseFolder.addMouseListener(mouseAdapter);
+       // btnChooseFolder.addMouseListener(mouseAdapter);
+
+
 
     }
     private void enableButtons(){
@@ -147,7 +151,25 @@ public class Menu {
         phase2.setEnabled(true);
         phase3.setEnabled(true);
         phase4.setEnabled(true);
-        labelChooseFolder.setText(ReadFiles.getFolderName());
+        fileRead();
 
+    }
+
+    public void fileRead (){
+        Image image = null;
+        try {
+            BufferedImage orgImg = ImageIO.read(new File(".\\img\\file.jpg"));
+            image = orgImg.getScaledInstance(78, 100,
+                    Image.SCALE_SMOOTH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        btnChooseFolder.setIcon( new ImageIcon(image) );
+        btnChooseFolder.setText("");
+        btnChooseFolder.setBackground(new Color(255, 255, 255));
+        btnChooseFolder.setBorder(null);
+        btnChooseFolder.setEnabled(false);
+        labelChooseFolder.setText(ReadFiles.getFolderName());
+        labelChooseFolder.setText("فایل " + ReadFiles.getFolderName() + " خوانده شد");
     }
 }
