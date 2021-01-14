@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static DirectedGraph directedGraph = new DirectedGraph();
     public static void main(String[] args) {
-        boolean fastStart = false;
+        ReadFiles.fastStart();
         new Menu();
     }
 }
