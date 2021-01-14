@@ -276,7 +276,7 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <label value="اشخاص"/>
                   <text value="اشخاص"/>
