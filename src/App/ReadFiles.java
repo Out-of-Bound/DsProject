@@ -35,6 +35,14 @@ public class ReadFiles {
             e.printStackTrace();
         }
     }
+    public static void fastStart(){
+        try {
+            readFiles(".\\data");
+            folderPath = ".\\data";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void startWithDragAndDrop(List<File> files) {
         for (File file : files) {
