@@ -131,7 +131,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Cars"/>
@@ -146,7 +146,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Accounts"/>
@@ -161,7 +161,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="People"/>
@@ -176,7 +176,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Homes"/>
@@ -191,7 +191,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Phones"/>
@@ -206,7 +206,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Transactions"/>
@@ -221,7 +221,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Ownerships"/>
@@ -236,7 +236,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <text value="Relationships"/>
@@ -251,7 +251,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-12355121"/>
+                  <background color="-10398298"/>
                   <font name="Maiandra GD" size="16"/>
                   <foreground color="-10"/>
                   <hideActionText value="false"/>
