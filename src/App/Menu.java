@@ -28,7 +28,6 @@ public class Menu {
     private JLabel labelChooseFolder;
     private JButton btnChooseFolder;
 
-
     public Menu() {
         JFrame menuFrame = new JFrame("Menu");
         menuFrame.setContentPane(panel);
@@ -44,8 +43,7 @@ public class Menu {
         Image image = null;
         try {
             BufferedImage orgImg = ImageIO.read(new File(".\\img\\main.jpg"));
-            image = orgImg.getScaledInstance(850, 751,
-                    Image.SCALE_SMOOTH);
+            image = orgImg.getScaledInstance(850, 751, Image.SCALE_SMOOTH);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +52,6 @@ public class Menu {
         panel.setBorder(new EmptyBorder( 0, 0, 0, 90));
 
         menuFrame.setVisible(true);
-
 
         menuFrame.setDropTarget(new DropTarget(){
             public synchronized void drop(DropTargetDropEvent evt) {
@@ -70,10 +67,6 @@ public class Menu {
             }
         });
 
-
-
-
-
         ActionListener btnActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,10 +74,8 @@ public class Menu {
                 Object source = e.getSource();
                 if (phase1.equals(source)) {
                     new PhaseOne(menuFrame);
-                    //menuFrame.setEnabled(false);
                 } else if (phase2.equals(source)) {
                     PhaseTow.show();
-
                 } else if (phase3.equals(source)) {
 
                 } else if (phase4.equals(source)) {
@@ -96,8 +87,6 @@ public class Menu {
                 }
             }
         };
-
-
 
         btnChooseFolder.addActionListener(btnActionListener);
         phase1.addActionListener(btnActionListener);
