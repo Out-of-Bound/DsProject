@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 
 public class ReadFiles {
     private static final String ACCOUNT_FILE_NAME = "\\accounts.csv";
@@ -24,11 +23,30 @@ public class ReadFiles {
     private static final String RELATIONSHIP_FILE_NAME = "\\relationships.csv";
     private static final String TRANSACTION_FILE_NAME = "\\transactions.csv";
 
-    private static Scanner scanner;
+    private static boolean filesReady = false;
+    private static String folderPath;
 
-    public static void start() throws IOException {
-        scanner = new Scanner(System.in);
-        readFiles(getDataFolderFromSystem().getPath());
+    public static void start() {
+        try {
+            String tempFolderPath = getDataFolderFromSystem().getPath();
+            readFiles(tempFolderPath);
+            folderPath = tempFolderPath;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void startWithDragAndDrop(List<File> files) {
+        for (File file : files) {
+            try {
+                String filePath = file.getPath();
+                readFiles(filePath);
+                folderPath = filePath;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            break;
+        }
     }
 
     private static File getDataFolderFromSystem() {
@@ -39,11 +57,7 @@ public class ReadFiles {
         int choice = chooser.showOpenDialog(null);
         if (choice != JFileChooser.APPROVE_OPTION) {
             System.out.println("File not selected");
-            System.out.print("Enter 1 for try again and any for exit: ");
-            if (scanner.nextInt() == 1)
-                getDataFolderFromSystem();
-            else
-                System.exit(0);
+
         }
         return chooser.getSelectedFile();
     }
@@ -171,17 +185,6 @@ public class ReadFiles {
         csvReader.close();
     }
 
-    public static void startWithDragAndDrop(List<File> files) {
-        for (File file : files) {
-            try {
-                String filePath = file.getPath();
-                readFiles(filePath);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private static void readFiles(String filePath) throws IOException {
         System.out.println("read start");
         readAccountFile(filePath);
@@ -193,7 +196,14 @@ public class ReadFiles {
         readOwnershipFile(filePath);
         readRelationshipFile(filePath);
         readTransactionFile(filePath);
+        filesReady = true;
         System.out.println("read ends");
     }
 
+    public static boolean isFilesReady() {
+        return filesReady;
+    }
+    public static String getFolderName(){
+        return new File(folderPath).getName();
+    }
 }

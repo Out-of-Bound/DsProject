@@ -20,7 +20,7 @@
         <children>
           <component id="54e95" class="javax.swing.JButton" binding="phase1">
             <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="400" height="-1"/>
                 <preferred-size width="400" height="-1"/>
                 <maximum-size width="400" height="-1"/>
@@ -28,7 +28,7 @@
             </constraints>
             <properties>
               <background color="-13554607"/>
-              <enabled value="true"/>
+              <enabled value="false"/>
               <font name="Vazir" size="25"/>
               <foreground color="-1"/>
               <hideActionText value="false"/>
@@ -48,8 +48,10 @@
             </constraints>
             <properties>
               <background color="-13554607"/>
+              <enabled value="false"/>
               <font name="Vazir" size="25"/>
               <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
               <text value="مظنونین  فاز 2"/>
               <verticalTextPosition value="0"/>
             </properties>
@@ -64,7 +66,7 @@
             </constraints>
             <properties>
               <background color="-13554607"/>
-              <enabled value="true"/>
+              <enabled value="false"/>
               <font name="Vazir" size="25"/>
               <foreground color="-1"/>
               <text value="مظنونین  فاز 3"/>
@@ -81,6 +83,7 @@
             </constraints>
             <properties>
               <background color="-13554607"/>
+              <enabled value="false"/>
               <font name="Vazir" size="25"/>
               <foreground color="-1"/>
               <text value="مظنونین  فاز 4"/>
@@ -106,14 +109,14 @@
           </vspacer>
           <component id="114e7" class="javax.swing.JLabel" binding="labelChooseFolder">
             <constraints>
-              <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Vazir" size="22" style="0"/>
+              <font name="Vazir" size="16" style="0"/>
               <foreground color="-10526881"/>
               <horizontalAlignment value="2"/>
               <horizontalTextPosition value="0"/>
-              <text value="پوشه حاوی اطلاعات را انتخاب کنید"/>
+              <text value="پوشه‌ای انتخاب نشده است"/>
             </properties>
           </component>
           <vspacer id="ef240">
@@ -156,11 +159,6 @@
               <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="cf1ff">
-            <constraints>
-              <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
           <vspacer id="6baec">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -181,19 +179,30 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="397a5">
-            <constraints>
-              <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
           <vspacer id="d528a">
             <constraints>
               <grid row="19" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="fbc09">
+          <component id="984b8" class="javax.swing.JButton" binding="btnChooseFolder">
             <constraints>
-              <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-13554607"/>
+              <font name="Vazir" size="20"/>
+              <foreground color="-1"/>
+              <text value="انتخاب پوشه"/>
+            </properties>
+          </component>
+          <vspacer id="e3a38">
+            <constraints>
+              <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="3eb50">
+            <constraints>
+              <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
         </children>

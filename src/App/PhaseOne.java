@@ -24,7 +24,7 @@ public class PhaseOne {
     public PhaseOne(JFrame MenuFrame){
         JFrame PhaseOneFrame = new JFrame("PhaseOne");
         PhaseOneFrame.setContentPane(panel);
-        PhaseOneFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        PhaseOneFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         PhaseOneFrame.setSize(600,550);
         PhaseOneFrame.setVisible(true);
         PhaseOneFrame.setLocationRelativeTo(null);

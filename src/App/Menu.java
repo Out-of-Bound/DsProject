@@ -8,6 +8,8 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -24,6 +26,7 @@ public class Menu {
     private JButton phase4;
     private JLabel imgView;
     private JLabel labelChooseFolder;
+    private JButton btnChooseFolder;
 
 
     public Menu() {
@@ -33,6 +36,10 @@ public class Menu {
         menuFrame.setSize(1920,1080);
         menuFrame.setLocationRelativeTo(null);
         menuFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        if (ReadFiles.isFilesReady()){
+            enableButtons();
+        }
 
         Image image = null;
         try {
@@ -55,6 +62,8 @@ public class Menu {
                     evt.acceptDrop(DnDConstants.ACTION_COPY);
                     List<File> droppedFiles = (List<File>) evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
                     ReadFiles.startWithDragAndDrop(droppedFiles);
+                    if (ReadFiles.isFilesReady())
+                        enableButtons();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -65,22 +74,36 @@ public class Menu {
 
 
 
+        ActionListener btnActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Object source = e.getSource();
+                if (phase1.equals(source)) {
+                    new PhaseOne(menuFrame);
+                    menuFrame.setEnabled(false);
+                } else if (phase2.equals(source)) {
+                    PhaseTow.show();
+
+                } else if (phase3.equals(source)) {
+
+                } else if (phase4.equals(source)) {
+
+                } else if (btnChooseFolder.equals(source)) {
+                    ReadFiles.start();
+                    if (ReadFiles.isFilesReady())
+                        enableButtons();
+                }
+            }
+        };
+
+        btnChooseFolder.addActionListener(btnActionListener);
+        phase1.addActionListener(btnActionListener);
+        phase2.addActionListener(btnActionListener);
+        phase3.addActionListener(btnActionListener);
+        phase4.addActionListener(btnActionListener);
 
 
-        phase1.addActionListener(e -> {
-            new PhaseOne(menuFrame);
-            menuFrame.setEnabled(false);
-        });
-
-        phase2.addActionListener(e -> {
-            PhaseTow.show();
-        });
-        phase3.addActionListener(e -> {
-
-        });
-        phase4.addActionListener(e -> {
-
-        });
         /*logout.addActionListener(e -> {
             if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                 System.exit(0);
@@ -94,25 +117,15 @@ public class Menu {
             }
         });
 
-        labelChooseFolder.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                labelChooseFolder.setForeground(new Color(0 , 0 , 0));
-            }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                labelChooseFolder.setForeground(new Color(95 , 95, 95));
-            }
-        });
         Color mouseEnteredColor =  new Color(87 , 78 , 144);
         Color mouseExitedColor =  new Color(49 , 44 , 81);
         MouseAdapter mouseAdapter = new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                e.getComponent().setBackground(mouseEnteredColor);
+                JButton button = (JButton) e.getComponent();
+                if (button.isEnabled())
+                button.setBackground(mouseEnteredColor);
             }
 
             @Override
@@ -125,6 +138,16 @@ public class Menu {
         phase2.addMouseListener(mouseAdapter);
         phase3.addMouseListener(mouseAdapter);
         phase4.addMouseListener(mouseAdapter);
-    }
 
+        btnChooseFolder.addMouseListener(mouseAdapter);
+
+    }
+    private void enableButtons(){
+        phase1.setEnabled(true);
+        phase2.setEnabled(true);
+        phase3.setEnabled(true);
+        phase4.setEnabled(true);
+        labelChooseFolder.setText(ReadFiles.getFolderName());
+
+    }
 }
