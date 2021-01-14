@@ -29,13 +29,14 @@ public class Person extends DirectedGraph.Vertex {
         calls.add(call);
     }
 
-    public Person(String firstName, String lastName, String ssn, String birthDay, String city, String work) {
-        super(ssn);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDay = birthDay;
-        this.city = city;
-        this.work = work;
+    public Person(String[] data) {
+        // ssn = data[2]
+        super(data[2]);
+        this.firstName = data[0];
+        this.lastName = data[1];
+        this.birthDay = data[3];
+        this.city = data[4];
+        this.work = data[5];
         allPerson.add(this);
     }
 

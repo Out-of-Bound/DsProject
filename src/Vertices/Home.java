@@ -9,12 +9,13 @@ public class Home extends DirectedGraph.Vertex {
     private static HashSet<Home> allHomes = new HashSet<>();
     private String ownerSsn, price ,size , address; //id = postalCode
 
-    public Home(String ownerSsn, String price, String postalCode, String size, String address) {
-        super(postalCode);
-        this.ownerSsn = ownerSsn;
-        this.price = price;
-        this.size = size;
-        this.address = address;
+    public Home(String[] data) {
+        //postalCode = data[2]
+        super(data[2]);
+        this.ownerSsn = data[0];
+        this.price = data[1];
+        this.size = data[3];
+        this.address = data[4];
         allHomes.add(this);
     }
 

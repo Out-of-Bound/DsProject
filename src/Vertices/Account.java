@@ -9,12 +9,13 @@ public class Account extends DirectedGraph.Vertex {
     private static HashMap<String , Account> allAccounts = new HashMap<>();
     private String ownerSsn, bankName, iBan; // id = accountId
 
-    public Account(String ownerSsn, String bankName, String iBan, String accountId) {
-        super(accountId);
-        this.ownerSsn = ownerSsn;
-        this.bankName = bankName;
-        this.iBan = iBan;
-        allAccounts.put(accountId , this);
+    public Account(String[] data) {
+        //accountId = data[3]
+        super(data[3]);
+        this.ownerSsn = data[0];
+        this.bankName = data[1];
+        this.iBan = data[2];
+        allAccounts.put(data[3] , this);
     }
 
     public String getOwnerSsn() {

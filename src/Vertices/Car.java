@@ -9,11 +9,12 @@ public class Car extends DirectedGraph.Vertex {
     private static HashSet<Car> allCars = new HashSet<>();
     private String ownerSsn, model, color; //id = plate
 
-    public Car(String plate, String ownerSsn, String model, String color) {
-        super(plate);
-        this.ownerSsn = ownerSsn;
-        this.model = model;
-        this.color = color;
+    public Car(String[] data) {
+        //plate = data[0];
+        super(data[0]);
+        this.ownerSsn = data[1];
+        this.model = data[2];
+        this.color = data[3];
         allCars.add(this);
     }
 

@@ -12,10 +12,11 @@ public class Call extends DirectedGraph.Edge {
     private static HashSet<Call> allCalls = new HashSet<>();
     private String date , duration; // id = callId
 
-    public Call(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String callId, String date, String duration) {
-        super(callId, startingNode, finishingNode);
-        this.date = date;
-        this.duration = duration;
+    public Call(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
+        //call ID = data[2]
+        super(data[2], startingNode, finishingNode);
+        this.date = data[3];
+        this.duration = data[4];
         allCalls.add(this);
         ((Person)Main.directedGraph.getVertexByID(((Phone)startingNode).getOwnerSsn())).addToCalls(this);
         ((Person)Main.directedGraph.getVertexByID(((Phone)finishingNode).getOwnerSsn())).addToCalls(this);

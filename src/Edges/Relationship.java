@@ -12,12 +12,12 @@ public class Relationship extends DirectedGraph.Edge {
     private static HashSet<Relationship> allRelationships = new HashSet<>();
     private String relation, date; //id = from + to
 
-    public Relationship(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String fromTo ,String relation, String date){
-        super(fromTo, startingNode, finishingNode);
-        this.relation = relation;
-        this.date = date;
+    public Relationship(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data){
+        //from to = data[0] + data[1]
+        super(data[0] + data[1] , startingNode, finishingNode);
+        this.relation = data[2];
+        this.date = data[3];
         allRelationships.add(this);
-
         ((Person)startingNode).addToRels(finishingNode.getId());
         ((Person)finishingNode).addToRels(startingNode.getId());
     }

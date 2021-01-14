@@ -11,10 +11,11 @@ public class Transaction extends DirectedGraph.Edge {
     private static HashSet<Transaction> allTransactions = new HashSet<>();
     private String date,amount; //id = transactionId
 
-    public Transaction(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String transactionId, String date, String amount) {
-        super(transactionId , startingNode, finishingNode);
-        this.date = date;
-        this.amount = amount;
+    public Transaction(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
+        //transaction ID = data[2]
+        super(data[2] , startingNode, finishingNode);
+        this.date = data[3];
+        this.amount = data[4];
         allTransactions.add(this);
     }
 

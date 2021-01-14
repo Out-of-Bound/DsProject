@@ -9,10 +9,11 @@ public class Phone extends DirectedGraph.Vertex {
     private static HashSet<Phone> allPhones = new HashSet<>();
     private String ownerSsn, operatorName; //id = number
 
-    public Phone(String ownerSsn, String number, String operatorName) {
-        super(number);
-        this.ownerSsn = ownerSsn;
-        this.operatorName = operatorName;
+    public Phone(String[] data ) {
+        //number = data[1]
+        super(data[1]);
+        this.ownerSsn = data[0];
+        this.operatorName = data[2];
         allPhones.add(this);
     }
 

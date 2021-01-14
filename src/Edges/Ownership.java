@@ -11,10 +11,11 @@ public class Ownership extends DirectedGraph.Edge {
     private static HashSet<Ownership> allOwnerships = new HashSet<>();
     private String date,amount; //id = ownershipID
 
-    public Ownership(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String ownershipId, String date, String amount) {
-        super(ownershipId, startingNode, finishingNode);
-        this.date = date;
-        this.amount = amount;
+    public Ownership(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
+        //ownershipId = data[2];
+        super(data[2], startingNode, finishingNode);
+        this.date = data[3];
+        this.amount = data[4];
         allOwnerships.add(this);
         ((Person)startingNode).addToOwners(getId());
     }
