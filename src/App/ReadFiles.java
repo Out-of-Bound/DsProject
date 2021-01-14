@@ -119,7 +119,10 @@ public class ReadFiles {
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
         HashSet<String[]> data = readDataFromFile(csvReader);
         for (String[] datum : data) {
-            Main.directedGraph.addVertex(new Person(datum[0], datum[1], datum[2], datum[3], datum[4], datum[5]));
+            Person person = new Person(datum[0], datum[1], datum[2], datum[3], datum[4], datum[5]);
+            Main.directedGraph.addVertex(person);
+            if (person.getWork().equals(PhaseFour.GHACHAGHCHI))
+                Person.addToSmuggler(person);
         }
         csvReader.close();
     }

@@ -1,6 +1,7 @@
 package Vertices;
 
 import App.GUI;
+import Edges.Call;
 import Graph.DirectedGraph;
 import java.util.HashSet;
 
@@ -10,6 +11,23 @@ public class Person extends DirectedGraph.Vertex {
     private static HashSet<Person> allPerson = new HashSet<>();
     private HashSet<String> relations = new HashSet<>();
     private HashSet<String> ownersEdge = new HashSet<>();
+    private HashSet<Call> calls = new HashSet<>();
+    private static HashSet<Person> smugglers = new HashSet<>();
+
+    public static HashSet<Person> getSmugglers() {
+        return smugglers;
+    }
+
+    public static void addToSmuggler(Person person){
+        smugglers.add(person);
+    }
+
+    public HashSet<Call> getCalls() {
+        return calls;
+    }
+    public void addToCalls(Call call){
+        calls.add(call);
+    }
 
     public Person(String firstName, String lastName, String ssn, String birthDay, String city, String work) {
         super(ssn);

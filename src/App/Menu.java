@@ -81,14 +81,14 @@ public class Menu {
                 Object source = e.getSource();
                 if (phase1.equals(source)) {
                     new PhaseOne(menuFrame);
-                    menuFrame.setEnabled(false);
+                    //menuFrame.setEnabled(false);
                 } else if (phase2.equals(source)) {
                     PhaseTow.show();
 
                 } else if (phase3.equals(source)) {
 
                 } else if (phase4.equals(source)) {
-
+                    PhaseFour.start();
                 } else if (btnChooseFolder.equals(source)) {
                     ReadFiles.start();
                     if (ReadFiles.isFilesReady())

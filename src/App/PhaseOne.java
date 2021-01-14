@@ -33,38 +33,43 @@ public class PhaseOne {
         PhaseOneFrame.setVisible(true);
         PhaseOneFrame.setLocationRelativeTo(null);
 
-        ActionListener btnActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                Object source = e.getSource();
-                if (peopleButton.equals(source)) {
-                    Person.print();
-                } else if (phonesButton.equals(source)) {
-                    Phone.print();
-                } else if (accountsButton.equals(source)) {
-                    Account.print();
-                } else if (homesButton.equals(source)) {
-                    Home.print();
-                } else if (carsButton.equals(source)) {
-                    Car.print();
-                } else if (callsButton.equals(source)){
-                    Call.print();
-                } else if (ownershipsButton.equals(source)){
-                    Ownership.print();
-                } else if (transactionsButton.equals(source)){
-                    Transaction.print();
-                } else if (relationshipsButton.equals(source)){
-                    Relationship.print();
-                } else if (backButton.equals(source)){
-                    PhaseOneFrame.setVisible(false);
-                    MenuFrame.setEnabled(true);
-                }
+
+        ActionListener btnActionListener = e -> {
+            Object source = e.getSource();
+            if (peopleButton.equals(source)) {
+                Person.print();
+            } else if (phonesButton.equals(source)) {
+                Phone.print();
+            } else if (accountsButton.equals(source)) {
+                Account.print();
+            } else if (homesButton.equals(source)) {
+                Home.print();
+            } else if (carsButton.equals(source)) {
+                Car.print();
+            } else if (callsButton.equals(source)){
+                Call.print();
+            } else if (ownershipsButton.equals(source)){
+                Ownership.print();
+            } else if (transactionsButton.equals(source)){
+                Transaction.print();
+            } else if (relationshipsButton.equals(source)){
+                Relationship.print();
+            } else if (backButton.equals(source)){
+                PhaseOneFrame.setVisible(false);
+                MenuFrame.setEnabled(true);
             }
         };
 
-
-
+        peopleButton.addActionListener(btnActionListener);
+        homesButton.addActionListener(btnActionListener);
+        phonesButton.addActionListener(btnActionListener);
+        carsButton.addActionListener(btnActionListener);
+        callsButton.addActionListener(btnActionListener);
+        accountsButton.addActionListener(btnActionListener);
+        ownershipsButton.addActionListener(btnActionListener);
+        relationshipsButton.addActionListener(btnActionListener);
+        transactionsButton.addActionListener(btnActionListener);
 /*
         PhaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override

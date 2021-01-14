@@ -16,12 +16,13 @@ import java.util.spi.CalendarDataProvider;
 public class PhaseTow {
     public static final String GOMROK = "گمرک";
     public static final String BANDER = "سازمان بنادر";
+    private static HashSet<Person> suspectedPeople;
 
     public static void show(){
         Person.print(find());
     }
 
-    private static HashSet<Person> find(){
+    public static HashSet<Person> find(){
         HashSet<Person> suspectedPeople = new HashSet<>();
         for (Person person : Person.getAllPerson()) {
             if (person.getWork().equals(GOMROK) || person.getWork().equals(BANDER)){
@@ -53,6 +54,7 @@ public class PhaseTow {
             }
         }
         saveToFile(suspectedPeople);
+        //PhaseTow.suspectedPeople = suspectedPeople;
         return suspectedPeople;
     }
     private static void saveToFile(HashSet<Person> suspectedPeople){
@@ -86,4 +88,7 @@ public class PhaseTow {
         return 0;
     }
 
+    public static HashSet<Person> getSuspectedPeople() {
+        return suspectedPeople;
+    }
 }
