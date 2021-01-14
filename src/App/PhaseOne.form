@@ -33,10 +33,10 @@
             </constraints>
             <properties>
               <background color="-4087341"/>
-              <font name="Maiandra GD" size="16"/>
+              <font name="Arial" size="28"/>
               <foreground color="-10"/>
               <margin top="0" left="0" bottom="0" right="0"/>
-              <text value="Back"/>
+              <text value="←"/>
             </properties>
           </component>
           <vspacer id="6b548">
@@ -132,9 +132,10 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Cars"/>
+                  <label value="ماشین ها"/>
+                  <text value="ماشین ها"/>
                 </properties>
               </component>
               <component id="b6657" class="javax.swing.JButton" binding="accountsButton" default-binding="true">
@@ -147,24 +148,10 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Accounts"/>
-                </properties>
-              </component>
-              <component id="6bcd3" class="javax.swing.JButton" binding="peopleButton">
-                <constraints>
-                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="400" height="-1"/>
-                    <preferred-size width="400" height="-1"/>
-                    <maximum-size width="400" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
-                  <foreground color="-10"/>
-                  <text value="People"/>
+                  <label value="حساب های بانکی"/>
+                  <text value="حساب های بانکی"/>
                 </properties>
               </component>
               <component id="4c3c5" class="javax.swing.JButton" binding="homesButton" default-binding="true">
@@ -177,9 +164,10 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Homes"/>
+                  <label value="خانه ها"/>
+                  <text value="خانه ها"/>
                 </properties>
               </component>
               <component id="21e34" class="javax.swing.JButton" binding="phonesButton" default-binding="true">
@@ -192,9 +180,9 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Phones"/>
+                  <text value="شماره تلفن ها"/>
                 </properties>
               </component>
               <component id="f067" class="javax.swing.JButton" binding="transactionsButton" default-binding="true">
@@ -207,9 +195,9 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Transactions"/>
+                  <text value="تراکنش ها"/>
                 </properties>
               </component>
               <component id="2550f" class="javax.swing.JButton" binding="ownershipsButton" default-binding="true">
@@ -222,9 +210,9 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Ownerships"/>
+                  <text value="مالکیت ها"/>
                 </properties>
               </component>
               <component id="d8406" class="javax.swing.JButton" binding="relationshipsButton" default-binding="true">
@@ -237,9 +225,9 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
-                  <text value="Relationships"/>
+                  <text value="خویشاوندی ها"/>
                 </properties>
               </component>
               <component id="aa957" class="javax.swing.JButton" binding="callsButton" default-binding="true">
@@ -252,10 +240,10 @@
                 </constraints>
                 <properties>
                   <background color="-10398298"/>
-                  <font name="Maiandra GD" size="16"/>
+                  <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <hideActionText value="false"/>
-                  <text value="Calls"/>
+                  <text value="تماس ها"/>
                 </properties>
               </component>
               <hspacer id="e1b55">
@@ -278,12 +266,28 @@
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <component id="6bcd3" class="javax.swing.JButton" binding="peopleButton">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="400" height="-1"/>
+                    <preferred-size width="400" height="-1"/>
+                    <maximum-size width="400" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-10398298"/>
+                  <font name="Maiandra GD" size="16"/>
+                  <foreground color="-10"/>
+                  <label value="اشخاص"/>
+                  <text value="اشخاص"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <component id="89f7" class="javax.swing.JLabel">
             <constraints border-constraint="North"/>
             <properties>
-              <text value="Label"/>
+              <text value="نمایش اطلاعات"/>
             </properties>
           </component>
           <hspacer id="7d043">
