@@ -107,6 +107,24 @@ public class Menu {
                 labelChooseFolder.setForeground(new Color(95 , 95, 95));
             }
         });
+        Color mouseEnteredColor =  new Color(87 , 78 , 144);
+        Color mouseExitedColor =  new Color(49 , 44 , 81);
+        MouseAdapter mouseAdapter = new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                e.getComponent().setBackground(mouseEnteredColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                e.getComponent().setBackground(mouseExitedColor);
+            }
+        };
+
+        phase1.addMouseListener(mouseAdapter);
+        phase2.addMouseListener(mouseAdapter);
+        phase3.addMouseListener(mouseAdapter);
+        phase4.addMouseListener(mouseAdapter);
     }
 
 }
