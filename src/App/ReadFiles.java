@@ -275,6 +275,7 @@ public class ReadFiles {
                 try {
                     for (int i = 0; i < allVertexFileName.length ; i++ ) {
                         String fileName = allVertexFileName[i];
+                        Main.menu.changeLabel(fileName.substring( 1, fileName.length() - 4 ));
                         readVertexFile( i ,filePath + fileName);
                     }
 
@@ -302,6 +303,7 @@ public class ReadFiles {
                 try {
                     for (int i = 0; i < allEdgeFileName.length ; i++ ) {
                         String fileName = allEdgeFileName[i];
+                        Main.menu.changeLabel(fileName.substring( 1, fileName.length() - 4));
                         readEdgeFile( i, filePath + fileName);
                     }
                 } catch (IOException e) {

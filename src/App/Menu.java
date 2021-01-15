@@ -144,8 +144,10 @@ public class Menu {
         btnChooseFolder.setText("");
         btnChooseFolder.setBorder(null);
         btnChooseFolder.setBackground(new Color(255,255,255));
-        labelChooseFolder.setText("در حال خواندن فایل " + ReadFiles.getFolderName());
 
+    }
+    public void changeLabel(String fileName){
+        labelChooseFolder.setText("در حال خواندن فایل " + fileName);
     }
     public void fileReadEnd (){
         Image image = null;
