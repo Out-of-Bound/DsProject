@@ -7,6 +7,7 @@ import Edges.Transaction;
 import Graph.DirectedGraph;
 import Vertices.*;
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
@@ -133,6 +134,7 @@ public class ReadFiles {
 
         switch (index){
             case 0 :
+                System.out.println(allEdgeFileName[0] + "read start");
                 for (String[] datum : data) {
                     String from = datum[0];
                     String to = datum[1];
@@ -141,8 +143,10 @@ public class ReadFiles {
                     Main.directedGraph.addEdges(new Call(start, finish, datum));
                 }
                 callRead = true;
+                System.out.println("call read end");
                 break;
             case 1 :
+                System.out.println(allEdgeFileName[1] + "read start");
                 for (String[] datum : data) {
                     String from = datum[0];
                     String to = datum[1];
@@ -151,8 +155,10 @@ public class ReadFiles {
                     Main.directedGraph.addEdges(new Ownership(start, finish, datum));
                 }
                 ownershipRead = true;
+                System.out.println("ownership read end");
                 break;
             case 2 :
+                System.out.println(allEdgeFileName[2] + "read start");
                 for (String[] datum : data) {
                     String from = datum[0];
                     String to = datum[1];
@@ -161,8 +167,10 @@ public class ReadFiles {
                     Main.directedGraph.addEdges(new Relationship(start, finish, datum));
                 }
                 relationshipRead = true;
+                System.out.println("rel read end");
                 break;
             case 3 :
+                System.out.println(allEdgeFileName[3] + "read start");
                 for (String[] datum : data) {
                     String from = datum[0];
                     String to = datum[1];
@@ -171,13 +179,14 @@ public class ReadFiles {
                     Main.directedGraph.addEdges(new Transaction(start, finish, datum));
                 }
                 transactionsRead = true;
+                System.out.println("trans read end");
         }
         csvReader.close();
     }
 
     private static void readFiles(String filePath) throws IOException {
 
-       /* for (int i = 0; i < allVertexFileName.length ; i++ ) {
+      /*  for (int i = 0; i < allVertexFileName.length ; i++ ) {
 
             int finalI = i;
             new Thread(new Runnable() {
@@ -234,29 +243,89 @@ public class ReadFiles {
                 System.out.println("read end");
                 new PhaseOne(new JFrame());
             }
-        }).start();
-*/
+        }).start();*/
         //**********************************************************************************************************
 
-        for (int i = 0; i < allVertexFileName.length ; i++ ) {
+        /*for (int i = 0; i < allVertexFileName.length ; i++ ) {
 
-            int finalI = i;
-            String fileName = allVertexFileName[finalI];
-            readVertexFile( finalI ,filePath + fileName);
+            String fileName = allVertexFileName[i];
+            readVertexFile(i,filePath + fileName);
 
         }
 
         for (int i = 0; i < allEdgeFileName.length ; i++ ) {
 
-            int finalI = i;
-            String fileName = allEdgeFileName[finalI];
-            readEdgeFile( finalI ,filePath + fileName);
+            String fileName = allEdgeFileName[i];
+            readEdgeFile(i,filePath + fileName);
 
         }
 
         filesReady = true;
-        System.out.println("read end");
-        new PhaseOne(new JFrame());
+        System.out.println("read end");*/
+
+        //*****************************************************************************************
+
+
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Main.menu.fileReadStart();
+                try {
+                    for (int i = 0; i < allVertexFileName.length ; i++ ) {
+                        String fileName = allVertexFileName[i];
+                        readVertexFile( i ,filePath + fileName);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while ( !accRead || !carRead || !homeRead || !personRead || !phoneRead ){
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                try {
+                    for (int i = 0; i < allEdgeFileName.length ; i++ ) {
+                        String fileName = allEdgeFileName[i];
+                        readEdgeFile( i, filePath + fileName);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while ( !callRead || !relationshipRead || !transactionsRead || !ownershipRead ){
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                filesReady = true;
+                System.out.println("read end");
+                Main.menu.fileReadEnd();
+            }
+        }).start();
 
     }
 

@@ -29,7 +29,7 @@ public class Menu {
     private JButton btnChooseFolder;
 
     public Menu() {
-        JFrame menuFrame = new JFrame("صفحه‌ اصلی");
+        JFrame menuFrame = new JFrame("Menu");
         menuFrame.setContentPane(panel);
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         menuFrame.setSize(1920,1080);
@@ -137,10 +137,17 @@ public class Menu {
         phase2.setEnabled(true);
         phase3.setEnabled(true);
         phase4.setEnabled(true);
-        fileRead();
     }
+    public void fileReadStart () {
 
-    public void fileRead (){
+        btnChooseFolder.setIcon( new ImageIcon(this.getClass().getResource("searching.gif")) );
+        btnChooseFolder.setText("");
+        btnChooseFolder.setBorder(null);
+        btnChooseFolder.setBackground(new Color(255,255,255));
+        labelChooseFolder.setText("در حال خواندن فایل " + ReadFiles.getFolderName());
+
+    }
+    public void fileReadEnd (){
         Image image = null;
         try {
             BufferedImage orgImg = ImageIO.read(new File(".\\img\\file.jpg"));
@@ -151,10 +158,9 @@ public class Menu {
         }
         btnChooseFolder.setIcon( new ImageIcon(image) );
         btnChooseFolder.setText("");
-        btnChooseFolder.setBackground(new Color(255, 255, 255));
+        btnChooseFolder.setBackground(new Color(255, 255 , 255));
         btnChooseFolder.setBorder(null);
-        btnChooseFolder.setEnabled(false);
-        labelChooseFolder.setText(ReadFiles.getFolderName());
         labelChooseFolder.setText("فایل " + ReadFiles.getFolderName() + " خوانده شد");
+        enableButtons();
     }
 }
