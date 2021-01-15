@@ -11,6 +11,7 @@ public class Person extends DirectedGraph.Vertex {
     private static HashSet<Person> allPerson = new HashSet<>();
     private HashSet<String> relations = new HashSet<>();
     private HashSet<String> ownersEdge = new HashSet<>();
+    private HashSet<String> personTransactions = new HashSet<>();
     private HashSet<Call> calls = new HashSet<>();
     private static HashSet<Person> smugglers = new HashSet<>();
 
@@ -38,6 +39,8 @@ public class Person extends DirectedGraph.Vertex {
         this.city = data[4];
         this.work = data[5];
         allPerson.add(this);
+        if (this.work.equals("قاچاقچی"))
+            addToSmuggler(this);
     }
 
     public String getFirstName() {
@@ -63,9 +66,11 @@ public class Person extends DirectedGraph.Vertex {
     public static HashSet<Person> getAllPerson() {
         return allPerson;
     }
+
     public HashSet<String> getRelations() {
         return relations;
     }
+
     public HashSet<String> getOwnersEdge() {
         return ownersEdge;
     }
@@ -73,8 +78,17 @@ public class Person extends DirectedGraph.Vertex {
     public void addToRels(String relID){
         relations.add(relID);
     }
+
     public void addToOwners(String ownID){
         ownersEdge.add(ownID);
+    }
+
+    public void addToTrans(String tranID){
+        personTransactions.add(tranID);
+    }
+
+    public HashSet<String> getPersonTransactions() {
+        return personTransactions;
     }
 
     public static void print(HashSet<Person> allPeople){

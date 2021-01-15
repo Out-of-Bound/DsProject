@@ -10,13 +10,20 @@ public class PhaseFour {
     public static final String SMUGGLER = "قاچاقچی";
 
     public static void start(){
+
         HashSet<Person> suspectedPhase2 = PhaseTow.getSuspectedPeople();
+
         if (suspectedPhase2.isEmpty())
             suspectedPhase2 = PhaseTow.find();
+
         HashSet<Person> smugglers = Person.getSmugglers();
+
         HashSet<Person> suspectedPeople = new HashSet<>();
+
         for (Person person : suspectedPhase2) {
+
                 HashSet<Call> calls = person.getCalls();
+
                 for (Call call: calls) {
                     Person person1 = (Person) Main.directedGraph.getVertexByID(((Phone)call.getFinishingVertex()).getOwnerSsn());
                     Person person2 = (Person) Main.directedGraph.getVertexByID(((Phone)call.getStartingVertex()).getOwnerSsn());
@@ -25,7 +32,9 @@ public class PhaseFour {
                     else if (smugglers.contains(person2))
                         suspectedPeople.add(person);
                 }
+
             }
+
         Person.print(suspectedPeople);
     }
 

@@ -75,7 +75,7 @@ public class Menu {
             } else if (phase2.equals(source)) {
                 PhaseTow.show();
             } else if (phase3.equals(source)) {
-
+                PhaseThree.start();
             } else if (phase4.equals(source)) {
                 PhaseFour.start();
             } else if (btnChooseFolder.equals(source)) {
