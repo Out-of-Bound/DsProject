@@ -186,6 +186,8 @@ public class ReadFiles {
 
     private static void readFiles(String filePath) throws IOException {
 
+        //**************************************************************** halat 1
+
       /*  for (int i = 0; i < allVertexFileName.length ; i++ ) {
 
             int finalI = i;
@@ -244,7 +246,7 @@ public class ReadFiles {
                 new PhaseOne(new JFrame());
             }
         }).start();*/
-        //**********************************************************************************************************
+        //********************************************************************************************************** halat 2
 
         /*for (int i = 0; i < allVertexFileName.length ; i++ ) {
 
@@ -263,9 +265,7 @@ public class ReadFiles {
         filesReady = true;
         System.out.println("read end");*/
 
-        //*****************************************************************************************
-
-
+        //***************************************************************************************** halat 3
 
 
         new Thread(new Runnable() {
@@ -279,39 +279,17 @@ public class ReadFiles {
                         readVertexFile( i ,filePath + fileName);
                     }
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-
-
-
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while ( !accRead || !carRead || !homeRead || !personRead || !phoneRead ){
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                try {
                     for (int i = 0; i < allEdgeFileName.length ; i++ ) {
                         String fileName = allEdgeFileName[i];
                         Main.menu.changeLabel(fileName.substring( 1, fileName.length() - 4));
                         readEdgeFile( i, filePath + fileName);
                     }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-
 
         new Thread(new Runnable() {
             @Override
