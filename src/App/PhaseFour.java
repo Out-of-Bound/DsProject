@@ -11,13 +11,13 @@ public class PhaseFour {
 
     public static void start(){
 
-        HashSet<Person> suspectedPhase2 = PhaseTow.getSuspectedPeople();
-        if (suspectedPhase2.isEmpty())
-            suspectedPhase2 = PhaseTow.find();
+        HashSet<Person> suspectedPhase3 = PhaseThree.getSuspectedPhase3();
+        if (suspectedPhase3.isEmpty())
+            suspectedPhase3 = PhaseThree.find();
         HashSet<Person> smugglers = Person.getSmugglers();
         HashSet<Person> suspectedPeople = new HashSet<>();
 
-        for (Person person : suspectedPhase2) {
+        for (Person person : suspectedPhase3) {
                 HashSet<Call> calls = person.getCalls();
                 for (Call call: calls) {
                     Person person1 = (Person) Main.directedGraph.getVertexByID(((Phone)call.getFinishingVertex()).getOwnerSsn());

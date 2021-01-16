@@ -25,8 +25,10 @@ public class PhaseTow {
                 boolean suspected = false;
                 for (String ownID : person.getOwnersEdge()) {
                     Ownership ownership = ((Ownership) Main.directedGraph.getEdgeByID(ownID));
-                    long t = getTime(ownership);
-                    if(t <= 2){
+                    //long t = getTime(ownership);
+                    String[] date = ownership.getDate().split("-");
+                    int dd = Integer.parseInt(date[0]);
+                    if(dd >= 2018){
                         suspectedPeople.add(person);
                         suspected = true;
                         break;
@@ -40,8 +42,10 @@ public class PhaseTow {
                     Person personRel = (Person) Main.directedGraph.getVertexByID(personRelID);
                     for (String relID : personRel.getOwnersEdge()) {
                         Ownership ownership = (Ownership) Main.directedGraph.getEdgeByID(relID);
-                        long t = getTime(ownership);
-                        if(t<=2){
+                        //long t = getTime(ownership);
+                        String[] date = ownership.getDate().split("-");
+                        int dd = Integer.parseInt(date[0]);
+                        if(dd >= 2018){
                             suspectedPeople.add(person);
                             break;
                         }
