@@ -40,7 +40,6 @@ public class Menu {
         if (ReadFiles.isFilesReady()){
             enableButtons();
         }
-        enableButtons();
 
         Image image = null;
         try {
