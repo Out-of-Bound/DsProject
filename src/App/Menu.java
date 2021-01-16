@@ -29,6 +29,7 @@ public class Menu {
     private JButton btnChooseFolder;
 
     public Menu() {
+
         JFrame menuFrame = new JFrame("Menu");
         menuFrame.setContentPane(panel);
         menuFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -39,6 +40,7 @@ public class Menu {
         if (ReadFiles.isFilesReady()){
             enableButtons();
         }
+        enableButtons();
 
         Image image = null;
         try {

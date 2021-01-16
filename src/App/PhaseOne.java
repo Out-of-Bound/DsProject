@@ -27,6 +27,7 @@ public class PhaseOne {
     private JButton transactionsButton;
     private JButton backButton;
     private JLabel imgView;
+    private JLabel head;
 
     public PhaseOne(JFrame MenuFrame){
 
@@ -37,6 +38,7 @@ public class PhaseOne {
         phaseOneFrame.setVisible(true);
         phaseOneFrame.setLocationRelativeTo(null);
         phaseOneFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        head.setBackground(new Color(49, 44, 81));
 
         Image image = null;
         try {

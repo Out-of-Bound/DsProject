@@ -374,10 +374,10 @@
               </hspacer>
             </children>
           </grid>
-          <component id="89f7" class="javax.swing.JLabel">
+          <component id="89f7" class="javax.swing.JLabel" binding="head">
             <constraints border-constraint="North"/>
             <properties>
-              <background color="-13554607"/>
+              <background color="-14538703"/>
               <enabled value="true"/>
               <font name="Vazir" size="36" style="1"/>
               <foreground color="-13554607"/>

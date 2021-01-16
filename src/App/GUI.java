@@ -12,7 +12,7 @@ public class GUI {
         JTable jt = new JTable(data, tableColumn) {
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component returnComp = super.prepareRenderer(renderer, row, column);
-                Color alternateColor = new Color(217,226,243);
+                Color alternateColor = new Color(227, 228, 254);
                 Color whiteColor = Color.WHITE;
                 if (!returnComp.getBackground().equals(getSelectionBackground())) {
                     Color bg = (row % 2 == 0 ? alternateColor : whiteColor);
@@ -22,7 +22,7 @@ public class GUI {
             }
         };
         jt.getTableHeader().setFont(new Font("Vazir", Font.BOLD , 15));
-        jt.getTableHeader().setBackground(new Color(68 , 114 , 196));
+        jt.getTableHeader().setBackground(new Color(97, 85, 166));
         jt.getTableHeader().setForeground(Color.WHITE);
         jt.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         jt.setFont(new Font("Vazir", Font.PLAIN, 14));
