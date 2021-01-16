@@ -1,13 +1,14 @@
 package Vertices;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import java.util.HashMap;
 
 public class Account extends DirectedGraph.Vertex {
-    private static HashMap<String , Account> allAccounts = new HashMap<>();
+
     private String ownerSsn, bankName, iBan; // id = accountId
+    private static HashMap<String , Account> allAccounts = new HashMap<>();
 
     public Account(String[] data) {
         //accountId = data[3]
@@ -21,11 +22,9 @@ public class Account extends DirectedGraph.Vertex {
     public String getOwnerSsn() {
         return ownerSsn;
     }
-
     public String getBankName() {
         return bankName;
     }
-
     public String getiBan() {
         return iBan;
     }
@@ -48,7 +47,7 @@ public class Account extends DirectedGraph.Vertex {
             data[i][5] = account.getId();
             i++;
         }
-        GUI.showJTable("Accounts" ,tableColumn , data);
+        Table.showJTable("Accounts" ,tableColumn , data);
     }
 
 }

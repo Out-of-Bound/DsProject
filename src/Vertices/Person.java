@@ -1,6 +1,6 @@
 package Vertices;
 
-import App.GUI;
+import App.Table;
 import Edges.Call;
 import Graph.DirectedGraph;
 import java.util.HashSet;
@@ -9,26 +9,12 @@ public class Person extends DirectedGraph.Vertex {
 
     private String firstName, lastName, birthDay, city, work; //id = ssn
     private static HashSet<Person> allPerson = new HashSet<>();
-    private HashSet<String> relations = new HashSet<>();
-    private HashSet<String> ownersEdge = new HashSet<>();
-    private HashSet<String> personTransactions = new HashSet<>();
-    private HashSet<Call> calls = new HashSet<>();
     private static HashSet<Person> smugglers = new HashSet<>();
+    private HashSet<String> relations = new HashSet<>();
+    private HashSet<String> owners = new HashSet<>();
+    private HashSet<String> transactions = new HashSet<>();
+    private HashSet<Call> calls = new HashSet<>();
 
-    public static HashSet<Person> getSmugglers() {
-        return smugglers;
-    }
-
-    public static void addToSmuggler(Person person){
-        smugglers.add(person);
-    }
-
-    public HashSet<Call> getCalls() {
-        return calls;
-    }
-    public void addToCalls(Call call){
-        calls.add(call);
-    }
 
     public Person(String[] data) {
         // ssn = data[2]
@@ -46,19 +32,15 @@ public class Person extends DirectedGraph.Vertex {
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getBirthDay() {
         return birthDay;
     }
-
     public String getCity() {
         return city;
     }
-
     public String getWork() {
         return work;
     }
@@ -66,29 +48,36 @@ public class Person extends DirectedGraph.Vertex {
     public static HashSet<Person> getAllPerson() {
         return allPerson;
     }
-
+    public static HashSet<Person> getSmugglers() {
+        return smugglers;
+    }
     public HashSet<String> getRelations() {
         return relations;
     }
-
-    public HashSet<String> getOwnersEdge() {
-        return ownersEdge;
+    public HashSet<String> getOwners() {
+        return owners;
+    }
+    public HashSet<String> getTransactions() {
+        return transactions;
+    }
+    public HashSet<Call> getCalls() {
+        return calls;
     }
 
     public void addToRels(String relID){
         relations.add(relID);
     }
-
     public void addToOwners(String ownID){
-        ownersEdge.add(ownID);
+        owners.add(ownID);
     }
-
     public void addToTrans(String tranID){
-        personTransactions.add(tranID);
+        transactions.add(tranID);
     }
-
-    public HashSet<String> getPersonTransactions() {
-        return personTransactions;
+    public static void addToSmuggler(Person person){
+        smugglers.add(person);
+    }
+    public void addToCalls(Call call){
+        calls.add(call);
     }
 
     public static void print(HashSet<Person> allPeople){
@@ -104,7 +93,7 @@ public class Person extends DirectedGraph.Vertex {
             data[i][5] = person.getWork();
             i++;
         }
-        GUI.showJTable("Suspected People" , tableColumn , data);
+        Table.showJTable("Suspected People" , tableColumn , data);
     }
     public static void print() {
         print(allPerson);

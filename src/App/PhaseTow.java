@@ -8,8 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static java.util.Calendar.*;
-
 public class PhaseTow {
     public static final String GOMROK = "گمرک";
     public static final String BANDER = "سازمان بنادر";
@@ -23,9 +21,8 @@ public class PhaseTow {
         for (Person person : Person.getAllPerson()) {
             if (person.getWork().equals(GOMROK) || person.getWork().equals(BANDER)){
                 boolean suspected = false;
-                for (String ownID : person.getOwnersEdge()) {
+                for (String ownID : person.getOwners()) {
                     Ownership ownership = ((Ownership) Main.directedGraph.getEdgeByID(ownID));
-
                     if(is2YearsAgo(ownership)){
                         suspectedPeople.add(person);
                         suspected = true;
@@ -38,7 +35,7 @@ public class PhaseTow {
 
                 for (String personRelID: person.getRelations()) {
                     Person personRel = (Person) Main.directedGraph.getVertexByID(personRelID);
-                    for (String relID : personRel.getOwnersEdge()) {
+                    for (String relID : personRel.getOwners()) {
                         Ownership ownership = (Ownership) Main.directedGraph.getEdgeByID(relID);
                         if(is2YearsAgo(ownership)){
                             suspectedPeople.add(person);
@@ -82,11 +79,6 @@ public class PhaseTow {
             e.printStackTrace();
         }
         return false;
-    }
-    private static Calendar getCalendar(Date date) {
-        Calendar cal = Calendar.getInstance(Locale.US);
-        cal.setTime(date);
-        return cal;
     }
 
     public static HashSet<Person> getSuspectedPeople() {

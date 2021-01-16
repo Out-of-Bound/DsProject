@@ -37,7 +37,6 @@ public class Menu {
         if (ReadFiles.isFilesReady()){
             enableButtons();
         }
-        enableButtons();
 
         Image image = null;
         try {
@@ -140,8 +139,7 @@ public class Menu {
         Image image = null;
         try {
             BufferedImage orgImg = ImageIO.read(new File(".\\img\\file.jpg"));
-            image = orgImg.getScaledInstance(78, 100,
-                    Image.SCALE_SMOOTH);
+            image = orgImg.getScaledInstance(78, 100, Image.SCALE_SMOOTH);
         } catch (IOException e) {
             e.printStackTrace();
         }

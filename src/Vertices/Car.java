@@ -1,13 +1,14 @@
 package Vertices;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import java.util.HashSet;
 
 public class Car extends DirectedGraph.Vertex {
-    private static HashSet<Car> allCars = new HashSet<>();
+
     private String ownerSsn, model, color; //id = plate
+    private static HashSet<Car> allCars = new HashSet<>();
 
     public Car(String[] data) {
         //plate = data[0];
@@ -21,11 +22,9 @@ public class Car extends DirectedGraph.Vertex {
     public String getOwnerSsn() {
         return ownerSsn;
     }
-
     public String getModel() {
         return model;
     }
-
     public String getColor() {
         return color;
     }
@@ -48,7 +47,7 @@ public class Car extends DirectedGraph.Vertex {
             data[i][5] = car.getColor();
             i++;
         }
-        GUI.showJTable("Cars" , tableColumn , data);
+        Table.showJTable("Cars" , tableColumn , data);
     }
 
 

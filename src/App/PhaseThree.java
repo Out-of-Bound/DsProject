@@ -2,7 +2,6 @@ package App;
 
 import Edges.Transaction;
 import Vertices.Person;
-
 import java.util.HashSet;
 
 public class PhaseThree {
@@ -31,7 +30,7 @@ public class PhaseThree {
         checkedPeople.add(person);
         HashSet< String > personRelations = person.getRelations();
         HashSet< Person > mustCheckRelations = new HashSet<>();
-        HashSet< String > personTransID = person.getPersonTransactions();
+        HashSet< String > personTransID = person.getTransactions();
 
         for ( String tranID : personTransID ) {
             Transaction transaction = (Transaction) Main.directedGraph.getEdgeByID(tranID);

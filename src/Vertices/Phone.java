@@ -1,13 +1,14 @@
 package Vertices;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import java.util.HashSet;
 
 public class Phone extends DirectedGraph.Vertex {
-    private static HashSet<Phone> allPhones = new HashSet<>();
+
     private String ownerSsn, operatorName; //id = number
+    private static HashSet<Phone> allPhones = new HashSet<>();
 
     public Phone(String[] data ) {
         //number = data[1]
@@ -20,7 +21,6 @@ public class Phone extends DirectedGraph.Vertex {
     public String getOwnerSsn() {
         return ownerSsn;
     }
-
     public String getOperatorName() {
         return operatorName;
     }
@@ -43,7 +43,7 @@ public class Phone extends DirectedGraph.Vertex {
             data[i][4] = phone.getOperatorName();
             i++;
         }
-        GUI.showJTable("Phone",tableColumn , data);
+        Table.showJTable("Phones",tableColumn , data);
     }
 
 }
