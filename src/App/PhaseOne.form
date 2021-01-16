@@ -84,7 +84,11 @@
           </vspacer>
           <component id="89b89" class="javax.swing.JButton" binding="backButton">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="65" height="-1"/>
+                <preferred-size width="65" height="-1"/>
+                <maximum-size width="65" height="-1"/>
+              </grid>
             </constraints>
             <properties>
               <background color="-4087341"/>
@@ -156,7 +160,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <label value="ماشین ها"/>
@@ -172,7 +176,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <label value="حساب های بانکی"/>
@@ -188,7 +192,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <label value="خانه ها"/>
@@ -204,7 +208,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <text value="شماره تلفن ها"/>
@@ -219,7 +223,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <text value="تراکنش ها"/>
@@ -234,7 +238,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <text value="خویشاوندی ها"/>
@@ -249,7 +253,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <hideActionText value="false"/>
@@ -290,7 +294,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <label value="اشخاص"/>
@@ -306,7 +310,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-10398298"/>
+                  <background color="-9615962"/>
                   <font name="Vazir" size="25"/>
                   <foreground color="-10"/>
                   <text value="مالکیت ها"/>

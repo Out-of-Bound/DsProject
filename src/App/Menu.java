@@ -73,7 +73,7 @@ public class Menu {
 
             Object source = e.getSource();
             if (phase1.equals(source)) {
-                new PhaseOne(menuFrame);
+                new PhaseOne();
             } else if (phase2.equals(source)) {
                 PhaseTow.show();
             } else if (phase3.equals(source)) {
@@ -93,12 +93,6 @@ public class Menu {
         phase3.addActionListener(btnActionListener);
         phase4.addActionListener(btnActionListener);
 
-
-        /*logout.addActionListener(e -> {
-            if (JOptionPane.showConfirmDialog(menuFrame, "Are you sure you want to exit?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
-                System.exit(0);
-        });*/
-
         menuFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -110,7 +104,7 @@ public class Menu {
 
         Color mouseEnteredColor =  new Color(87 , 78 , 144);
         Color mouseExitedColor =  new Color(49 , 44 , 81);
-        MouseAdapter mouseAdapter = new MouseAdapter() {
+        /*MouseAdapter mouseAdapter = new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 JButton button = (JButton) e.getComponent();
@@ -127,30 +121,24 @@ public class Menu {
         phase1.addMouseListener(mouseAdapter);
         phase2.addMouseListener(mouseAdapter);
         phase3.addMouseListener(mouseAdapter);
-        phase4.addMouseListener(mouseAdapter);
-
-       // btnChooseFolder.addMouseListener(mouseAdapter);
-
-
+        phase4.addMouseListener(mouseAdapter);*/
 
     }
+
     private void enableButtons(){
         phase1.setEnabled(true);
         phase2.setEnabled(true);
         phase3.setEnabled(true);
         phase4.setEnabled(true);
     }
-    public void fileReadStart () {
 
+    public void fileReadStart () {
         btnChooseFolder.setIcon( new ImageIcon(this.getClass().getResource("searching.gif")) );
         btnChooseFolder.setText("");
         btnChooseFolder.setBorder(null);
         btnChooseFolder.setBackground(new Color(255,255,255));
+    }
 
-    }
-    public void changeLabel(String fileName){
-        labelChooseFolder.setText("در حال خواندن فایل " + fileName);
-    }
     public void fileReadEnd (){
         Image image = null;
         try {
@@ -166,5 +154,9 @@ public class Menu {
         btnChooseFolder.setBorder(null);
         labelChooseFolder.setText("فایل " + ReadFiles.getFolderName() + " خوانده شد");
         enableButtons();
+    }
+
+    public void changeLabel(String fileName){
+        labelChooseFolder.setText("در حال خواندن فایل " + fileName);
     }
 }
