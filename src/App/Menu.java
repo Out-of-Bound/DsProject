@@ -159,4 +159,8 @@ public class Menu {
     public void changeLabel(String fileName){
         labelChooseFolder.setText("در حال خواندن فایل " + fileName);
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

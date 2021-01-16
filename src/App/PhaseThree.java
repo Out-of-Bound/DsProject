@@ -20,14 +20,14 @@ public class PhaseThree {
 
 
         for (Person person : suspectedPhase2) {
-            checkTrans(person);
+            checkTrans(person, person);
         }
 
         Person.print(suspectedPeoplePhase3);
 
     }
 
-    public static void checkTrans( Person person ){
+    public static void checkTrans( Person startingPerson, Person person ){
         checkedPeople.add(person);
         HashSet< String > personRelations = person.getRelations();
         HashSet< Person > mustCheckRelations = new HashSet<>();
@@ -36,8 +36,9 @@ public class PhaseThree {
         for ( String tranID : personTransID ) {
             Transaction transaction = (Transaction) Main.directedGraph.getEdgeByID(tranID);
             Person from = transaction.getPersonFrom();
+
             if ( from.getWork().equals(SMUGGLER) ){
-                suspectedPeoplePhase3.add(person);
+                suspectedPeoplePhase3.add( startingPerson );
                 return;
             }
 
@@ -51,7 +52,7 @@ public class PhaseThree {
         for (Person personRel : mustCheckRelations) {
             if ( checkedPeople.contains(personRel) )
                 continue;
-            checkTrans( personRel );
+            checkTrans(startingPerson, personRel );
         }
     }
 

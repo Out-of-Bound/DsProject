@@ -204,8 +204,9 @@
       <component id="a339f" class="javax.swing.JLabel" binding="imgView">
         <constraints border-constraint="Center"/>
         <properties>
-          <background color="-10"/>
+          <background color="-6488231"/>
           <enabled value="false"/>
+          <foreground color="-4520404"/>
           <text value=""/>
         </properties>
       </component>
