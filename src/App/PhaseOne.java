@@ -27,8 +27,9 @@ public class PhaseOne {
     private JButton transactionsButton;
     private JButton backButton;
     private JLabel imgView;
+    private JLabel head;
 
-    public PhaseOne(JFrame MenuFrame){
+    public PhaseOne(){
 
         JFrame phaseOneFrame = new JFrame("نمایش اطلاعات");
         phaseOneFrame.setContentPane(panel);
@@ -37,6 +38,7 @@ public class PhaseOne {
         phaseOneFrame.setVisible(true);
         phaseOneFrame.setLocationRelativeTo(null);
         phaseOneFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        head.setBackground(new Color(49, 44, 81));
 
         Image image = null;
         try {
@@ -70,7 +72,6 @@ public class PhaseOne {
                 Relationship.print();
             } else if (backButton.equals(source)){
                 phaseOneFrame.setVisible(false);
-                MenuFrame.setEnabled(true);
             }
         };
 
@@ -83,18 +84,7 @@ public class PhaseOne {
         ownershipsButton.addActionListener(btnActionListener);
         relationshipsButton.addActionListener(btnActionListener);
         transactionsButton.addActionListener(btnActionListener);
-/*
-        phaseOneFrame.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(phaseOneFrame, "Are you sure you want to back Menu?" , "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                    phaseOneFrame.setVisible(false);
-                    MenuFrame.setEnabled(true);
-                }
-            }
-        });
+        backButton.addActionListener(btnActionListener);
 
-
- */
     }
 }

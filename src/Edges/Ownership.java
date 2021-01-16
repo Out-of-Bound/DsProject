@@ -6,9 +6,11 @@ import Graph.DirectedGraph;
 import Vertices.Person;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Ownership extends DirectedGraph.Edge {
     private static HashSet<Ownership> allOwnerships = new HashSet<>();
+
     private String date,amount; //id = ownershipID
 
     public Ownership(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
