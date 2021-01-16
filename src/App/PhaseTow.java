@@ -25,10 +25,8 @@ public class PhaseTow {
                 boolean suspected = false;
                 for (String ownID : person.getOwnersEdge()) {
                     Ownership ownership = ((Ownership) Main.directedGraph.getEdgeByID(ownID));
-                    //long t = getTime(ownership);
-                    String[] date = ownership.getDate().split("-");
-                    int dd = Integer.parseInt(date[0]);
-                    if(dd >= 2018){
+
+                    if(is2YearsAgo(ownership)){
                         suspectedPeople.add(person);
                         suspected = true;
                         break;
@@ -42,10 +40,7 @@ public class PhaseTow {
                     Person personRel = (Person) Main.directedGraph.getVertexByID(personRelID);
                     for (String relID : personRel.getOwnersEdge()) {
                         Ownership ownership = (Ownership) Main.directedGraph.getEdgeByID(relID);
-                        //long t = getTime(ownership);
-                        String[] date = ownership.getDate().split("-");
-                        int dd = Integer.parseInt(date[0]);
-                        if(dd >= 2018){
+                        if(is2YearsAgo(ownership)){
                             suspectedPeople.add(person);
                             break;
                         }
@@ -74,20 +69,19 @@ public class PhaseTow {
         }
     }
 
-    private static int getTime(Ownership ownership) {
+    private static boolean is2YearsAgo(Ownership ownership) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(ownership.getDate());
-            Calendar a = getCalendar(date);
-            Calendar b = getCalendar(new Date(System.currentTimeMillis()));
-            int diff = b.get(DATE) - a.get(DATE);
-            System.out.println(date.toString() + " " + diff);
-
-            return diff;
+            Date today = new Date();
+            today.setYear(today.getYear()-2);
+            boolean b = today.getTime() <= date.getTime();
+            // System.out.println(date.toString() + " " + b);
+            return b;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return 0;
+        return false;
     }
     private static Calendar getCalendar(Date date) {
         Calendar cal = Calendar.getInstance(Locale.US);
