@@ -77,7 +77,7 @@ public class Menu {
             } else if (phase3.equals(source)) {
                 PhaseThree.show();
             } else if (phase4.equals(source)) {
-                PhaseFour.start();
+                PhaseFour.show();
             } else if (btnChooseFolder.equals(source)) {
                 ReadFiles.start();
                 if (ReadFiles.isFilesReady())
@@ -120,7 +120,7 @@ public class Menu {
         phase2.addMouseListener(mouseAdapter);
         phase3.addMouseListener(mouseAdapter);
         phase4.addMouseListener(mouseAdapter);
-        btnChooseFolder.addMouseListener(mouseAdapter);
+        //btnChooseFolder.addMouseListener(mouseAdapter);
     }
 
     private void enableButtons(){
