@@ -55,8 +55,7 @@ public class PhaseTow {
             File file = new File(".\\Responses.txt");
             file.createNewFile();
             Formatter formatter = new Formatter(file);
-            for (Person person :
-                    suspectedPeople) {
+            for (Person person : suspectedPeople) {
                 formatter.format("%s %s %s %s %s %s\n", person.getFirstName(), person.getLastName(),
                         person.getId(), person.getBirthDay(), person.getCity() , person.getWork());
             }

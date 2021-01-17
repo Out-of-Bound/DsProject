@@ -9,6 +9,8 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -98,27 +100,27 @@ public class Menu {
         });
 
 
-        Color mouseEnteredColor =  new Color(87 , 78 , 144);
-        Color mouseExitedColor =  new Color(49 , 44 , 81);
-        /*MouseAdapter mouseAdapter = new MouseAdapter() {
+//        Color mouseEnteredColor =  new Color(87 , 78 , 144);
+        Color buttonColor = phase1.getBackground();
+        MouseAdapter mouseAdapter = new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 JButton button = (JButton) e.getComponent();
                 if (button.isEnabled())
-                button.setBackground(mouseEnteredColor);
+                    button.setBackground(button.getBackground().brighter().brighter());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                e.getComponent().setBackground(mouseExitedColor);
+                e.getComponent().setBackground(buttonColor);
             }
         };
 
         phase1.addMouseListener(mouseAdapter);
         phase2.addMouseListener(mouseAdapter);
         phase3.addMouseListener(mouseAdapter);
-        phase4.addMouseListener(mouseAdapter);*/
-
+        phase4.addMouseListener(mouseAdapter);
+        btnChooseFolder.addMouseListener(mouseAdapter);
     }
 
     private void enableButtons(){

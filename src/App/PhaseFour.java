@@ -6,6 +6,7 @@ import Vertices.Phone;
 import java.util.HashSet;
 
 public class PhaseFour {
+    public static final String SMUGGLER = "قاچاقچی";
 
     public static void start(){
 

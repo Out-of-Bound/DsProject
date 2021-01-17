@@ -24,7 +24,10 @@ public class ReadFiles {
 
     public static void start() {
         try {
-            String tempFolderPath = getDataFolderFromSystem().getPath();
+            String tempFolderPath = getDataFolderFromSystem();
+            if (tempFolderPath == null)
+                return;
+
             readFiles(tempFolderPath);
             folderPath = tempFolderPath;
         } catch (IOException e) {
@@ -33,7 +36,7 @@ public class ReadFiles {
     }
 
 
-    private static File getDataFolderFromSystem() {
+    private static String getDataFolderFromSystem() {
         JFileChooser chooser = new JFileChooser();
         chooser.setSelectedFile(new File(".\\data"));
         chooser.setDialogTitle("Choose Data folder");
@@ -41,9 +44,9 @@ public class ReadFiles {
         int choice = chooser.showOpenDialog(null);
         if (choice != JFileChooser.APPROVE_OPTION) {
             System.out.println("File not selected");
-
+            return null;
         }
-        return chooser.getSelectedFile();
+        return chooser.getSelectedFile().getPath();
     }
 
     public static void startWithDragAndDrop(List<File> files) {

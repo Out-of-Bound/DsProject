@@ -4,9 +4,10 @@ import Edges.Transaction;
 import Vertices.Person;
 import java.util.HashSet;
 
+import static App.PhaseFour.SMUGGLER;
+
 public class PhaseThree {
 
-    public static final String SMUGGLER = "قاچاقچی";
     public static HashSet<Person> suspectedPhase3 = new HashSet<>();
     public static HashSet<Person> checkedPeople = new HashSet<>();
 

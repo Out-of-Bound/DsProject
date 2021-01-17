@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -75,16 +77,30 @@ public class PhaseOne {
             }
         };
 
-        peopleButton.addActionListener(btnActionListener);
-        homesButton.addActionListener(btnActionListener);
-        phonesButton.addActionListener(btnActionListener);
-        carsButton.addActionListener(btnActionListener);
-        callsButton.addActionListener(btnActionListener);
-        accountsButton.addActionListener(btnActionListener);
-        ownershipsButton.addActionListener(btnActionListener);
-        relationshipsButton.addActionListener(btnActionListener);
-        transactionsButton.addActionListener(btnActionListener);
-        backButton.addActionListener(btnActionListener);
+        Color buttonColor = accountsButton.getBackground();
+
+        MouseAdapter mouseAdapter = new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                JButton button = (JButton) e.getComponent();
+                if (button.isEnabled())
+                    button.setBackground(button.getBackground().brighter().brighter());
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                e.getComponent().setBackground(buttonColor);
+            }
+        };
+
+        JButton[] buttons = {peopleButton , phonesButton , callsButton , accountsButton , transactionsButton
+        , backButton , carsButton , ownershipsButton , relationshipsButton , homesButton};
+
+        for (JButton button : buttons) {
+            button.addActionListener(btnActionListener);
+            button.addMouseListener(mouseAdapter);
+        }
+
 
     }
 }
