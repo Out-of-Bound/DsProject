@@ -17,9 +17,9 @@ public class Table {
 
 
     public static void showJTable(String tableName , String [] tableColumn , String[][] data){
-        JFrame accountsJFrame = new JFrame(tableName);
+        JFrame jFrame = new JFrame(tableName);
         JPanel panel = new JPanel(new BorderLayout());
-        accountsJFrame.setLocationRelativeTo(null);
+        jFrame.setLocationRelativeTo(null);
         JTable table = new JTable(data, tableColumn) {
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component returnComp = super.prepareRenderer(renderer, row, column);
@@ -50,6 +50,9 @@ public class Table {
         table.getColumnModel().getColumn(0).setMaxWidth(50);
 
         JTextField searchField = new JTextField();
+        searchField.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        searchField.setFont(new Font("Vazir", Font.PLAIN, 14));
+        searchField.setMargin(new Insets(0 , 0 , 0 , 10));
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 
         searchField.getDocument().addDocumentListener(new DocumentListener(){
@@ -102,9 +105,9 @@ public class Table {
         table.setRowSorter(rowSorter);
 
         panel.add(sp , BorderLayout.CENTER);
-        panel.add(searchField , BorderLayout.NORTH);
-        accountsJFrame.add(panel);
-        accountsJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        accountsJFrame.setVisible(true);
+        panel.add(searchField , BorderLayout.SOUTH);
+        jFrame.add(panel);
+        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        jFrame.setVisible(true);
     }
 }

@@ -84,7 +84,7 @@ public class PhaseOne {
             public void mouseEntered(MouseEvent e) {
                 JButton button = (JButton) e.getComponent();
                 if (button.isEnabled())
-                    button.setBackground(button.getBackground().brighter().brighter());
+                    button.setBackground(button.getBackground().brighter());
             }
 
             @Override
