@@ -2,43 +2,42 @@ package App;
 
 import Edges.Transaction;
 import Vertices.Person;
-
 import java.util.HashSet;
 
 public class PhaseThree {
 
     public static final String SMUGGLER = "قاچاقچی";
-    public static HashSet<Person> suspectedPeoplePhase3 = new HashSet<>();
+    public static HashSet<Person> suspectedPhase3 = new HashSet<>();
     public static HashSet<Person> checkedPeople = new HashSet<>();
 
-    public static void start(){
+    public static void show(){
+        Person.print(find());
+    }
 
+    public static HashSet<Person> find(){
         HashSet<Person> suspectedPhase2 = PhaseTow.getSuspectedPeople();
-
         if (suspectedPhase2.isEmpty())
             suspectedPhase2 = PhaseTow.find();
-
 
         for (Person person : suspectedPhase2) {
             checkTrans(person, person);
         }
 
-        Person.print(suspectedPeoplePhase3);
-
+        return suspectedPhase3;
     }
 
     public static void checkTrans( Person startingPerson, Person person ){
         checkedPeople.add(person);
         HashSet< String > personRelations = person.getRelations();
         HashSet< Person > mustCheckRelations = new HashSet<>();
-        HashSet< String > personTransID = person.getPersonTransactions();
+        HashSet< String > personTransID = person.getTransactions();
 
         for ( String tranID : personTransID ) {
             Transaction transaction = (Transaction) Main.directedGraph.getEdgeByID(tranID);
             Person from = transaction.getPersonFrom();
 
             if ( from.getWork().equals(SMUGGLER) ){
-                suspectedPeoplePhase3.add( startingPerson );
+                suspectedPhase3.add( startingPerson );
                 return;
             }
 
@@ -56,6 +55,7 @@ public class PhaseThree {
         }
     }
 
-
-
+    public static HashSet<Person> getSuspectedPhase3() {
+        return suspectedPhase3;
+    }
 }

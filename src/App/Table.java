@@ -5,7 +5,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
-public class GUI {
+public class Table {
+
     public static void showJTable(String tableName ,String [] tableColumn , String[][] data){
         JFrame accountsJFrame = new JFrame(tableName);
         accountsJFrame.setLocationRelativeTo(null);

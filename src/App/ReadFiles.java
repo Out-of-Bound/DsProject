@@ -13,10 +13,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ReadFiles {
-    private static final String[] allVertexFileName = {"\\accounts.csv", "\\cars.csv", "\\homes.csv",
-            "\\people.csv", "\\phones.csv" };
-    private static final String[] allEdgeFileName = {"\\calls.csv" , "\\ownerships.csv",
-            "\\relationships.csv", "\\transactions.csv" };
+
+    private static final String[] allVertexFileName = {"\\accounts.csv", "\\cars.csv", "\\homes.csv", "\\people.csv", "\\phones.csv" };
+    private static final String[] allEdgeFileName = {"\\calls.csv" , "\\ownerships.csv", "\\relationships.csv", "\\transactions.csv" };
 
     private static boolean filesReady;
     private static String folderPath;
@@ -32,13 +31,19 @@ public class ReadFiles {
             e.printStackTrace();
         }
     }
-    public static void fastStart(){
-        try {
-            readFiles(".\\data");
-            folderPath = ".\\data";
-        } catch (IOException e) {
-            e.printStackTrace();
+
+
+    private static File getDataFolderFromSystem() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(new File(".\\data"));
+        chooser.setDialogTitle("Choose Data folder");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int choice = chooser.showOpenDialog(null);
+        if (choice != JFileChooser.APPROVE_OPTION) {
+            System.out.println("File not selected");
+
         }
+        return chooser.getSelectedFile();
     }
 
     public static void startWithDragAndDrop(List<File> files) {
@@ -52,19 +57,6 @@ public class ReadFiles {
             }
             break;
         }
-    }
-
-    private static File getDataFolderFromSystem() {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setSelectedFile(new File(".\\data"));
-        chooser.setDialogTitle("Choose Data folder");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int choice = chooser.showOpenDialog(null);
-        if (choice != JFileChooser.APPROVE_OPTION) {
-            System.out.println("File not selected");
-
-        }
-        return chooser.getSelectedFile();
     }
 
     private static HashSet<String[]> readDataFromFile(BufferedReader csvReader) throws IOException {
@@ -129,7 +121,6 @@ public class ReadFiles {
     private static void readEdgeFile (int index, String filePath) throws IOException {
 
         BufferedReader csvReader = new BufferedReader(new FileReader(new File(filePath)));
-
         HashSet<String[]> data = readDataFromFile(csvReader);
 
         switch (index){
@@ -315,4 +306,5 @@ public class ReadFiles {
     public static String getFolderName(){
         return new File(folderPath).getName();
     }
+
 }

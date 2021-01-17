@@ -1,6 +1,6 @@
 package Edges;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import Vertices.Person;
@@ -9,8 +9,8 @@ import java.util.HashSet;
 
 public class Call extends DirectedGraph.Edge {
 
-    private static HashSet<Call> allCalls = new HashSet<>();
     private String date , duration; // id = callId
+    private static HashSet<Call> allCalls = new HashSet<>();
 
     public Call(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
         //call ID = data[2]
@@ -25,7 +25,6 @@ public class Call extends DirectedGraph.Edge {
     public String getDate() {
         return date;
     }
-
     public String getDuration() {
         return duration;
     }
@@ -51,7 +50,7 @@ public class Call extends DirectedGraph.Edge {
             data[i][5] = call.getDuration();
             i++;
         }
-        GUI.showJTable("Calls" , tableColumn , data);
+        Table.showJTable("Calls" , tableColumn , data);
     }
 
 }

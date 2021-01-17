@@ -1,16 +1,15 @@
 package Edges;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import Vertices.Person;
-
 import java.util.HashSet;
 
 public class Relationship extends DirectedGraph.Edge {
 
-    private static HashSet<Relationship> allRelationships = new HashSet<>();
     private String relation, date; //id = from + to
+    private static HashSet<Relationship> allRelationships = new HashSet<>();
 
     public Relationship(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data){
         //from to = data[0] + data[1]
@@ -25,7 +24,6 @@ public class Relationship extends DirectedGraph.Edge {
     public String getRelation() {
         return relation;
     }
-
     public String getDate() {
         return date;
     }
@@ -48,7 +46,7 @@ public class Relationship extends DirectedGraph.Edge {
             data[i][4] = relationship.getDate();
             i++;
         }
-        GUI.showJTable("Relationships" , tableColumn , data);
+        Table.showJTable("Relationships" , tableColumn , data);
     }
 
 }

@@ -8,8 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static java.util.Calendar.*;
-
 public class PhaseTow {
     public static final String GOMROK = "گمرک";
     public static final String BANDER = "سازمان بنادر";
@@ -23,10 +21,9 @@ public class PhaseTow {
         for (Person person : Person.getAllPerson()) {
             if (person.getWork().equals(GOMROK) || person.getWork().equals(BANDER)){
                 boolean suspected = false;
-                for (String ownID : person.getOwnersEdge()) {
+                for (String ownID : person.getOwners()) {
                     Ownership ownership = ((Ownership) Main.directedGraph.getEdgeByID(ownID));
-                    long t = getTime(ownership);
-                    if(t <= 2){
+                    if(is2YearsAgo(ownership)){
                         suspectedPeople.add(person);
                         suspected = true;
                         break;
@@ -38,10 +35,9 @@ public class PhaseTow {
 
                 for (String personRelID: person.getRelations()) {
                     Person personRel = (Person) Main.directedGraph.getVertexByID(personRelID);
-                    for (String relID : personRel.getOwnersEdge()) {
+                    for (String relID : personRel.getOwners()) {
                         Ownership ownership = (Ownership) Main.directedGraph.getEdgeByID(relID);
-                        long t = getTime(ownership);
-                        if(t<=2){
+                        if(is2YearsAgo(ownership)){
                             suspectedPeople.add(person);
                             break;
                         }
@@ -70,25 +66,19 @@ public class PhaseTow {
         }
     }
 
-    private static int getTime(Ownership ownership) {
+    private static boolean is2YearsAgo(Ownership ownership) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(ownership.getDate());
-            Calendar a = getCalendar(date);
-            Calendar b = getCalendar(new Date(System.currentTimeMillis()));
-            int diff = b.get(DATE) - a.get(DATE);
-            System.out.println(date.toString() + " " + diff);
-
-            return diff;
+            Date today = new Date();
+            today.setYear(today.getYear()-2);
+            boolean b = today.getTime() <= date.getTime();
+            // System.out.println(date.toString() + " " + b);
+            return b;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return 0;
-    }
-    private static Calendar getCalendar(Date date) {
-        Calendar cal = Calendar.getInstance(Locale.US);
-        cal.setTime(date);
-        return cal;
+        return false;
     }
 
     public static HashSet<Person> getSuspectedPeople() {

@@ -1,17 +1,15 @@
 package Edges;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import Vertices.Person;
-
 import java.util.HashSet;
-import java.util.LinkedList;
 
 public class Ownership extends DirectedGraph.Edge {
-    private static HashSet<Ownership> allOwnerships = new HashSet<>();
 
     private String date,amount; //id = ownershipID
+    private static HashSet<Ownership> allOwnerships = new HashSet<>();
 
     public Ownership(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
         //ownershipId = data[2];
@@ -25,7 +23,6 @@ public class Ownership extends DirectedGraph.Edge {
     public String getDate() {
         return date;
     }
-
     public String getAmount() {
         return amount;
     }
@@ -33,6 +30,7 @@ public class Ownership extends DirectedGraph.Edge {
     public static HashSet<Ownership> getAllOwnerships() {
         return allOwnerships;
     }
+
     public static void print() {
         String[] tableColumn = {"ردیف", "از", "به" , "شناسه", "تاریخ خرید", "مبلغ"};
         String[][] data = new String[allOwnerships.size()][tableColumn.length];
@@ -48,6 +46,6 @@ public class Ownership extends DirectedGraph.Edge {
             data[i][5] = ownership.getAmount();
             i++;
         }
-        GUI.showJTable("Ownerships" , tableColumn , data);
+        Table.showJTable("Ownerships" , tableColumn , data);
     }
 }

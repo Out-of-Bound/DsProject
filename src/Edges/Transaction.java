@@ -1,6 +1,6 @@
 package Edges;
 
-import App.GUI;
+import App.Table;
 import App.Main;
 import Graph.DirectedGraph;
 import Vertices.Account;
@@ -8,10 +8,10 @@ import Vertices.Person;
 import java.util.HashSet;
 
 public class Transaction extends DirectedGraph.Edge {
-    private static HashSet<Transaction> allTransactions = new HashSet<>();
 
     private String date,amount; //id = transactionId
     private Person personFrom, personTo;
+    private static HashSet<Transaction> allTransactions = new HashSet<>();
 
 
     public Transaction(DirectedGraph.Vertex startingNode, DirectedGraph.Vertex finishingNode, String[] data) {
@@ -31,9 +31,12 @@ public class Transaction extends DirectedGraph.Edge {
     public String getDate() {
         return date;
     }
-
     public String getAmount() {
         return amount;
+    }
+
+    public Person getPersonFrom() {
+        return personFrom;
     }
 
     public static HashSet<Transaction> getAllTransactions() {
@@ -44,9 +47,7 @@ public class Transaction extends DirectedGraph.Edge {
         String[] tableColumn = {"ردیف", "از", "به", "شناسه" , "تاریخ", "مبلغ"};
         String[][] data = new String[allTransactions.size()][tableColumn.length];
         int i =0;
-
         for (Transaction transaction : allTransactions) {
-
             data[i][0] = (i+1) + "";
             data[i][1] = transaction.personFrom.getFirstName() + " " + transaction.personFrom.getLastName();
             data[i][2] = transaction.personTo.getFirstName() + " " + transaction.personTo.getLastName();
@@ -55,11 +56,7 @@ public class Transaction extends DirectedGraph.Edge {
             data[i][5] = transaction.getAmount();
             i++;
         }
-        GUI.showJTable("Transaction" , tableColumn , data);
+        Table.showJTable("Transaction" , tableColumn , data);
     }
 
-    public Person getPersonFrom() {
-        return personFrom;
-    }
-    
 }

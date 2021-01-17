@@ -8,10 +8,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -76,7 +73,7 @@ public class Menu {
             } else if (phase2.equals(source)) {
                 PhaseTow.show();
             } else if (phase3.equals(source)) {
-                PhaseThree.start();
+                PhaseThree.show();
             } else if (phase4.equals(source)) {
                 PhaseFour.start();
             } else if (btnChooseFolder.equals(source)) {
@@ -142,8 +139,7 @@ public class Menu {
         Image image = null;
         try {
             BufferedImage orgImg = ImageIO.read(new File(".\\img\\file.jpg"));
-            image = orgImg.getScaledInstance(78, 100,
-                    Image.SCALE_SMOOTH);
+            image = orgImg.getScaledInstance(78, 100, Image.SCALE_SMOOTH);
         } catch (IOException e) {
             e.printStackTrace();
         }
