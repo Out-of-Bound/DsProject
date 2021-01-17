@@ -61,8 +61,8 @@ class MyPanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int[] tmp = {0, 1, 2, 3 ,4 ,5 ,6, 1, 0, 1, 2, 3 ,4 ,5 ,6, 1, 0, 1, 2, 3 ,4 ,5 ,6, 1};
-        Vertex[] vertices = specifyLocations(0, tmp,300,300, 200, 360);
+        int[] tmp = {3, 3};
+        Vertex[] vertices = specifyLocations(1, tmp,300,300, 200, 360);
         drawLines(g, vertices);
         drawPins(g, vertices);
     }

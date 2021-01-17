@@ -9,28 +9,42 @@ import static App.PhaseFour.SMUGGLER;
 public class PhaseThree {
 
     public static HashSet<Person> suspectedPhase3 = new HashSet<>();
-    public static HashSet<Person> checkedPeople = new HashSet<>();
+    public static HashSet<Person> checkedPeople ;
+    public  static boolean find ;
+
 
     public static void show(){
         Person.print(find());
     }
 
     public static HashSet<Person> find(){
+
         HashSet<Person> suspectedPhase2 = PhaseTow.getSuspectedPeople();
+
         if (suspectedPhase2.isEmpty())
             suspectedPhase2 = PhaseTow.find();
 
         for (Person person : suspectedPhase2) {
-            checkTrans(person, person);
+            checkedPeople = new HashSet<>();
+            find = false;
+            checkTrans(0 ,person, person);
         }
-        PhaseTow.saveToFile(suspectedPhase3 , "Response3");
+
         return suspectedPhase3;
     }
 
-    public static void checkTrans( Person startingPerson, Person person ){
+    public static void checkTrans( int m , Person startingPerson, Person person ){
+        System.out.println(person.getFirstName() + "  " + person.getLastName());
+
+
+        m++;
+        if (m > 5 ){
+            System.out.println("reachMax");
+            return;
+        }
+
         checkedPeople.add(person);
-        HashSet< String > personRelations = person.getRelations();
-        HashSet< Person > mustCheckRelations = new HashSet<>();
+        HashSet< Person > mustCheck = new HashSet<>();
         HashSet< String > personTransID = person.getTransactions();
 
         for ( String tranID : personTransID ) {
@@ -40,25 +54,32 @@ public class PhaseThree {
 
             if ( from.getWork().equals( SMUGGLER ) ){
 
-                if (!suspectedPhase3.contains( person ))
-                    System.out.println("find it !!!" + from.getFirstName()+ "    " +startingPerson.getFirstName());
-
+                System.out.println("find it !!!" + from.getFirstName() + " " + from.getLastName() +
+                        "    " +startingPerson.getFirstName() + " " + startingPerson.getLastName());
+                find = true;
                 suspectedPhase3.add( startingPerson );
+                System.out.println("end");
                 return;
             }
 
-            if ( from != person){
-                if ( personRelations.contains( from.getId() )){
-                    mustCheckRelations.add(from);
-                }
+            if ( from != person ){
+                mustCheck.add(from);
             }
+
         }
 
-        for (Person personRel : mustCheckRelations) {
-            if ( checkedPeople.contains(personRel) )
+        for (Person personCheck : mustCheck) {
+
+            if ( checkedPeople.contains(personCheck) )
                 continue;
-            checkTrans( startingPerson, personRel );
-            System.out.println(personRel.getFirstName() + personRel.getLastName());
+
+            checkTrans( m + 1 , startingPerson, personCheck );
+
+            if (find)
+                break;
+
+            System.out.println(personCheck.getFirstName() + personCheck.getLastName());
+
         }
     }
 
