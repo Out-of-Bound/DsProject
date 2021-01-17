@@ -8,8 +8,11 @@ import java.util.HashSet;
 public class PhaseFour {
     public static final String SMUGGLER = "قاچاقچی";
 
-    public static void start(){
+    public static void show(){
+        Person.print(find());
+    }
 
+    public static HashSet<Person> find(){
         HashSet<Person> suspectedPhase3 = PhaseThree.getSuspectedPhase3();
         if (suspectedPhase3.isEmpty())
             suspectedPhase3 = PhaseThree.find();
@@ -27,9 +30,7 @@ public class PhaseFour {
                         suspectedPeople.add(person);
                 }
             }
-
-        PhaseTow.saveToFile(suspectedPeople , "Response4");
-        Person.print(suspectedPeople);
+        return suspectedPeople;
     }
 
 }
