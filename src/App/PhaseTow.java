@@ -18,6 +18,7 @@ public class PhaseTow {
     }
 
     public static HashSet<Person> find(){
+
         for (Person person : Person.getAllPerson()) {
             if (person.getWork().equals(GOMROK) || person.getWork().equals(BANDER)){
                 boolean suspected = false;

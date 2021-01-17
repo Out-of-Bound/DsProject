@@ -129,7 +129,7 @@ public class Menu {
     }
 
     public void fileReadStart () {
-        btnChooseFolder.setIcon( new ImageIcon(this.getClass().getResource("searching.gif")) );
+        btnChooseFolder.setIcon( new ImageIcon(this.getClass().getResource("searching-anim.gif")) );
         btnChooseFolder.setText("");
         btnChooseFolder.setBorder(null);
         btnChooseFolder.setBackground(new Color(255,255,255));
