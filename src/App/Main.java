@@ -1,6 +1,7 @@
 package App;
 
 import Graph.DirectedGraph;
+import Graph.GraphVisual;
 import Vertices.Person;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,11 @@ public class Main {
     public static Menu menu;
 
     public static void main(String[] args) {
+
+        //************************************
+        new GraphVisual();
+        // TODO: 1/17/2021 complete
+        //************************************
         menu = new Menu();
         if(ReadFiles.isFilesReady()) {
             try {

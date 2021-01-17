@@ -34,10 +34,15 @@ public class PhaseThree {
         HashSet< String > personTransID = person.getTransactions();
 
         for ( String tranID : personTransID ) {
-            Transaction transaction = (Transaction) Main.directedGraph.getEdgeByID(tranID);
-            Person from = transaction.getPersonFrom();
 
-            if ( from.getWork().equals(SMUGGLER) ){
+            Transaction transaction = (Transaction) Main.directedGraph.getEdgeByID(tranID) ;
+            Person from = transaction.getPersonFrom() ;
+
+            if ( from.getWork().equals( SMUGGLER ) ){
+
+                if (!suspectedPhase3.contains( person ))
+                    System.out.println("find it !!!" + from.getFirstName()+ "    " +startingPerson.getFirstName());
+
                 suspectedPhase3.add( startingPerson );
                 return;
             }
@@ -52,11 +57,13 @@ public class PhaseThree {
         for (Person personRel : mustCheckRelations) {
             if ( checkedPeople.contains(personRel) )
                 continue;
-            checkTrans(startingPerson, personRel );
+            checkTrans( startingPerson, personRel );
+            System.out.println(personRel.getFirstName() + personRel.getLastName());
         }
     }
 
     public static HashSet<Person> getSuspectedPhase3() {
         return suspectedPhase3;
     }
+
 }
