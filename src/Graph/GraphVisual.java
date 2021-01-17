@@ -27,7 +27,7 @@ public class GraphVisual {
         JFrame f = new JFrame("Swing Paint Demo");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(new MyPanel());
-        f.pack();
+        f.setSize(1920, 1080);
         f.setVisible(true);
     }
 }
@@ -61,8 +61,12 @@ class MyPanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int h = getHeight();
+        int w = getWidth();
+
+        //test
         int[] tmp = {3, 3};
-        Vertex[] vertices = specifyLocations(1, tmp,300,300, 200, 360);
+        Vertex[] vertices = specifyLocations(1, tmp,w/4,h/2, 200, 360);
         drawLines(g, vertices);
         drawPins(g, vertices);
     }
@@ -109,18 +113,72 @@ class MyPanel extends JPanel {
         g2.setStroke(new BasicStroke(3));
 
         Vertex vc = vertices[0];
-        for (int i = 1; i < vertices.length; i++) {
+        if (vc.color == 0 || vc.color == 1 || vc.color == 2 ) {
+            // center is person
+            for (int i = 1; i < vertices.length; i++) {
+                Vertex v = vertices[i];
+                if (v.color == 3 || v.color == 6){
+                    // inja 3 mishe hesab
+                    // 6 mishe telephone
+                    // fek knm nabayad yali dashte bashe dg?
+                    // baraye hamin nakishidam
+                    // khastid baresh darid
+                    // ke khat bekeshe
+                    continue;
+                }
+                g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
 
-            Vertex v = vertices[i];
-            g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
+                if ( v.color == 0 || v.color == 1 || v.color == 2 ){
+                    // TODO: 1/18/2021 this is person to person / set listener for rel edge
+                }
+                else if ( v.color == 4 || v.color == 5) {
+                    // TODO: 1/18/2021  this is person to object / set listener for ownership
+                }
+
+
+            }
         }
+        else if (vc.color == 3){
+            // center is account
+            for (int i = 1; i < vertices.length; i++) {
+                Vertex v = vertices[i];
+                g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
+            }
+        }
+        else {
+            // center is telephone
+                for (int i = 1; i < vertices.length; i++) {
+                    Vertex v = vertices[i];
+                    g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
+                }
+        }
+
     }
 
     private void drawPins(Graphics g, Vertex[] vertices){
         for ( Vertex v : vertices) {
             g.drawImage(images[v.color] , v.x, v.y, this);
+            switch ( v.color ){
+                case 0:
+                    // TODO: 1/18/2021 listener for black pins
+                    break;
+                case 1:
+                    // TODO: 1/18/2021 listener for red pins
+                    break;
+                case 2:
+                    // TODO: 1/18/2021 listener for white pins
+                    break;
+                case 3:
+                    // TODO: 1/18/2021 listener for green pins
+                    break;
+                case 6:
+                    // TODO: 1/18/2021 listener for yellow pins
+                    break;
+            }
         }
     }
+
+
 
     public static BufferedImage resize(BufferedImage img, int newW, int newH) {
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);

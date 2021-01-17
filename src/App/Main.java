@@ -16,7 +16,7 @@ public class Main {
 
         //************************************
         new GraphVisual();
-        // TODO: 1/17/2021 complete
+        // TODO: 1/17/2021 complete GraphVisual
         //************************************
         menu = new Menu();
         if(ReadFiles.isFilesReady()) {
