@@ -46,24 +46,26 @@ public class PhaseTow {
                 }
             }
         }
-        saveToFile(suspectedPeople);
+        saveToFile(suspectedPeople , "Response1");
         return suspectedPeople;
     }
 
-    private static void saveToFile(HashSet<Person> suspectedPeople){
-        try {
-            File file = new File(".\\Responses.txt");
+    public static void saveToFile(HashSet<Person> suspectedPeople , String fileName){
+        /*try {
+            File file = new File(".\\" + fileName + ".txt");
             file.createNewFile();
             Formatter formatter = new Formatter(file);
+            formatter.format("Phase1 started:\n");
             for (Person person : suspectedPeople) {
                 formatter.format("%s %s %s %s %s %s\n", person.getFirstName(), person.getLastName(),
                         person.getId(), person.getBirthDay(), person.getCity() , person.getWork());
             }
+            formatter.format("Phase1 finished\n");
             formatter.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private static boolean is2YearsAgo(Ownership ownership) {

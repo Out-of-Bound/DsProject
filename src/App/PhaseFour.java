@@ -27,6 +27,8 @@ public class PhaseFour {
                         suspectedPeople.add(person);
                 }
             }
+
+        PhaseTow.saveToFile(suspectedPeople , "Response4");
         Person.print(suspectedPeople);
     }
 

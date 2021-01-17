@@ -23,7 +23,7 @@ public class PhaseThree {
         for (Person person : suspectedPhase2) {
             checkTrans(person, person);
         }
-
+        PhaseTow.saveToFile(suspectedPhase3 , "Response3");
         return suspectedPhase3;
     }
 
