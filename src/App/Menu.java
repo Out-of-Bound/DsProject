@@ -47,6 +47,7 @@ public class Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert image != null;
         imgView.setIcon( new ImageIcon(image) );
         imgView.setBorder(new EmptyBorder( 0, 80, 0, 0));
         panel.setBorder(new EmptyBorder( 0, 0, 0, 90));

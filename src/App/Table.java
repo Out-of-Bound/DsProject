@@ -1,32 +1,41 @@
 package App;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.table.*;
+import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.InputMethodListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Table {
 
-
-
     public static void showJTable(String tableName , String [] tableColumn , String[][] data){
         JFrame jFrame = new JFrame(tableName);
-        JPanel panel = new JPanel(new BorderLayout());
+
         jFrame.setLocationRelativeTo(null);
-        JTable table = new JTable(data, tableColumn) {
+        DefaultTableModel model = new DefaultTableModel(data, tableColumn) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        JTable table = new JTable(model) {
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component returnComp = super.prepareRenderer(renderer, row, column);
                 Color alternateColor = new Color(227, 228, 254);
                 Color whiteColor = Color.WHITE;
                 if (!returnComp.getBackground().equals(getSelectionBackground())) {
-                    Color bg = (row % 2 == 0 ? alternateColor : whiteColor);
+                    Color bg = (row % 2 == 0 ? whiteColor : alternateColor);
                     returnComp.setBackground(bg);
                 }
                 return returnComp;
@@ -40,7 +49,7 @@ public class Table {
         table.setBounds(30, 40, 400, 300);
         table.setRowHeight(25);
         JScrollPane sp = new JScrollPane(table);
-        table.setEnabled(false);
+        table.setEnabled(true);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -49,10 +58,18 @@ public class Table {
         }
         table.getColumnModel().getColumn(0).setMaxWidth(50);
 
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String id = data[table.getSelectedRow()][1];
+                System.out.println(id);
+            }
+        });
+
         JTextField searchField = new JTextField();
         searchField.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         searchField.setFont(new Font("Vazir", Font.PLAIN, 14));
-        searchField.setMargin(new Insets(0 , 0 , 0 , 10));
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 
         searchField.getDocument().addDocumentListener(new DocumentListener(){
@@ -104,9 +121,13 @@ public class Table {
 
         table.setRowSorter(rowSorter);
 
-        panel.add(sp , BorderLayout.CENTER);
-        panel.add(searchField , BorderLayout.SOUTH);
-        jFrame.add(panel);
+        JLabel label = new JLabel("جستجو: ");
+        label.setFont(new Font("Vazir", Font.PLAIN, 14));
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(label , BorderLayout.EAST);
+        panel.add(searchField , BorderLayout.CENTER);
+        jFrame.add(panel , BorderLayout.NORTH);
+        jFrame.add(sp , BorderLayout.CENTER);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         jFrame.setVisible(true);
     }
