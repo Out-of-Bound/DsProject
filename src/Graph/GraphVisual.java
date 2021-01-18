@@ -22,9 +22,8 @@ public class GraphVisual {
     }
 
     private static void createAndShowGUI() {
-        System.out.println("Created GUI on EDT? "+
-                SwingUtilities.isEventDispatchThread());
-        JFrame f = new JFrame("Swing Paint Demo");
+
+        JFrame f = new JFrame("Graph Visual");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(new MyPanel());
         f.setSize(1920, 1080);
@@ -51,6 +50,7 @@ class MyPanel extends JPanel {
                 e.printStackTrace();
             }
         }
+        this.setBackground(new Color(255,255,255));
 
 
     }
