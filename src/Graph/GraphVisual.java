@@ -65,13 +65,16 @@ class MyPanel extends JPanel {
         int w = getWidth();
 
         //test
-        int[] tmp = {3, 3};
-        Vertex[] vertices = specifyLocations(1, tmp,w/4,h/2, 200, 360);
-        drawLines(g, vertices);
-        drawPins(g, vertices);
+        int[] person = {2, 2 , 1, 0, 4, 5, 4, 5};
+        int[] account = {3, 3, 3, 3, 3};
+        int[] telephone = {6, 6, 6, 6};
+        specifyLocationsAndDraw(g,2, person,250,h/3, 200, 360);
+        specifyLocationsAndDraw(g,3, account,750,h/3, 200, 360);
+        specifyLocationsAndDraw(g,6, telephone,1250,h/3, 200, 360);
+
     }
 
-    private Vertex[] specifyLocations ( int centerColor, int[] colors, int xCenter, int yCenter, int rad, int sweep){
+    private void specifyLocationsAndDraw (Graphics g, int centerColor, int[] colors, int xCenter, int yCenter, int rad, int sweep){
         int my = yCenter - rad;
         int levels = colors.length/2 + colors.length % 2;
         int ratio = 360 / sweep;
@@ -104,7 +107,8 @@ class MyPanel extends JPanel {
                 my = yCenter + rad;
         }
 
-        return vertices;
+        drawLines(g, vertices);
+        drawPins(g, vertices);
     }
 
     private void drawLines(Graphics g, Vertex[] vertices){
@@ -117,15 +121,6 @@ class MyPanel extends JPanel {
             // center is person
             for (int i = 1; i < vertices.length; i++) {
                 Vertex v = vertices[i];
-                if (v.color == 3 || v.color == 6){
-                    // inja 3 mishe hesab
-                    // 6 mishe telephone
-                    // fek knm nabayad yali dashte bashe dg?
-                    // baraye hamin nakishidam
-                    // khastid baresh darid
-                    // ke khat bekeshe
-                    continue;
-                }
                 g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
 
                 if ( v.color == 0 || v.color == 1 || v.color == 2 ){
@@ -144,12 +139,14 @@ class MyPanel extends JPanel {
                 Vertex v = vertices[i];
                 g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
             }
+            // TODO: 1/18/2021 listener for transaction
         }
         else {
             // center is telephone
                 for (int i = 1; i < vertices.length; i++) {
                     Vertex v = vertices[i];
                     g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
+                    // TODO: 1/18/2021 listener for call
                 }
         }
 
