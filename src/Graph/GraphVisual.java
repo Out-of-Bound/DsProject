@@ -153,6 +153,7 @@ public class GraphVisual {
         }
 
         private void drawPins(Graphics g, Vertex[] vertices){
+
             for ( Vertex v : vertices) {
                 g.drawImage(images[v.color] , v.x, v.y, this);
                 switch ( v.color ){
