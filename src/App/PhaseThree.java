@@ -3,7 +3,6 @@ package App;
 import Edges.Transaction;
 import Vertices.Person;
 import java.util.HashSet;
-
 import static App.PhaseFour.SMUGGLER;
 
 public class PhaseThree {

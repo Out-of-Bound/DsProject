@@ -27,6 +27,7 @@ public class DirectedGraph {
 
     public abstract static class Vertex {
         private String id;
+        protected int colorId;
         private HashSet<Edge> inEdges;
         private HashSet<Edge> outEdges;
 

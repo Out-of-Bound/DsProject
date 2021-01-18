@@ -16,6 +16,7 @@ public class Car extends DirectedGraph.Vertex {
         this.ownerSsn = data[1];
         this.model = data[2];
         this.color = data[3];
+        this.colorId = 5; //orange
         allCars.add(this);
     }
 

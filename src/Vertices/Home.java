@@ -17,6 +17,7 @@ public class Home extends DirectedGraph.Vertex {
         this.price = data[1];
         this.size = data[3];
         this.address = data[4];
+        this.colorId = 6; //yellow
         allHomes.add(this);
     }
 

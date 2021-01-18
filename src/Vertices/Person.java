@@ -3,6 +3,7 @@ package Vertices;
 import App.Table;
 import Edges.Call;
 import Graph.DirectedGraph;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Person extends DirectedGraph.Vertex {
@@ -15,6 +16,19 @@ public class Person extends DirectedGraph.Vertex {
     private HashSet<String> transactions = new HashSet<>();
     private HashSet<Call> calls = new HashSet<>();
 
+    ArrayList<DirectedGraph.Vertex> relOwns = new ArrayList<>();
+    public ArrayList<DirectedGraph.Vertex> getRelOwns() {
+        return relOwns;
+    }
+    public void addToVisual(DirectedGraph.Vertex vertex){
+        relOwns.add(vertex);
+    }
+
+    ArrayList<DirectedGraph.Vertex> phones = new ArrayList<>();
+    public ArrayList<DirectedGraph.Vertex> getPhones() {
+        return phones;
+    }
+    public void addToPhones(DirectedGraph.Vertex vertex) { phones.add(vertex); }
 
     public Person(String[] data) {
         // ssn = data[2]
@@ -25,8 +39,14 @@ public class Person extends DirectedGraph.Vertex {
         this.city = data[4];
         this.work = data[5];
         allPerson.add(this);
-        if (this.work.equals("قاچاقچی"))
+        if (this.work.equals("قاچاقچی")) {
             addToSmuggler(this);
+            this.colorId = 0; //black
+        }
+        else if (this.work.equals("گمرک") || this.work.equals("سازمان بنادر"))
+            this.colorId = 1; //red
+        else
+            this.colorId = 2; //white
     }
 
     public String getFirstName() {

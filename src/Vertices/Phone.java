@@ -15,6 +15,7 @@ public class Phone extends DirectedGraph.Vertex {
         super(data[1]);
         this.ownerSsn = data[0];
         this.operatorName = data[2];
+        this.colorId = 4; //blue
         allPhones.add(this);
     }
 

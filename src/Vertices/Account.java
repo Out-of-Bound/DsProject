@@ -16,6 +16,7 @@ public class Account extends DirectedGraph.Vertex {
         this.ownerSsn = data[0];
         this.bankName = data[1];
         this.iBan = data[2];
+        this.colorId = 3; //green
         allAccounts.put(data[3] , this);
     }
 

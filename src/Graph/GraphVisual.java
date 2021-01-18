@@ -1,43 +1,39 @@
 package Graph;
 
-
-
+import Vertices.Person;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-
+import java.util.ArrayList;
 
 public class GraphVisual {
 
-    public GraphVisual() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-
+    public GraphVisual(Person person) {
+        SwingUtilities.invokeLater(() -> createAndShowGUI(person));
     }
 
-    private static void createAndShowGUI() {
-
-        JFrame f = new JFrame("Graph Visual");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.add(new MyPanel());
-        f.setSize(1920, 1080);
-        f.setVisible(true);
+    private static void createAndShowGUI(Person person) {
+        JFrame visual = new JFrame("Graph Visual");
+        visual.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        visual.add(new MyPanel(person));
+        visual.setSize(1920, 1080);
+        visual.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        visual.setVisible(true);
     }
+
 }
 
 class MyPanel extends JPanel {
+    private Person person;
     private BufferedImage[] images = new BufferedImage[7];
     String[] imageNames = { "black", "red", "white", "green", "blue", "orange", "yellow" };
     int yOffset = 40, xOffset = 20;
 
-    public MyPanel() {
-
+    public MyPanel(Person person) {
+        this.person = person;
         int i = 0;
         for ( String name : imageNames) {
             URL resource = getClass().getResource(name + ".png");
@@ -50,9 +46,7 @@ class MyPanel extends JPanel {
                 e.printStackTrace();
             }
         }
-        this.setBackground(new Color(255,255,255));
-
-
+        this.setBackground(new Color(255, 255, 255));
     }
 
     public Dimension getPreferredSize() {
@@ -64,41 +58,36 @@ class MyPanel extends JPanel {
         int h = getHeight();
         int w = getWidth();
 
-        //test
-        int[] person = {2, 2 , 1, 0, 4, 5, 4, 5};
         int[] account = {3, 3, 3, 3, 3};
         int[] telephone = {6, 6, 6, 6};
-        specifyLocationsAndDraw(g,2, person,250,h/3, 200, 360);
-        specifyLocationsAndDraw(g,3, account,750,h/3, 200, 360);
-        specifyLocationsAndDraw(g,6, telephone,1250,h/3, 200, 360);
+        specifyLocationsAndDraw(g,person, person.getRelOwns(),250,h/3, 200, 360);
+        //specifyLocationsAndDraw(g,6, telephone,1250,h/3, 200, 360);
+        //specifyLocationsAndDraw(g,3, account,750,h/3, 200, 360);
 
     }
 
-    private void specifyLocationsAndDraw (Graphics g, int centerColor, int[] colors, int xCenter, int yCenter, int rad, int sweep){
+    private void specifyLocationsAndDraw (Graphics g, DirectedGraph.Vertex vertex, ArrayList<DirectedGraph.Vertex> array, int xCenter, int yCenter, int rad, int sweep){
         int my = yCenter - rad;
-        int levels = colors.length/2 + colors.length % 2;
+        int levels = array.size()/2 + array.size() % 2;
         int ratio = 360 / sweep;
         int space = (2 * rad / ratio) / levels;
-        Vertex[] vertices = new Vertex[colors.length + 1];
+        Vertex[] vertices = new Vertex[array.size() + 1];
         System.out.println(vertices[0]);
-        vertices[0] = new Vertex(xCenter, yCenter, centerColor);
+        vertices[0] = new Vertex(xCenter, yCenter, vertex.colorId);
 
-        for (int i = 0; i < colors.length; i++){
-
-
+        for (int i = 0; i < array.size(); i++){
             int a = (int) Math.abs(Math.pow(rad, 2) - Math.pow( my - yCenter , 2));
             int b = (int) (Math.pow(a, 1/2d));
 
-            vertices[i+1] = new Vertex(b + xCenter, my, colors[i]);
+            vertices[i+1] = new Vertex(b + xCenter, my, array.get(i).colorId);
 
             if (my > yCenter - rad && my < yCenter + rad){
                 i++;
 
-                if (i > colors.length - 1)
+                if (i > array.size() - 1)
                     break;
 
-                vertices[i+1] = new Vertex( xCenter - b, my, colors[i]);
-
+                vertices[i+1] = new Vertex( xCenter - b, my, array.get(i).colorId);
             }
 
             my += space;
@@ -126,7 +115,7 @@ class MyPanel extends JPanel {
                 if ( v.color == 0 || v.color == 1 || v.color == 2 ){
                     // TODO: 1/18/2021 this is person to person / set listener for rel edge
                 }
-                else if ( v.color == 4 || v.color == 5) {
+                else if ( v.color == 5 || v.color == 6) {
                     // TODO: 1/18/2021  this is person to object / set listener for ownership
                 }
 
@@ -175,8 +164,6 @@ class MyPanel extends JPanel {
         }
     }
 
-
-
     public static BufferedImage resize(BufferedImage img, int newW, int newH) {
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
@@ -187,7 +174,6 @@ class MyPanel extends JPanel {
 
         return dimg;
     }
-
 
 }
 
