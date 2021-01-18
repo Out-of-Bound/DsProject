@@ -23,6 +23,7 @@ public class Transaction extends DirectedGraph.Edge {
         Account account2 = (Account) Main.directedGraph.getVertexByID(finishingNode.getId());
         personFrom = (Person) Main.directedGraph.getVertexByID(account1.getOwnerSsn());
         personFrom.addToTrans(data[2]);
+        personFrom.addToAccounts(account2);
         personTo = (Person) Main.directedGraph.getVertexByID(account2.getOwnerSsn());
         personTo.addToTrans(data[2]);
         allTransactions.add(this);

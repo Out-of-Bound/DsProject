@@ -8,6 +8,8 @@ import java.util.HashSet;
 
 public class Person extends DirectedGraph.Vertex {
 
+    private DirectedGraph.Vertex phone;
+    private DirectedGraph.Vertex account;
     private String firstName, lastName, birthDay, city, work; //id = ssn
     private static HashSet<Person> allPerson = new HashSet<>();
     private static HashSet<Person> smugglers = new HashSet<>();
@@ -20,7 +22,7 @@ public class Person extends DirectedGraph.Vertex {
     public ArrayList<DirectedGraph.Vertex> getRelOwns() {
         return relOwns;
     }
-    public void addToVisual(DirectedGraph.Vertex vertex){
+    public void addToRelOwns(DirectedGraph.Vertex vertex){
         relOwns.add(vertex);
     }
 
@@ -29,6 +31,12 @@ public class Person extends DirectedGraph.Vertex {
         return phones;
     }
     public void addToPhones(DirectedGraph.Vertex vertex) { phones.add(vertex); }
+
+    ArrayList<DirectedGraph.Vertex> accounts = new ArrayList<>();
+    public ArrayList<DirectedGraph.Vertex> getAccounts() {
+        return accounts;
+    }
+    public void addToAccounts(DirectedGraph.Vertex vertex) { accounts.add(vertex); }
 
     public Person(String[] data) {
         // ssn = data[2]
@@ -63,6 +71,18 @@ public class Person extends DirectedGraph.Vertex {
     }
     public String getWork() {
         return work;
+    }
+    public DirectedGraph.Vertex getPhone() {
+        return phone;
+    }
+    public void setPhone(DirectedGraph.Vertex phone) {
+        this.phone = phone;
+    }
+    public DirectedGraph.Vertex getAccount() {
+        return account;
+    }
+    public void setAccount(DirectedGraph.Vertex account) {
+        this.account = account;
     }
 
     public static HashSet<Person> getAllPerson() {

@@ -17,6 +17,7 @@ public class Phone extends DirectedGraph.Vertex {
         this.operatorName = data[2];
         this.colorId = 4; //blue
         allPhones.add(this);
+        ((Person)Main.directedGraph.getVertexByID(ownerSsn)).setPhone(this);
     }
 
     public String getOwnerSsn() {

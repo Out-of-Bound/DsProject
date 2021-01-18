@@ -18,6 +18,7 @@ public class Account extends DirectedGraph.Vertex {
         this.iBan = data[2];
         this.colorId = 3; //green
         allAccounts.put(data[3] , this);
+        ((Person)Main.directedGraph.getVertexByID(ownerSsn)).setAccount(this);
     }
 
     public String getOwnerSsn() {

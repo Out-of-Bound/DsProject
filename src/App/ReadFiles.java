@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ReadFiles {
 
-    private static final String[] allVertexFileName = {"\\accounts.csv", "\\cars.csv", "\\homes.csv", "\\people.csv", "\\phones.csv" };
+    private static final String[] allVertexFileName = {"\\people.csv", "\\cars.csv", "\\homes.csv", "\\accounts.csv", "\\phones.csv" };
     private static final String[] allEdgeFileName = {"\\calls.csv" , "\\ownerships.csv", "\\relationships.csv", "\\transactions.csv" };
 
     private static boolean filesReady;
@@ -84,10 +84,10 @@ public class ReadFiles {
         switch (index){
             case 0 :
                 for (String[] datum : data) {
-                    Main.directedGraph.addVertex(new Account(datum));
+                    Main.directedGraph.addVertex(new Person(datum));
                 }
-                accRead = true;
-                System.out.println("acc read end");
+                personRead = true;
+                System.out.println("person Read end");
                 break;
             case 1 :
                 for (String[] datum : data) {
@@ -105,10 +105,10 @@ public class ReadFiles {
                 break;
             case 3 :
                 for (String[] datum : data) {
-                    Main.directedGraph.addVertex(new Person(datum));
+                    Main.directedGraph.addVertex(new Account(datum));
                 }
-                personRead = true;
-                System.out.println("person Read end");
+                accRead = true;
+                System.out.println("acc read end");
                 break;
             case 4 :
                 for (String[] datum : data) {

@@ -18,7 +18,9 @@ public class Call extends DirectedGraph.Edge {
         this.date = data[3];
         this.duration = data[4];
         allCalls.add(this);
-        ((Person)Main.directedGraph.getVertexByID(((Phone)startingNode).getOwnerSsn())).addToCalls(this);
+        Person person = (Person)Main.directedGraph.getVertexByID(((Phone)startingNode).getOwnerSsn());
+        person.addToCalls(this);
+        person.addToPhones(finishingNode);
         ((Person)Main.directedGraph.getVertexByID(((Phone)finishingNode).getOwnerSsn())).addToCalls(this);
 
     }

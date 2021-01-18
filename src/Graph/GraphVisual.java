@@ -58,11 +58,16 @@ class MyPanel extends JPanel {
         int h = getHeight();
         int w = getWidth();
 
-        int[] account = {3, 3, 3, 3, 3};
-        int[] telephone = {6, 6, 6, 6};
-        specifyLocationsAndDraw(g,person, person.getRelOwns(),250,h/3, 200, 360);
-        //specifyLocationsAndDraw(g,6, telephone,1250,h/3, 200, 360);
-        //specifyLocationsAndDraw(g,3, account,750,h/3, 200, 360);
+        g.setFont(new Font("Vazir", Font.PLAIN, 14));
+        specifyLocationsAndDraw(g, person, person.getRelOwns(),250,h/3, 200, 360);
+        if (!person.getPhones().isEmpty())
+            specifyLocationsAndDraw(g, person.getPhone(), person.getPhones(),1250,h/3, 200, 360);
+        else
+            g.drawString("تماسی وجود ندارد", 1250, h / 3);
+        if (!person.getAccounts().isEmpty())
+            specifyLocationsAndDraw(g,person.getAccount(), person.getAccounts(),750,h/3, 200, 360);
+        else
+            g.drawString("تراکنشی وجود ندارد",750, h/3);
 
     }
 
@@ -104,64 +109,17 @@ class MyPanel extends JPanel {
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
-
         Vertex vc = vertices[0];
-        if (vc.color == 0 || vc.color == 1 || vc.color == 2 ) {
-            // center is person
-            for (int i = 1; i < vertices.length; i++) {
-                Vertex v = vertices[i];
-                g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
-
-                if ( v.color == 0 || v.color == 1 || v.color == 2 ){
-                    // TODO: 1/18/2021 this is person to person / set listener for rel edge
-                }
-                else if ( v.color == 5 || v.color == 6) {
-                    // TODO: 1/18/2021  this is person to object / set listener for ownership
-                }
-
-
-            }
-        }
-        else if (vc.color == 3){
-            // center is account
-            for (int i = 1; i < vertices.length; i++) {
-                Vertex v = vertices[i];
-                g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
-            }
-            // TODO: 1/18/2021 listener for transaction
-        }
-        else {
-            // center is telephone
-                for (int i = 1; i < vertices.length; i++) {
-                    Vertex v = vertices[i];
-                    g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
-                    // TODO: 1/18/2021 listener for call
-                }
+        for (int i = 1; i < vertices.length; i++) {
+            Vertex v = vertices[i];
+            g2.drawLine(v.x + xOffset, v.y + yOffset, vc.x + xOffset, vc.y + yOffset);
         }
 
     }
 
     private void drawPins(Graphics g, Vertex[] vertices){
-        for ( Vertex v : vertices) {
+        for ( Vertex v : vertices)
             g.drawImage(images[v.color] , v.x, v.y, this);
-            switch ( v.color ){
-                case 0:
-                    // TODO: 1/18/2021 listener for black pins
-                    break;
-                case 1:
-                    // TODO: 1/18/2021 listener for red pins
-                    break;
-                case 2:
-                    // TODO: 1/18/2021 listener for white pins
-                    break;
-                case 3:
-                    // TODO: 1/18/2021 listener for green pins
-                    break;
-                case 6:
-                    // TODO: 1/18/2021 listener for yellow pins
-                    break;
-            }
-        }
     }
 
     public static BufferedImage resize(BufferedImage img, int newW, int newH) {
