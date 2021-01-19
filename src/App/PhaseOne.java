@@ -7,6 +7,7 @@ import Edges.Transaction;
 import Vertices.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -50,7 +51,7 @@ public class PhaseOne {
             e.printStackTrace();
         }
         imgView.setIcon( new ImageIcon(image) );
-        /*backButton.setBorder(new EmptyBorder( 0, 80, 0, 0));*/
+        imgView.setBorder(new EmptyBorder( 0, 50, 0, 0));
 
         ActionListener btnActionListener = e -> {
             Object source = e.getSource();

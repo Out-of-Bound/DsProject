@@ -33,12 +33,11 @@ public class PhaseThree {
     }
 
     public static void checkTrans( int m , Person startingPerson, Person person ){
-        System.out.println(person.getFirstName() + "  " + person.getLastName());
+
 
 
         m++;
         if (m > 5 ){
-            System.out.println("reachMax");
             return;
         }
 
@@ -53,11 +52,8 @@ public class PhaseThree {
 
             if ( from.getWork().equals( SMUGGLER ) ){
 
-                System.out.println("find it !!!" + from.getFirstName() + " " + from.getLastName() +
-                        "    " +startingPerson.getFirstName() + " " + startingPerson.getLastName());
                 find = true;
                 suspectedPhase3.add( startingPerson );
-                System.out.println("end");
                 return;
             }
 
@@ -77,7 +73,6 @@ public class PhaseThree {
             if (find)
                 break;
 
-            System.out.println(personCheck.getFirstName() + personCheck.getLastName());
 
         }
     }

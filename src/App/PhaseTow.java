@@ -54,7 +54,6 @@ public class PhaseTow {
             Date today = new Date();
             today.setYear(today.getYear()-2);
             boolean b = today.getTime() <= date.getTime();
-            // System.out.println(date.toString() + " " + b);
             return b;
         } catch (ParseException e) {
             e.printStackTrace();

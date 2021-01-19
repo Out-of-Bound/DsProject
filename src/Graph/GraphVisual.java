@@ -70,11 +70,18 @@ public class GraphVisual {
             int w = getWidth();
 
         g.setFont(new Font("Vazir", Font.PLAIN, 14));
-        specifyLocationsAndDraw(g, person, person.getRelOwns(),250,h/3, 200, 360);
+
+
+        if (!person.getPhones().isEmpty())
+            specifyLocationsAndDraw(g, person, person.getRelOwns(),250,h/3, 200, 360);
+        else
+            g.drawString("خویشاندی و مالکیتی وجود ندارد", 250, h / 3);
+
         if (!person.getPhones().isEmpty())
             specifyLocationsAndDraw(g, person.getPhone(), person.getPhones(),1250,h/3, 200, 360);
         else
             g.drawString("تماسی وجود ندارد", 1250, h / 3);
+
         if (!person.getAccounts().isEmpty())
             specifyLocationsAndDraw(g,person.getAccount(), person.getAccounts(),750,h/3, 200, 360);
         else
@@ -88,7 +95,7 @@ public class GraphVisual {
             int ratio = 360 / sweep;
             int space = (2 * rad / ratio) / levels;
             Vertex[] vertices = new Vertex[array.size() + 1];
-            System.out.println(vertices[0]);
+
             vertices[0] = new Vertex(xCenter, yCenter, vertex.colorId);
 
             for (int i = 0; i < array.size(); i++){
