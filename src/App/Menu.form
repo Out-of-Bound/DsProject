@@ -99,7 +99,7 @@
               <enabled value="true"/>
               <font name="Vazir" size="40" style="1"/>
               <foreground color="-14538703"/>
-              <text value="بدون مرز"/>
+              <text value="Suspect Finder"/>
             </properties>
           </component>
           <vspacer id="babef">

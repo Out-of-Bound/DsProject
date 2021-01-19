@@ -57,13 +57,14 @@ public class GraphVisual {
         JFrame visual = new JFrame("Graph Visual");
         visual.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         visual.add(new MyPanel(person), BorderLayout.CENTER);
-        JPanel panelHelp = new JPanel(new GridLayout(1, 8));
-        JPanel panel = new JPanel(new BorderLayout());
+        JPanel panel = new JPanel(new GridLayout(1, 10));
+        JPanel whitePanel = new JPanel();
+        whitePanel.setBackground(Color.WHITE);
+        panel.add(whitePanel);
+
         Color panelBack = new Color(56, 56, 56);
-        panelHelp.setBackground(panelBack);
-        panelHelp.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         String[] works = {"قاچاقچی", "مضنون", "شخص عادی", "ماشین", "خونه", "شماره تلفن", "حساب بانکی"};
-        Color[] colors = {Color.BLACK, Color.RED, Color.WHITE, Color.orange, Color.blue, Color.yellow, Color.green};
+        Color[] colors = {Color.BLACK, Color.decode("#d61e11"), Color.WHITE, Color.decode("#E65d00"), Color.decode("#0092fc"), Color.decode("#e2c621"), Color.decode("#009656")};
         for (int i = 0; i < 3; i++) {
             JPanel panel1 = new JPanel(new GridLayout(3, -1));
             for (int j = 3 * i; j <3*i+3 ; j++) {
@@ -82,18 +83,17 @@ public class GraphVisual {
                     panel1.add(new Label());
                 }
             }
-            if (i!= 0 && i != 2) {
-                panelHelp.add(new Panel());
+            if (i!= 0) {
+                panel.add(new Label());
             }
-            panel.setBorder(new EmptyBorder(50,0,50,50) {
-            });
-            panelHelp.add(panel1);
+            panel.add(panel1);
         }
 
         panel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         panel.setBackground(panelBack);
-        panel.add(panelHelp , BorderLayout.EAST);
-
+        JPanel whitePanel2 = new JPanel();
+        whitePanel2.setBackground(Color.WHITE);
+        panel.add(whitePanel2);
         visual.add(panel, BorderLayout.SOUTH);
         visual.setSize(1920, 1080);
         visual.setExtendedState(JFrame.MAXIMIZED_BOTH);
