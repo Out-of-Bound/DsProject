@@ -4,6 +4,8 @@ import Vertices.Person;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -83,24 +85,14 @@ public class GraphVisual {
             if (i!= 0 && i != 2) {
                 panelHelp.add(new Panel());
             }
+            panel.setBorder(new EmptyBorder(50,0,50,50) {
+            });
             panelHelp.add(panel1);
         }
-        JPanel personalInformation = new JPanel(new GridLayout(3 , 2));
-        personalInformation.add(new Label());
-        personalInformation.add(getLabel(person.getFirstName()));
-        personalInformation.add(getLabel("اطلاعات شخصی"));
-        personalInformation.add(getLabel(person.getLastName()));
-        personalInformation.add(new Label());
-        personalInformation.add(getLabel(person.getId()));
-        personalInformation.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        personalInformation.setBackground(panelBack);
-
 
         panel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         panel.setBackground(panelBack);
-        JScrollPane scrollPane = new JScrollPane(panel);
         panel.add(panelHelp , BorderLayout.EAST);
-        panel.add(personalInformation , BorderLayout.WEST);
 
         visual.add(panel, BorderLayout.SOUTH);
         visual.setSize(1920, 1080);
