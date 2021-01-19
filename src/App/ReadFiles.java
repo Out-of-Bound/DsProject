@@ -206,6 +206,7 @@ public class ReadFiles {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                long t = System.currentTimeMillis();
                 while ( !callRead || !relationshipRead || !transactionsRead || !ownershipRead ){
                     try {
                         Thread.sleep(500);
@@ -215,6 +216,7 @@ public class ReadFiles {
                 }
                 filesReady = true;
                 System.out.println("read end");
+                System.out.println("ReadFiles: " + (System.currentTimeMillis() - t));
                 Main.menu.fileReadEnd();
             }
         }).start();

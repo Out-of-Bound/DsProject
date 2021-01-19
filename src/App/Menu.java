@@ -74,11 +74,17 @@ public class Menu {
             if (phase1.equals(source)) {
                 new PhaseOne();
             } else if (phase2.equals(source)) {
+                long t = System.currentTimeMillis();
                 PhaseTow.show();
+                System.out.println("Phase2: " + (System.currentTimeMillis() - t));
             } else if (phase3.equals(source)) {
+                long t = System.currentTimeMillis();
                 PhaseThree.show();
+                System.out.println("Phase3: " + (System.currentTimeMillis() - t));
             } else if (phase4.equals(source)) {
+                long t = System.currentTimeMillis();
                 PhaseFour.show();
+                System.out.println("Phase4: " + (System.currentTimeMillis() - t));
             } else if (btnChooseFolder.equals(source)) {
                 ReadFiles.start();
                 if (ReadFiles.isFilesReady())
